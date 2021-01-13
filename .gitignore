@@ -3,3 +3,4 @@
 *.ini
 php/save_userdata.php
 php/send_userdata.php
+resources/data_collection/

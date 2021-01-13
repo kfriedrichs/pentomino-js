@@ -234,6 +234,17 @@ $(document).ready(function() {
 	// move on to audiotest
 	$('#welcome_done').click(function() {
 		welcome.close();
+
+		// Check for mobile browsers
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    		alert("This study cannot run on mobile devices. Please try it on a computer.");
+		}
+
+		// Check for Firefox or Chrome
+		if(! /Firefox|Chrome/i.test(navigator.userAgent) ) {
+    		alert("This study works best on Chrome or Firefox. Please try one of these two browsers.");
+		}
+
 		document.open_popup(audiotest);
 		document.instruction_manager.audiotest();
 	});

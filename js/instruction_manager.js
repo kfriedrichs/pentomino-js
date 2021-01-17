@@ -4,6 +4,7 @@ $(document).ready(function () {
 	 *
 	 * @author clpresearch / Karla Friedrichs
 	 */
+	var START = 1;
 
 	this.InstructionManager = class InstructionManager {
 		/**
@@ -65,7 +66,10 @@ $(document).ready(function () {
 				if (audio) {
 					// get audio for instruction and play it
 					// remove '#' from shape name to get file name
-					let instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
+					let instr_file = '../resources/audio/start.mp3';
+					if (START == 0) {
+						instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
+					}
 					this.instruction = new Audio(instr_file);
 					// start instruction as soon as audio is loaded sufficiently
 					this.instruction.oncanplaythrough = (event) => {
@@ -100,21 +104,24 @@ $(document).ready(function () {
 			// Note: The highlighting only really makes sense for single-piece tasks,
 			// as the highlights are removed as soon as the next instruction is generated
 			// highlight correct shape in green
-			this.highlight_correct();
-			// correct shape selected
-			if (this.shape == selected_shape) {
-				this.add_info('correct', true, 'shape');
-				this.correct_counter += 1;
-				this.correct_piece();
-			// incorrect shape selected
-			} else {
-				// highlight shape as incorrect
-				this.highlight_incorrect(selected_shape);
-				this.add_info('correct', false, 'shape');
-				// handle the incorrectly selected shape
-				this.task_board.handle_selection(selected_shape);
-				this.incorrect_piece();
+			if (START == 0) {
+				this.highlight_correct();
+				// correct shape selected
+				if (this.shape == selected_shape) {
+					this.add_info('correct', true, 'shape');
+					this.correct_counter += 1;
+					this.correct_piece();
+				// incorrect shape selected
+				} else {
+					// highlight shape as incorrect
+					this.highlight_incorrect(selected_shape);
+					this.add_info('correct', false, 'shape');
+					// handle the incorrectly selected shape
+					this.task_board.handle_selection(selected_shape);
+					this.incorrect_piece();
+				}
 			}
+			START = 0;
 			// make task_board handle the selection
 			this.task_board.handle_selection(this.shape);
 		}

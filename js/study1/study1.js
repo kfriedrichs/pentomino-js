@@ -4,8 +4,10 @@ $(document).ready(function() {
 	var SELECTION_BOARD_NAME	= 'selection_board';
 	var TASK_BOARD_NAME			= 'task_board';
 	var elephant_c = 0;
+	var START_QUEST = 1;
 
-	var FILES					= ['../resources/tasks/z.json',
+	var FILES					= ['../resources/tasks/start.json',
+								   '../resources/tasks/z.json',
 								   '../resources/tasks/l.json',
 								   '../resources/tasks/n.json',
 								   '../resources/tasks/v.json',
@@ -200,7 +202,12 @@ $(document).ready(function() {
 						// make selection_board read-only
 						document.selection_board.pento_read_only = true;
 						stopTimer();
-						document.open_popup(questionnaire);
+						if (START_QUEST == 0) {
+							document.open_popup(questionnaire);
+						} else {
+							document.open_popup(start_questionnaire);
+						}
+						START_QUEST = 0;
 					}
 				} else {
 					// simply make the shape disappear
@@ -211,17 +218,19 @@ $(document).ready(function() {
 	this.selection_board.register_event_handler(selection_handler);
 
 	// --- Pop-ups ---
-	var welcome			= document.getElementById('welcome');
-	var audiotest		= document.getElementById('audiotest');
-	var consent			= document.getElementById('consent');
-	var questionnaire	= document.getElementById('questionnaire');
-	var demographic		= document.getElementById('demographic');
-	var endscreen		= document.getElementById('endscreen');
+	var welcome				= document.getElementById('welcome');
+	var audiotest			= document.getElementById('audiotest');
+	var consent				= document.getElementById('consent');
+	var start_questionnaire	= document.getElementById('start_questionnaire');
+	var questionnaire		= document.getElementById('questionnaire');
+	var demographic			= document.getElementById('demographic');
+	var endscreen			= document.getElementById('endscreen');
 
 	// polyfill is used to help with browsers without native support for 'dialog'
 	dialogPolyfill.registerDialog(welcome);
 	dialogPolyfill.registerDialog(audiotest);
 	dialogPolyfill.registerDialog(consent);
+	dialogPolyfill.registerDialog(start_questionnaire);
 	dialogPolyfill.registerDialog(questionnaire);
 	dialogPolyfill.registerDialog(demographic);
 	dialogPolyfill.registerDialog(endscreen);
@@ -307,6 +316,19 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	// start task, load new task
+	$('#start_questionnaire_done').click(async function() {
+		start_questionnaire.close();
+
+		// small breather for the participant
+		await sleep(1000);
+		var tasks_remaining = loadNewFile();
+
+		// update elephant image
+		document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
+		elephant_c = elephant_c + 1;
+	})
 
 	// submit task questionnaire, load new task or move to demographic questionnaire
 	$('#questionnaire_done').click(async function() {
@@ -502,6 +524,8 @@ $(document).ready(function() {
 				document.instruction_manager.add_info('track_device', track_device);
 				document.instruction_manager.add_info('know_want', $('#know_want').val());
 				document.instruction_manager.add_info('greatest_difficulty', $('#greatest_difficulty').val());
+				document.instruction_manager.add_info('best_strategy', $('#best_strategy').val());
+				document.instruction_manager.add_info('worst_strategy', $('#worst_strategy').val());
 				document.instruction_manager.add_info('why_study', $('#why_study').val());
 				document.instruction_manager.add_info('comments', $('#comments').val());
 				document.instruction_manager.add_info('end_time', new Date().toString());

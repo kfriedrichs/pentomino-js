@@ -25,11 +25,13 @@ saved to a server-side file in ```resources/data_collection```
 
 Tasks are hard-coded into ```study1.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
 
-### task_creator.html
+### task_creator_study1.html
 
-Interface to create task for the *preliminary study* interface. 
+Interface to create task for the *study1* interface. 
 
 A number of pieces can be generated at random first, then the position on both the initial and the goal board can be edited. Pieces be removed from the goal board by right-clicking. 
+*all selected types once* allows to generate exactly one piece of each 
+shape that is currently selected. 
 
 The task can finally be exported in JSON format, containing two entries 'initial' and 'task' with the respective board configurations.
 
@@ -38,13 +40,20 @@ The task can finally be exported in JSON format, containing two entries 'initial
 An interactive pentomino board and instructions for participants. Pieces can either be randomly generated on the board or imported from a json file.
 The goal is to move / turn pieces until a target configuration is reached. Currently, instructions are logged to the console, but they could as well be spoken e.g. by a Furhat robot (see commented code in instruction_giver.js).
 
-### index.html
+### task_creator_steps.html
 
-This UI is made to generate and edit groups of shapes that can make bigger shapes.
+In this interface, you can randomly generate and place a number of pentomino pieces on a board. 
+An initial and target board will be created that differ by some pentomino actions (moving or rotating pieces). 
+Additionally, the interface displays snapshots, showing the transition from initial to target board step by step.
+For generation, there are the options *monocolor* and *monoshape*, a grid can be shown in the  background and the piece 
+shapes can be selected to be excluded individually.
+By switching off *read-only*, the pieces can be moved and rotated manually.
+
+NOTE: The option *number of connections* is not implemented, *number of rotations* and *number of flips* are not fully implemented and can cause unwanted behaviour.
 
 ### interactive_ifollower_ui.html
 
-Interactive UI for actions in the pentomino domain.
+Prototype interactive UI for actions in the pentomino domain.
 
 ### simple_igiver_ui.html
 

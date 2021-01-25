@@ -4,8 +4,10 @@
 
 <head>
 	<meta charset="utf-8">
+	
+	<link rel="icon" href="resources/img/favicon.ico">
 
-	<title>A pentomino framework</title>
+	<title>Task creator with steps</title>
 	<meta name="description" content="Pentomino Framework">
 	<meta name="author" content="clpresearch">
 
@@ -43,7 +45,7 @@
 					</div>
 					<div class="row">
 						<div class="twelf columns">
-							<button class="save btn" onclick="export_all()">Export all</button>
+							<button class="save btn" onclick="export_as_png()">Export PNG</button>
 							<button class="save btn" onclick="export_as_json()">Export JSON</button>
 
 							<button class="save btn" onclick="import_json()">Import JSON</button>
@@ -126,7 +128,7 @@
 	<script src='./js/pento/pento_generator.js'></script>
 
 	<!--Editor specific file-->
-	<script src='./js/index.js'></script>
+	<script src='./js/task_creator_steps.js'></script>
 </body>
 
 </html>

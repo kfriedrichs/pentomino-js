@@ -240,7 +240,8 @@ $(document).ready(function () {
 				name: 'grid',
 				fillStyle: 'white',
 				x: this.pento_grid_x, y: this.pento_grid_y,
-				width: this.width, height: this.height
+				width: this.width, height: this.height,
+				fromCenter: false
 			});
 
 			if (this.show_grid) {

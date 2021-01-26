@@ -48,7 +48,7 @@ $(document).ready(function () {
 		}
 		
 		/**
-		 * Toggle colored hightlighting of shape on and off
+		 * Toggle colored highlighting of shape on and off
 		 * @param {highlight color} color
 		 */
 		set_highlight(color) {

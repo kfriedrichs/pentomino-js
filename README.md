@@ -25,6 +25,10 @@ saved to a server-side file in ```resources/data_collection```
 
 Tasks are hard-coded into ```study1.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
 
+### elephant_ui.html
+
+Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved using arrow buttons on the side.
+
 ### task_creator_study1.html
 
 Interface to create task for the *study1* interface. 

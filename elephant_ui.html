@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Pentomino Elephant Board</title>
+
+	<link rel="icon" href="favicon.ico">
+
+	<meta name="description" content="Pentomino Elephant UI">
+	<meta name="author" content="clpresearch">
+
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/skeleton.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h5>Select a pentomino piece and use the arrows to navigate</h5>
+		<hr>
+		<div class="row">
+			<div class="eight columns">
+				<canvas id="elephant" width="570" height="570" style="border:1px solid #000000;"></canvas>
+			</div>
+			<div class="four columns">
+				<!-- use some utf-8 arrow symbols -->
+					<button onclick="rotateLeft()" style="font-size:15px">&#8630</button> <!--turn left-->
+					<button onclick="moveUp()">&#9650</button> <!--up-->
+					<button onclick="rotateRight()" style="font-size:15px">&#8631</button> <!--turn right-->
+					<br>
+					<button onclick="moveLeft()">&#9668</button> <!--left-->
+					<button onclick="stopMove()">&#9587</button> <!--stop-->
+					<button onclick="moveRight()">&#9658</button> <!--right-->
+					<br>
+					<button style="visibility:hidden">&#9650</button>
+					<button onclick="moveDown()">&#9660</button> <!--down-->
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<script src='./js/jquery.min.js'></script>
+	<script src='./js/jcanvas.min.js'></script>
+
+	<script src='./js/pento/pento_config.js'></script>
+	<script src='./js/pento/pento_block.js'></script>
+	<script src='./js/pento/pento_shape.js'></script>
+	<script src='./js/pento/pento_render.js'></script>
+	<script src='./js/pento/pento_board.js'></script>
+	<script src='./js/pento/pento_elephant_board.js'></script>
+
+	<script src='./js/elephant_ui.js'></script>
+</body>
+
+</html>
+

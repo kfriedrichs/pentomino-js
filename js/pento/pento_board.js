@@ -32,17 +32,18 @@ $(document).ready(function () {
 			// pento game parameters
 			this.show_grid = with_grid;
 			this.pento_read_only = false;
-			this.pento_lock_on_grid = true;
+			this.pento_lock_on_grid = true;			// make pieces jump to full grid cells
 			this.pento_prevent_collision = false;
 			this.pento_active_shape = null;
 			this.pento_with_tray = with_tray;
-			this.remove_at_rightclick = false;
+			this.remove_at_rightclick = false;		// delete shapes by right-clicking them
+			this.deactivate_at_canvasleave = true;	// reset active shape when leaving the canvas
 
 			// event handler
 			this.event_handlers = [];
 
 			// actions
-			//this.actions = ['move', 'rotate', 'connect', 'flip']
+			//this.actions = ['move', 'rotate', 'connect', 'flip'] // might implement these later
 			this._actions = ['move', 'rotate'];
 
 			this.init_board();
@@ -51,7 +52,9 @@ $(document).ready(function () {
 			// register event handler
 			var self = this;
 			$(canvas_id).on('mouseleave', function (event) {
-				self.clear_selections();
+				if (self.deactivate_at_canvasleave) {
+					self.clear_selections();
+				}
 			});
 
 			$(document).keydown(function (event) {
@@ -166,7 +169,16 @@ $(document).ready(function () {
 		draw() {
 			this.pento_canvas_ref.drawLayers();
 		}
-
+		
+		/**
+		 * draws a single line on the canvas
+		 * @param {start x-coordinate} x
+		 * @param {start y-coordinate} y
+		 * @param {end x-coordinate} x2
+		 * @param {end y-coordinate} y2
+		 * @param {line color, can be string, rgb, rgba} color
+		 * @param {name of jcanvas layer object} name
+		 */
 		draw_line(x, y, x2, y2, color, name) {
 			if (name == undefined) {
 				name = 'line' + Math.random();
@@ -262,6 +274,7 @@ $(document).ready(function () {
 		 * @param {canvas layer representing shape} layer
 		 */
 		lock_shape_on_grid(layer) {
+			console.log(layer);
 			// stay inside the grid
 			let new_x	= Math.max(layer.x, this.left_edge());
 			new_x		= Math.min(new_x, this.right_edge() - this.pento_block_size);
@@ -275,7 +288,7 @@ $(document).ready(function () {
 			layer.x = new_x + this.pento_grid_x - layer.offsetX;
 			layer.y = new_y + this.pento_grid_y - layer.offsetY;
 			
-			this.pento_canvas_ref.drawLayers();
+			this.draw();
 		}
 
 		/**

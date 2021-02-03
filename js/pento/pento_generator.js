@@ -181,7 +181,7 @@ $(document).ready(function () {
 		 * Generates target and initial state
 		 */
 		generate() {
-			// remove all previously generated shapesx
+			// remove all previously generated shapes
 			this.pento_board_target.destroy_all_shapes();
 			this.pento_board_initial.destroy_all_shapes();
 

@@ -47,11 +47,11 @@ $(document).ready(function () {
 			this._actions = ['move', 'rotate'];
 
 			this.init_board();
-			this.init_grid(this.show_grid);
+			this.init_grid();
 
 			// register event handler
 			var self = this;
-			$(canvas_id).on('mouseleave', function (event) {
+			this.pento_canvas_ref.on('mouseleave', function (event) {
 				if (self.deactivate_at_canvasleave) {
 					self.clear_selections();
 				}
@@ -79,7 +79,7 @@ $(document).ready(function () {
 			});
 
 			// init actions
-			this.setup_canvas();
+			//this.setup_canvas();
 			this.draw();
 		}
 		
@@ -220,7 +220,7 @@ $(document).ready(function () {
 				this.draw_line(this.pento_grid_x, this.pento_grid_y+this.height, this.pento_grid_x + this.width+200, this.pento_grid_y+this.height, 'black', 'separator');
 				this.draw_text(this.pento_grid_x+40, this.pento_grid_y+ this.height+10, 'Tray');
 			}
-			this.pento_canvas_ref.drawLayers();
+			this.draw();
 		}
 		
 		/**
@@ -274,7 +274,6 @@ $(document).ready(function () {
 		 * @param {canvas layer representing shape} layer
 		 */
 		lock_shape_on_grid(layer) {
-			console.log(layer);
 			// stay inside the grid
 			let new_x	= Math.max(layer.x, this.left_edge());
 			new_x		= Math.min(new_x, this.right_edge() - this.pento_block_size);
@@ -323,7 +322,7 @@ $(document).ready(function () {
 		 */
 		rotate_shape(angle) {
 			this.pento_active_shape.rotate(angle);
-			this.pento_canvas_ref.drawLayers();
+			this.draw();
 		}
 		
 		/**
@@ -332,7 +331,8 @@ $(document).ready(function () {
 		 */
 		destroy_shape(shape) {
 			var name = shape.name || shape;
-			this.pento_canvas_ref.removeLayer(name).drawLayers();
+			this.pento_canvas_ref.removeLayer(name);
+			this.draw();
 			delete this.shapes[name];
 		}
 
@@ -666,6 +666,7 @@ $(document).ready(function () {
 				var coords = this.pento_active_shape.get_coords();
 				this.pento_active_shape.moveTo(coords[0] + dx, coords[1] + dy);
 			}
+			this.draw();
 		}
 
 		// event functions

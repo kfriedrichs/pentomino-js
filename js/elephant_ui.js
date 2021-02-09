@@ -22,11 +22,7 @@ $(document).ready(function() {
 	* @param {y distance} dy
 	*/
 	this.moveActiveOnBoard = function (board, dx, dy) {
-		if (board.pento_active_shape) {
-			var coords = board.pento_active_shape.get_coords();
-			board.pento_active_shape.moveTo(coords[0] + dx, coords[1] + dy);
-			board.draw();
-		}
+		board.move_active(dx, dy);
 	}
 	
 	/**
@@ -86,7 +82,7 @@ $(document).ready(function() {
 		if (this.board.pento_active_shape) {
 			this.board.rotate_shape(-90);
 		} else {
-			console.log("No active shape");
+			console.log('No active shape');
 		}
 	}
 	
@@ -97,7 +93,29 @@ $(document).ready(function() {
 		if (this.board.pento_active_shape) {
 			this.board.rotate_shape(90);
 		} else {
-			console.log("No active shape");
+			console.log('No active shape');
+		}
+	}
+	
+	/**
+	 * Flips the active shape horizontally
+	 */
+	this.flipHorizontally = function() {
+		if (this.board.pento_active_shape) {
+			this.board.flipShape('horizontal');
+		} else {
+			console.log('No active shape');
+		}
+	}
+	
+	/**
+	 * Flips the active shape vertically
+	 */
+	this.flipVertically = function() {
+		if (this.board.pento_active_shape) {
+			this.board.flipShape('vertical');
+		} else {
+			console.log('No active shape');
 		}
 	}
 

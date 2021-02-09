@@ -343,8 +343,9 @@ $(document).ready(function () {
 		}
 
 		/**
-		 * Rotates the shape by delta angle
-		 * @param {*} angle 
+		 * Rotates the shape by angle
+		 * @param {difference to current angle in degrees} angle
+		 * @param {true to log the action to the changes array} track
 		 */
 		rotate(angle, track) {
 			if (track != false) {
@@ -352,6 +353,39 @@ $(document).ready(function () {
 			}
 			this.rotation = this._get_true_angle(angle);
 			this._rotate_blocks(angle);
+		}
+		
+		/**
+		 * Rotates the shape by angle. This implementation rearranges the blocks on the
+		 * internal matrix. Only angles 90, -90, 180 and -180 are possible
+		 * @param {turning angle, one of [90,-90,180,-180]} angle
+		 * @param {true to log the action to the changes array} track
+		 */
+		rotateByRearrange(angle, track) {
+			if (track != false) {
+				this.changes.push({ 'name': 'rotate', 'angle': angle });
+			}
+			this.rotation = this._get_true_angle(angle);
+			for (var i = 0; i < this.get_blocks().length; i++) {
+				var block = this.get_blocks()[i];
+				block.rotateByRearrange(angle, this.rotation);
+			}
+		}
+		
+		/**
+		 * Flips the shape by rearranging the blocks
+		 * @param {one of ['horizontal', 'vertical']} axis
+		 * @param {true to log the action to the changes array} track
+		 */
+		flip(axis, track) {
+			if (track != false) {
+				this.changes.push({ 'name': 'flip', 'axis': axis});
+			}
+			for (var i = 0; i < this.get_blocks().length; i++) {
+				var block = this.get_blocks()[i];
+				block.flip(axis);
+			}
+			this.is_mirrored = !this.is_mirrored;
 		}
 
 		/**

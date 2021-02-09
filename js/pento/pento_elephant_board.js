@@ -11,7 +11,6 @@ $(document).ready(function () {
 		 * @param {name of the board} title
 		 * @param {true for visible grid} with_grid
 		 * @param {PentoConfig instance} config
-		 * @param {reference to DOM-object that contains the canvas' background image}
 		 */
 		constructor(canvas_id, title, with_grid, config) {
 			super(canvas_id, title, false, with_grid, config); // no tray
@@ -30,10 +29,11 @@ $(document).ready(function () {
 														0,
 														this.pento_block_size);
 			this.place_shape(someShape);
+			this.draw();
 		}
 		
 		/**
-		 * ! Overwrite parent function: ElepantBoard has dashed grid lines !
+		 * ! Overwrite parent function: ElephantBoard has dashed grid lines !
 		 * draws a single line on the canvas
 		 * @param {start x-coordinate} x
 		 * @param {start y-coordinate} y
@@ -46,10 +46,14 @@ $(document).ready(function () {
 			if (name == undefined) {
 				name = 'line' + Math.random();
 			}
+//			var ctx = this.canvas.getContext("2d");
+//			ctx.moveTo(x,y);
+//			ctx.lineTo(x2,y2);
+			//ctx.stroke();
 			this.pento_canvas_ref.drawLine({
 				layer: true,
 				name: name,
-				groups: ['grid'],
+				//groups: ['grid'],
 				strokeStyle: color,
 				strokeWidth: 1,
 				strokeDash: [5],
@@ -57,6 +61,11 @@ $(document).ready(function () {
 				x2: x2, y2: y2
 			});
 		}
+		
+//		draw() {
+//			var ctx = this.canvas.getContext("2d");
+//			ctx.stroke();
+//		}
 		
 		/**
 		 * Draw lines to form an elephant.
@@ -125,8 +134,8 @@ $(document).ready(function () {
 			var last_y;
 			var self = this;
 
-			this.pento_canvas_ref.drawPentoShape({
-				layer: true,
+			var s = {
+				layer: false,
 				name: shape.name,
 				block_size: this.pento_block_size,
 				draggable: !this.pento_read_only,
@@ -142,10 +151,33 @@ $(document).ready(function () {
 						self.set_active(shape);
 					}
 				}
-			});
+			};
+			this.pento_canvas_ref.drawPentoShape(s);
 			this.pento_shapes[shape.name] = shape;
 			this.draw();
 		}
+		
+		/**
+		 * ! Overwrite PentoBoard function: use different rotation method that keeps
+		 * shape on grid, but only allows for 90° steps !
+		 * Rotates the active shape by the given angle
+		 * @param {angle in degrees} angle
+		 */
+		rotate_shape(angle) {
+			this.pento_active_shape.rotateByRearrange(angle, false);
+			this.draw();
+		}
+		
+		/**
+		 * Flips the active shape
+		 * @param {one of ['horizontal', 'vertical']} axis
+		 * @param {true to log the action} track
+		 */
+		flipShape(axis) {
+			this.pento_active_shape.flip(axis, false);
+			this.draw();
+		}
+		
 		
 		/**
 		 * ! Overwrite PentoBoard function to not draw arrows !

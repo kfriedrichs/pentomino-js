@@ -20,7 +20,7 @@ $(document).ready(function () {
 			this.deactivate_at_canvasleave = false;
 			
 			// for now just create a random shape
-			let someShape = document.pento_create_shape("sampleShape",
+			let someShape = document.pento_create_shape('sampleShape',
 														2*this.pento_block_size,
 														2*this.pento_block_size,
 														'F',
@@ -167,17 +167,6 @@ $(document).ready(function () {
 			this.pento_active_shape.rotateByRearrange(angle, false);
 			this.draw();
 		}
-		
-		/**
-		 * Flips the active shape
-		 * @param {one of ['horizontal', 'vertical']} axis
-		 * @param {true to log the action} track
-		 */
-		flipShape(axis) {
-			this.pento_active_shape.flip(axis, false);
-			this.draw();
-		}
-		
 		
 		/**
 		 * ! Overwrite PentoBoard function to not draw arrows !

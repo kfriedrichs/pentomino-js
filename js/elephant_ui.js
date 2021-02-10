@@ -102,7 +102,7 @@ $(document).ready(function() {
 	 */
 	this.flipHorizontally = function() {
 		if (this.board.pento_active_shape) {
-			this.board.flipShape('horizontal');
+			this.board.flip_shape('horizontal');
 		} else {
 			console.log('No active shape');
 		}
@@ -113,7 +113,7 @@ $(document).ready(function() {
 	 */
 	this.flipVertically = function() {
 		if (this.board.pento_active_shape) {
-			this.board.flipShape('vertical');
+			this.board.flip_shape('vertical');
 		} else {
 			console.log('No active shape');
 		}

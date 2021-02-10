@@ -326,6 +326,16 @@ $(document).ready(function () {
 		}
 		
 		/**
+		 * Flips the active shape
+		 * @param {one of ['horizontal', 'vertical']} axis
+		 * @param {true to log the action} track
+		 */
+		flip_shape(axis) {
+			this.pento_active_shape.flip(axis, false);
+			this.draw();
+		}
+		
+		/**
 		 * Remove a shape from canvas and internal structure.
 		 * @param {shape name or PentoShape object to remove} shape
 		 */

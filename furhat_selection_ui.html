@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Pentomino Board</title>
+
+	<link rel="icon" href="./favicon.ico">
+
+	<meta name="description" content="Pentomino with Furhat">
+	<meta name="author" content="clpresearch">
+
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/skeleton.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="twelve columns">
+				<h5>Pentomino Board</h5>
+				<button id="startBtn" onclick="startGame()">Start new game</button>
+				<button id="placeBtn" onclick="placeSelected()">Place selected</button>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="six columns">
+				<!-- 20 rows and columns with block size 20 -->
+				<canvas id="selection_board" width="400" height="400" style="border:1px solid #000000;"></canvas>
+			</div>
+			<div class="six columns">
+				<canvas id="elephant_board" width="400" height="400" style="border:1px solid #000000;"></canvas>
+			</div>
+		</div>
+		<div class="row">
+			<div id="pieceSelectors" class="twelve columns">
+			</div>
+		</div>
+
+	</div>
+
+	<script src='./js/jquery.min.js'></script>
+	<script src='./js/jcanvas.min.js'></script>
+
+	<script src='./js/pento/pento_config.js'></script>
+	<script src='./js/pento/pento_block.js'></script>
+	<script src='./js/pento/pento_shape.js'></script>
+	<script src='./js/pento/pento_render.js'></script>
+	<script src='./js/pento/pento_board.js'></script>
+	<script src='./js/pento/pento_selection_board.js'></script>
+	<script src='./js/pento/pento_generator.js'></script>
+
+	<script src='./js/furhat_selection_ui.js'></script>
+</body>
+
+</html>
+

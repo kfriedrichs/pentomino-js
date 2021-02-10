@@ -107,15 +107,12 @@ $(document).ready(function () {
 		 */
 		toggle_visibility(is_visible, shape=null) {
 			if (shape == null) {
-				this.pento_canvas_ref.setLayers({
-					visible: is_visible
-				})
-				.drawLayers();
+				this.pento_canvas_ref.setLayerGroup('shapes', {visible: is_visible});
+				this.draw();
 			} else {
 				this.pento_canvas_ref.setLayer(shape, {
-					visible: is_visible
-				})
-				.drawLayers();
+					visible: is_visible});
+				this.draw();
 			}
 		}
 	};

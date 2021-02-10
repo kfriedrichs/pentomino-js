@@ -1,0 +1,5908 @@
+{
+  "initial": {
+    "F0#5CD6D6": {
+      "id": 0,
+      "x": 60,
+      "y": 200,
+      "type": "F",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 61,
+          "y": 201
+        }
+      ],
+      "name": "F0#5CD6D6",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "I1#BFFF80": {
+      "id": 1,
+      "x": 260,
+      "y": 320,
+      "type": "I",
+      "color": "#BFFF80",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "changes": [],
+      "name": "I1#BFFF80",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -40
+            ],
+            [
+              20,
+              -40
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": []
+    },
+    "L2#5CD6D6": {
+      "id": 2,
+      "x": 140,
+      "y": 140,
+      "type": "L",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [],
+      "name": "L2#5CD6D6",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -40
+            ],
+            [
+              20,
+              -40
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": []
+    },
+    "N3#BFFF80": {
+      "id": 3,
+      "x": 20,
+      "y": 320,
+      "type": "N",
+      "color": "#BFFF80",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 32,
+          "y": 328
+        }
+      ],
+      "name": "N3#BFFF80",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20.000000000000004,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              -3.552713678800501e-15
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -3.552713678800501e-15
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              -3.552713678800501e-15,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              19.999999999999996,
+              -40
+            ],
+            [
+              40.00000000000001,
+              -40
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              20.000000000000004,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20.000000000000004,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "P4#336699": {
+      "id": 4,
+      "x": 220,
+      "y": 40,
+      "type": "P",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 224,
+          "y": 40
+        }
+      ],
+      "name": "P4#336699",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "T5#336699": {
+      "id": 5,
+      "x": 320,
+      "y": 280,
+      "type": "T",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 325,
+          "y": 294
+        }
+      ],
+      "name": "T5#336699",
+      "blocks": [
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "U6#408000": {
+      "id": 6,
+      "x": 240,
+      "y": 120,
+      "type": "U",
+      "color": "#408000",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 242,
+          "y": 122
+        }
+      ],
+      "name": "U6#408000",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "V7#336699": {
+      "id": 7,
+      "x": 100,
+      "y": 60,
+      "type": "V",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 108,
+          "y": 72
+        }
+      ],
+      "name": "V7#336699",
+      "blocks": [
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20.000000000000007,
+              -20
+            ],
+            [
+              -3.552713678800501e-15,
+              -20
+            ],
+            [
+              -3.552713678800501e-15,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              -3.552713678800501e-15,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20.000000000000004
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20.000000000000004
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -3.552713678800501e-15,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              -3.552713678800501e-15,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              -3.552713678800501e-15
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "W8#CC88CC": {
+      "id": 8,
+      "x": 220,
+      "y": 200,
+      "type": "W",
+      "color": "#CC88CC",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 229,
+          "y": 200
+        }
+      ],
+      "name": "W8#CC88CC",
+      "blocks": [
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "X9#FFB366": {
+      "id": 9,
+      "x": 320,
+      "y": 160,
+      "type": "X",
+      "color": "#FFB366",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [],
+      "name": "X9#FFB366",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": []
+    },
+    "Y10#FFB366": {
+      "id": 10,
+      "x": 320,
+      "y": 40,
+      "type": "Y",
+      "color": "#FFB366",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 324,
+          "y": 49
+        }
+      ],
+      "name": "Y10#FFB366",
+      "blocks": [
+        {
+          "x": -40,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -40,
+              0
+            ],
+            [
+              -20,
+              0
+            ],
+            [
+              -20,
+              20
+            ],
+            [
+              -40,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "Z11#5CD6D6": {
+      "id": 11,
+      "x": 180,
+      "y": 320,
+      "type": "Z",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 183,
+          "y": 338
+        }
+      ],
+      "name": "Z11#5CD6D6",
+      "blocks": [
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    }
+  },
+  "task": {
+    "F0#5CD6D6": {
+      "id": 0,
+      "x": 180,
+      "y": 200,
+      "type": "F",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 181,
+          "y": 205
+        }
+      ],
+      "name": "F0#5CD6D6",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "I1#BFFF80": {
+      "id": 1,
+      "x": 160,
+      "y": 240,
+      "type": "I",
+      "color": "#BFFF80",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 167,
+          "y": 245
+        }
+      ],
+      "name": "I1#BFFF80",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -40
+            ],
+            [
+              20,
+              -40
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "L2#5CD6D6": {
+      "id": 2,
+      "x": 300,
+      "y": 260,
+      "type": "L",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 303,
+          "y": 264
+        }
+      ],
+      "name": "L2#5CD6D6",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -40
+            ],
+            [
+              20,
+              -40
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "N3#BFFF80": {
+      "id": 3,
+      "x": 180,
+      "y": 260,
+      "type": "N",
+      "color": "#BFFF80",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 186,
+          "y": 263
+        }
+      ],
+      "name": "N3#BFFF80",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -40,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -40
+            ],
+            [
+              40,
+              -40
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              20,
+              -20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#BFFF80",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "P4#336699": {
+      "id": 4,
+      "x": 240,
+      "y": 180,
+      "type": "P",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 242,
+          "y": 181
+        }
+      ],
+      "name": "P4#336699",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "T5#336699": {
+      "id": 5,
+      "x": 260,
+      "y": 240,
+      "type": "T",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 262,
+          "y": 246
+        },
+        {
+          "name": "rotate",
+          "angle": 0
+        }
+      ],
+      "name": "T5#336699",
+      "blocks": [
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -3.552713678800501e-15
+            ],
+            [
+              -3.552713678800501e-15,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20.000000000000025
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -3.552713678800501e-15,
+              0
+            ],
+            [
+              19.999999999999993,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              19.999999999999993,
+              0
+            ],
+            [
+              40,
+              -3.552713678800501e-15
+            ],
+            [
+              40,
+              19.999999999999993
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              19.999999999999982,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              -3.552713678800501e-15
+            ],
+            [
+              19.999999999999993,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              19.999999999999993
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20.00000000000001,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "U6#408000": {
+      "id": 6,
+      "x": 100,
+      "y": 140,
+      "type": "U",
+      "color": "#408000",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 111,
+          "y": 140
+        }
+      ],
+      "name": "U6#408000",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#408000",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "V7#336699": {
+      "id": 7,
+      "x": 120,
+      "y": 200,
+      "type": "V",
+      "color": "#336699",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 121,
+          "y": 202
+        }
+      ],
+      "name": "V7#336699",
+      "blocks": [
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#336699",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "W8#CC88CC": {
+      "id": 8,
+      "x": 280,
+      "y": 180,
+      "type": "W",
+      "color": "#CC88CC",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 285,
+          "y": 180
+        }
+      ],
+      "name": "W8#CC88CC",
+      "blocks": [
+        {
+          "x": -20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              -20
+            ],
+            [
+              0,
+              -20
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              -20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#CC88CC",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "X9#FFB366": {
+      "id": 9,
+      "x": 140,
+      "y": 140,
+      "type": "X",
+      "color": "#FFB366",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 144,
+          "y": 140
+        }
+      ],
+      "name": "X9#FFB366",
+      "blocks": [
+        {
+          "x": 0,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              -20
+            ],
+            [
+              20,
+              -20
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "Y10#FFB366": {
+      "id": 10,
+      "x": 200,
+      "y": 160,
+      "type": "Y",
+      "color": "#FFB366",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 204,
+          "y": 166
+        }
+      ],
+      "name": "Y10#FFB366",
+      "blocks": [
+        {
+          "x": -40,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -40,
+              0
+            ],
+            [
+              -20,
+              0
+            ],
+            [
+              -20,
+              20
+            ],
+            [
+              -40,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#FFB366",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "Z11#5CD6D6": {
+      "id": 11,
+      "x": 240,
+      "y": 220,
+      "type": "Z",
+      "color": "#5CD6D6",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        2,
+        2
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 243,
+          "y": 222
+        }
+      ],
+      "name": "Z11#5CD6D6",
+      "blocks": [
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": -20,
+          "width": 20,
+          "height": 20,
+          "color": "#5CD6D6",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              -20
+            ],
+            [
+              40,
+              -20
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    }
+  }
+}

@@ -105,7 +105,8 @@ $(document).ready(function () {
 		props: {
 			offsetX: 0,
 			offsetY: 0,
-			shape: null
+			shape: null,
+			groups: ['shapes']
 		},
 		fn: function (ctx, params) {
 			// Enable layer transformations like scale and rotate

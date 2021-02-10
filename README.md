@@ -25,6 +25,18 @@ saved to a server-side file in ```resources/data_collection```
 
 Tasks are hard-coded into ```study1.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
 
+### furhat_selection_ui.html
+
+**REQUIRES SERVER SETUP. (temporary solution)** Using [MAMP (Mac/Windows)](https://www.mamp.info/de/mac/): Once you have MAMP installed, create a server using the pentomino-js directory.
+(Preferences > Server > select pentomino-js directory as root). Start the server and visit [http://localhost:8888/furhat_selection_ui.html](http://localhost:8888/furhat_selection_ui.html).
+
+Baseline interface, all button functions are to be replaced by interactions with a Furhat robot.
+Click *Start new game* first. (For now the start configuration is not generated randomly but read
+from ```resources/tasks/elephant_target.json```!)
+Pieces on the left are selected by clicking the corresponding button. *Place selected* removes the piece
+from the left side, shows it on the board on the right side (ultimately forming the pentomino elephant)
+and removes the button.
+
 ### elephant_ui.html
 
 Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved using arrow buttons on the side.

@@ -8,7 +8,12 @@ $(document).ready(function() {
 	let nBlocks = 19;
 	let boardSizeStr = $(`#${BOARDNAME}`).css('width');
 	let boardSize = Number(boardSizeStr.slice(0, boardSizeStr.length-2));
-	this.board = new document.PentoElephantBoard(`#${BOARDNAME}`, BOARDNAME, WITHGRID, new document.PentoConfig(board_size=boardSize, nBlocks));
+	
+	let config = new document.PentoConfig(board_size=boardSize, nBlocks);
+	// use only 90° rotation, this allows blocks to stay on the grid
+	config.rotation_step = 90;
+	
+	this.board = new document.PentoElephantBoard(`#${BOARDNAME}`, BOARDNAME, WITHGRID, config);
 	
 	// --- Button functions ---
 	var MOVESPEED	= 5;

@@ -158,17 +158,6 @@ $(document).ready(function () {
 		}
 		
 		/**
-		 * ! Overwrite PentoBoard function: use different rotation method that keeps
-		 * shape on grid, but only allows for 90° steps !
-		 * Rotates the active shape by the given angle
-		 * @param {angle in degrees} angle
-		 */
-		rotate_shape(angle) {
-			this.pento_active_shape.rotateByRearrange(angle, false);
-			this.draw();
-		}
-		
-		/**
 		 * ! Overwrite PentoBoard function to not draw arrows !
 		 * Move shape to foreground and highlight it
 		 * @param {PentoShape to set active} shape

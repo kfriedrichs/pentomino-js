@@ -136,10 +136,10 @@ $(document).ready(function () {
 		 * @param {true to log the action to the changes array} track
 		 */
 		rotateByRearrange(delta_angle, new_angle) {
-			if (delta_angle == 90) {
+			if (delta_angle == 90 || delta_angle == -270) {
 				// new x is (-1) * old y; new y is old x
 				this._move((-1) * this.y - this.x, this.x - this.y);
-			} else if (delta_angle == -90) {
+			} else if (delta_angle == -90 || delta_angle == 270) {
 				// new x is old y; new y is (-1) * old x
 				this._move(this.y - this.x, (-1) * this.x  - this.y);
 			} else if (Math.abs(delta_angle) == 180) {

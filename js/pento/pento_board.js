@@ -43,8 +43,7 @@ $(document).ready(function () {
 			this.event_handlers = [];
 
 			// actions
-			//this.actions = ['move', 'rotate', 'connect', 'flip'] // might implement these later
-			this._actions = ['move', 'rotate'];
+			this._actions = ['move', 'rotate', 'connect', 'flip'];
 
 			this.init_board();
 			this.init_grid();
@@ -79,7 +78,7 @@ $(document).ready(function () {
 			});
 
 			// init actions
-			//this.setup_canvas();
+			this.setup_canvas();
 			this.draw();
 		}
 		
@@ -647,12 +646,16 @@ $(document).ready(function () {
 				case 'move':
 					shape.moveTo(params['x'], params['y']);
 					// layer needs to be updated for change to take effect
-					this.update_layer_pos(shape.name, params['x'], params['y']);
+					//this.update_layer_pos(shape.name, params['x'], params['y']);
 					this.fire_event('shape_moved', shape.name, { 'x': params['x'], 'y': params['y'] });
 					break;
 				case 'rotate':
 					shape.rotate(params['rotation']);
 					this.fire_event('shape_rotated', shape.name, { 'rotation': params['rotation'] });
+					break;
+				case 'flip':
+					shape.flip(params['axis']);
+					this.fire_event('shape_flipped', shape.name, { 'axis': params['axis']});
 					break;
 				case 'connect':
 					var group_id = shape.connect_to(params['other_shape']);

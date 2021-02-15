@@ -382,11 +382,17 @@ $(document).ready(function () {
 		 * @param {true to log the action to the changes array} track
 		 */
 		rotate(angle, track) {
+			if (angle == 0) { return; }
 			if (track != false) {
 				this.changes.push({ 'name': 'rotate', 'angle': angle });
 			}
 			this.rotation = this._get_true_angle(angle);
-			this._rotate_blocks(angle);
+			// use rearrange method if possible
+			if (angle % 90 == 0) {
+				this.rotateByRearrange(angle);
+			} else {
+				this._rotate_blocks(angle);
+			}
 		}
 		
 		/**
@@ -396,10 +402,6 @@ $(document).ready(function () {
 		 * @param {true to log the action to the changes array} track
 		 */
 		rotateByRearrange(angle, track) {
-			if (track != false) {
-				this.changes.push({ 'name': 'rotate', 'angle': angle });
-			}
-			this.rotation = this._get_true_angle(angle);
 			// empty the grid (since the blocks will be rearranged)
 			this._empty_grid();
 			for (var i = 0; i < this.get_blocks().length; i++) {

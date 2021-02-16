@@ -36,6 +36,11 @@ Pieces on the left are selected by clicking the corresponding button. *Place sel
 from the left side, shows it on the board on the right side (ultimately forming the pentomino elephant)
 and removes the button.
 
+**The interface uses a 'layerless' PentoBoard, meaning all contents are drawn directly to the canvas.
+This has the advantage of improved compatibility (especially for creating Furhat GUIs which use the React framework),
+but on the otherhand, everything has to be redrawn at any update. (At the current level of complexity this
+does not seem to pose a problem.)**
+
 ### elephant_ui.html
 
 Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved using arrow buttons on the side.

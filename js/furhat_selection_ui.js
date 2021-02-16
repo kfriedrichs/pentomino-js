@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var WITH_GRID				= true;
 	var SELECTION_BOARD_NAME	= 'selection_board';
 	var ELEPHANT_BOARD_NAME		= 'elephant_board';
-	
+
 	this.config = new document.PentoConfig();
 	// use only 90° rotation, this allows blocks to stay on the grid
 	this.config.rotation_step = 90;
@@ -16,12 +16,14 @@ $(document).ready(function() {
 		console.log('Warning: the two canvas should have the same size');
 	}
 	this.config = new document.PentoConfig(board_size=selboard_size);
+	
 	this.generator = new document.PentoGeneratorElephant(this.config,
 														with_grid=WITH_GRID,
 														read_only=true,
 														target_name=ELEPHANT_BOARD_NAME,
-														initial_name=SELECTION_BOARD_NAME);
-	
+														initial_name=SELECTION_BOARD_NAME,
+														layerless=true);
+
 	this.selection_board = this.generator.pento_board_initial;
 	// Piece selection/activation is only manipulated by buttons, turn off mouse events
 	this.selection_board.deactivate_at_canvasleave = false;
@@ -31,7 +33,7 @@ $(document).ready(function() {
 	// -------- Button functions ---------
 
 	this.activeButton = null;
-	
+
 	/**
 	 * Given a shape, this returns a function to be used by the matching button.
 	 * At activation (button click), the shape is highlighted (or an existing highlight
@@ -51,7 +53,7 @@ $(document).ready(function() {
 			document.selection_board.draw();
 		}
 	}
-	
+
 	/**
 	 * Should be called once boards are loaded. Creates a button for each shape on the
 	 * selection board.
@@ -68,7 +70,7 @@ $(document).ready(function() {
 			$(`#${btnID}`).on('click', this.createButtonFunction(shape));
 		}
 	}
-	
+
 	/**
 	 * Function for 'Start new game' button
 	 */
@@ -79,7 +81,7 @@ $(document).ready(function() {
 		document.elephant_board.toggle_visibility(false);
 		document.setupButtons();
 	}
-	
+
 	/**
 	 * Function for 'Place selected' button
 	 */

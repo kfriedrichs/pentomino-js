@@ -12,6 +12,7 @@ $(document).ready(function () {
 			this.writable = true;
 			this.active = false;
 			this.highlight;
+			this.visible = true; // for layerless boards only
 
 			// shape internal grid and bounding box
 			this._internal_grid_size = [5, 5];
@@ -865,4 +866,3 @@ $(document).ready(function () {
 		return new_shape
 	};
 })
-

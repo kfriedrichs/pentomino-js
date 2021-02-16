@@ -6,7 +6,7 @@ $(document).ready(function () {
 	 * All pieces are used exactly once, colors are generated randomly.
 	 */
 	this.PentoGeneratorElephant = class PentoGeneratorElephant {
-		constructor(pento_config, with_grid=true, read_only=false, target_name='target', initial_name='initial') {
+		constructor(pento_config, with_grid=true, read_only=false, target_name='target', initial_name='initial', layerless=false) {
 			this.pento_config = pento_config;
 
 			this.pento_grid_rows = pento_config.n_blocks;
@@ -14,8 +14,13 @@ $(document).ready(function () {
 
 			// draw board frames/headers
 			let with_tray = false;
-			this.pento_board_elephant = new document.PentoSelectionBoard(`#${target_name}`, 'Elephant', with_grid, this.pento_config, read_only=read_only);
-			this.pento_board_initial = new document.PentoSelectionBoard(`#${initial_name}`, 'Initial', with_grid, this.pento_config, read_only=read_only);
+			if (layerless) {
+				this.pento_board_elephant = new document.PentoLayerlessSelectionBoard(`#${target_name}`, 'Elephant', with_grid, this.pento_config, read_only=read_only);
+				this.pento_board_initial = new document.PentoLayerlessSelectionBoard(`#${initial_name}`, 'Initial', with_grid, this.pento_config, read_only=read_only);
+			} else {
+				this.pento_board_elephant = new document.PentoSelectionBoard(`#${target_name}`, 'Elephant', with_grid, this.pento_config, read_only=read_only);
+				this.pento_board_initial = new document.PentoSelectionBoard(`#${initial_name}`, 'Initial', with_grid, this.pento_config, read_only=read_only);
+			}
 
 			// events and event handler
 			this.events = ['target_updated', 'initial_updated', 'generation_finished'];

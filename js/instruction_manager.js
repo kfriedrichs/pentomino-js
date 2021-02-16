@@ -142,7 +142,7 @@ $(document).ready(function () {
 		}
 
 		/**
-		 * Remove all hightlights
+		 * Remove all highlights
 		*/
 		remove_highlights() {
 			for (let s of Object.values(this.selection_board.shapes)) {

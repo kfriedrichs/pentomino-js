@@ -14,6 +14,8 @@ $(document).ready(function () {
 		} else if (highlight) {
 			ctx.shadowColor = highlight;
 			ctx.shadowBlur = 10;
+		} else {
+			ctx.shadowBlur = 0; // set invisible
 		}
 		ctx.fillStyle = block.color;
 		ctx.strokeStyle = 'lightgray';
@@ -96,6 +98,9 @@ $(document).ready(function () {
 			draw_block(ctx, block, shape.x + params.offsetX, shape.y + params.offsetY, shape.is_active(), shape.highlight);
 		}
 	}
+	
+	document.draw_shape = draw_shape;
+	document.draw_shape_border = draw_shape_border;
 
 	// Create a drawPentoShape() method
 	$.jCanvas.extend({

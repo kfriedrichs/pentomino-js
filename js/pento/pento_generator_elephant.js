@@ -120,9 +120,9 @@ $(document).ready(function () {
 		/**
 		 * Create initial state by manipulating the target state by n actions
 		 * @param {copy of target shapes} shapes
-		 * @param {actions} nactions
+		 * @param {optionally pass board to apply flip / rotate actions there too} elephant_board
 		 */
-		create_initial_state(shapes) {
+		create_initial_state(shapes, elephant_board=null) {
 			// likelihood of an action (rotate, flip) being performed
 			let action_likelihood = 0.5;
 			let action_counter = 0;
@@ -158,6 +158,10 @@ $(document).ready(function () {
 								continue;
 							}
 							
+							if (elephant_board && action != 'move') {
+								elephant_board.execute_action(action, elephant_board.get_shape(shape.name), params);
+							}
+							
 							this._fire_event(this.events[1], {'shape': shape, 'action': action, 'params': params});
 							++action_counter;
 						}
@@ -168,7 +172,7 @@ $(document).ready(function () {
 			this._fire_event(this.events[2], {'index': action_counter});
 		}
 		
-		generate() {
+		generate(build_elephant=true) {
 			// All shapes are used once to create the elephant
 			// remove all previously generated shapes
 			this.pento_board_elephant.destroy_all_shapes();
@@ -187,10 +191,16 @@ $(document).ready(function () {
 			for (let id=0; id<pento_types.length; id++) {
 				let rand_color = colors[Math.floor(Math.random() * colors.length)];
 				
-				// place on elephant board (predefined position)
-				let eleX = this.elephantX + this.elephantCoords[pento_types[id]]['x'];
-				let eleY = this.elephantY + this.elephantCoords[pento_types[id]]['y'];
-				let coords = this.pento_board_elephant.grid_cell_to_coordinates(eleX, eleY);
+				let coords;
+				if (build_elephant) {
+					// place on elephant board (predefined position)
+					let eleX = this.elephantX + this.elephantCoords[pento_types[id]]['x'];
+					let eleY = this.elephantY + this.elephantCoords[pento_types[id]]['y'];
+					coords = this.pento_board_elephant.grid_cell_to_coordinates(eleX, eleY);
+				} else {
+					// make all pieces reside in the upper left at first
+					coords = this.pento_board_elephant.grid_cell_to_coordinates(3, 3);
+				}
 				
 				// create shape for the elephant board: without flip or rotation
 				let new_shape = document.pento_create_shape(id, coords[0], coords[1], pento_types[id], rand_color, false, 0, this.pento_config.block_size);
@@ -198,11 +208,16 @@ $(document).ready(function () {
 				generated_shapes.push(new_shape.copy(id));
 			}
 			
-			// draw elphant board
+			// draw elephant board
 			this.pento_board_elephant.draw();
 			
 			// now move, rotate, flip shape randomly to create initial board
-			this.create_initial_state(generated_shapes);
+			if (build_elephant) {
+				this.create_initial_state(generated_shapes);
+			} else {
+				// pass the elephant board so that rotation and flip are applied there too
+				this.create_initial_state(generated_shapes, this.pento_board_elephant);
+			}
 			this.pento_board_initial.draw();
 		}
 	};

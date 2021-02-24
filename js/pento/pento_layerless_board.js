@@ -200,15 +200,20 @@ $(document).ready(function () {
 		 * Draw all shapes present in this.pento_shapes, if their 'visible' property is set
 		 */
 		draw_shapes() {
+			let params = { offsetX: 0, offsetY: 0 };
+			let ctx = this.canvas.getContext("2d");
 			for (let shape_name in this.shapes) {
 				let shape = this.shapes[shape_name];
 				// draw all visible shapes
-				if (shape.visible) {
-					let params = { offsetX: 0, offsetY: 0};
-					let ctx = this.canvas.getContext("2d");
+				if (shape.visible && !shape.active) {
 					document.draw_shape(ctx, shape, params);
 					document.draw_shape_border(ctx, shape, params);
 				}
+			}
+			// make sure to draw active shape last (so it appears 'on top')
+			if (this.pento_active_shape && this.pento_active_shape.visible) {
+				document.draw_shape(ctx, this.pento_active_shape, params);
+				document.draw_shape_border(ctx, this.pento_active_shape, params);
 			}
 		}
 		
@@ -248,25 +253,30 @@ $(document).ready(function () {
 		}
 		
 		/**
-		 * Move shape to a grid square
-		 * @param {canvas layer representing shape} layer
+		 * Move a given shape or the currently active shape to a grid square
+		 * @param {PentoShape object, active shape will be locked as default} shape
 		 */
-		lock_shape_on_grid(layer) {
-			console.log('Not yet implemented: lock_shape_on_grid')
-//			// stay inside the grid
-//			let new_x	= Math.max(layer.x, this.left_edge());
-//			new_x		= Math.min(new_x, this.right_edge() - this.pento_block_size);
-//			let new_y	= Math.max(layer.y, this.upper_edge());
-//			new_y		= Math.min(new_y, this.lower_edge() - this.pento_block_size);
-//
-//			// lock shape on a grid square
-//			new_x = Math.floor((new_x - this.pento_grid_x + layer.offsetX) / this.pento_block_size) * this.pento_block_size;
-//			new_y = Math.floor((new_y - this.pento_grid_y + layer.offsetY) / this.pento_block_size) * this.pento_block_size;
-//
-//			layer.x = new_x + this.pento_grid_x - layer.offsetX;
-//			layer.y = new_y + this.pento_grid_y - layer.offsetY;
-//
-//			this.draw();
+		lock_shape_on_grid(shape=null) {
+			let shape_to_lock;
+			if (shape) { // use given shape ...
+				shape_to_lock = shape;
+			} else if (this.pento_active_shape) { // ... or fall back to active shape
+				shape_to_lock = this.pento_active_shape;
+			} else {
+				console.log('No shape passed and no active shape at lock_shape_on_grid.');
+				return;
+			}
+			// stay inside the grid
+			let new_x	= Math.max(shape_to_lock.x, this.left_edge());
+			new_x		= Math.min(new_x, this.right_edge() - this.pento_block_size);
+			let new_y	= Math.max(shape_to_lock.y, this.upper_edge());
+			new_y		= Math.min(new_y, this.lower_edge() - this.pento_block_size);
+			
+			// lock shape on a grid square
+			new_x = Math.floor((new_x - this.pento_grid_x) / this.pento_block_size) * this.pento_block_size;
+			new_y = Math.floor((new_y - this.pento_grid_y) / this.pento_block_size) * this.pento_block_size;
+			shape_to_lock.moveTo(new_x, new_y);
+			this.draw();
 		}
 
 		/**
@@ -306,7 +316,6 @@ $(document).ready(function () {
 		/**
 		 * Flips the active shape
 		 * @param {one of ['horizontal', 'vertical']} axis
-		 * @param {true to log the action} track
 		 */
 		flip_shape(axis) {
 			this.pento_active_shape.flip(axis, false);
@@ -319,6 +328,9 @@ $(document).ready(function () {
 		 */
 		destroy_shape(shape) {
 			var name = shape.name || shape;
+			if (this.pento_active_shape && (this.pento_active_shape.name == name)) {
+				this.pento_active_shape = null;
+			}
 			delete this.shapes[name];
 			this.draw(); // redraw to apply change
 		}
@@ -337,14 +349,17 @@ $(document).ready(function () {
 		
 		/**
 		 * Highlight the active shape
-		 * @param {PentoShape to set active} shape
+		 * @param {PentoShape to set active or shape name} shape
 		 */
 		set_active(shape) {
 			if (this.pento_active_shape != null) {
 				this.pento_active_shape.set_deactive();
 			}
-			this.pento_active_shape = shape;
-			shape.set_active();
+			let new_active = shape.name ? shape.name : shape;
+			if (this.shapes[new_active]) {
+				this.pento_active_shape = this.shapes[new_active];
+				this.shapes[new_active].set_active();
+			}
 		}
 		
 		/**

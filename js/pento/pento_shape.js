@@ -8,7 +8,7 @@ $(document).ready(function () {
 			this.type = type;
 			this.color = color;
 			this.rotation = rotation;
-			this.is_mirrored = is_mirrored || false;
+			this._is_mirrored = is_mirrored || false;
 			this.writable = true;
 			this.active = false;
 			this.highlight;
@@ -32,8 +32,15 @@ $(document).ready(function () {
 			this.blocks = [];
 			this.block_size = block_size;
 
-			// conntected shapes
+			// connected shapes
 			this.connected = [];
+			
+			// shapes that don't have a mirrored version
+			this.SYMMETRIC_SHAPES = new Set(['I', 'T', 'U', 'V', 'W', 'X', 'point'])
+		}
+		
+		get is_mirrored() {
+			return ( (!this.SYMMETRIC_SHAPES.has(this.type)) && this._is_mirrored );
 		}
 		
 		/**
@@ -433,7 +440,7 @@ $(document).ready(function () {
 			}
 			// redraw the black outline after block rearrangement
 			this._update_outline();
-			this.is_mirrored = !this.is_mirrored;
+			this._is_mirrored = !this._is_mirrored;
 		}
 
 		/**

@@ -33,8 +33,18 @@ Click *Start new game* first. The shapes' colors are selected randomly. All shap
 random positions (collisions are minimized), random rotations and occasional flips on the left board.
 
 Pieces on the left are selected by clicking the corresponding button. *Place selected* removes the piece
-from the left side, shows it on the board on the right side (ultimately forming the pentomino elephant)
-and removes the button.
+from the left side and shows it on the board on the right side; each piece starting in the upper left corner.
+
+The currently selected shape can then be manipulated using some arrow buttons. Possible actions
+are:
+
+ * move
+ * flip
+ * rotate
+
+There is a predefined goal position for each piece, currently forming the classic pentomino elephant. Once a shape is
+in its goal position (including correct rotation and flip state), it is deactivated and the 
+corresponding button is hidden, stopping any further changes.
 
 **The interface uses a 'layerless' PentoBoard, meaning all contents are drawn directly to the canvas.
 This has the advantage of improved compatibility (especially for creating Furhat GUIs which use the React framework),
@@ -43,7 +53,7 @@ does not seem to pose a problem.)**
 
 ### elephant_ui.html
 
-Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved using arrow buttons on the side.
+Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved, rotated and flipped using arrow buttons on the side.
 
 ### task_creator_study1.html
 

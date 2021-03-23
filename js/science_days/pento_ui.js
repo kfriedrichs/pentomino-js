@@ -566,6 +566,6 @@ $(document).ready(function() {
 	});
 
 	// --- Start ---
-	this.open_popup(audiotest);
+	document.open_popup(audiotest);
 	this.instruction_manager.audiotest();
 })

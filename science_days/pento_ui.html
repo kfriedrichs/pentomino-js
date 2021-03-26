@@ -41,22 +41,22 @@
 		<!-- Pop-ups -->
 		<!-- Audio test -->
 		<dialog id="audiotest">
-			<h2>Kannst Du Matthias hören?</h2>
-			<p>Finde bitte einen ruhigen Ort, an dem Du nicht unterbrochen wirst.</p>
+			<h2>Kannst du Matthias hören?</h2>
+			<p>Finde bitte einen ruhigen Ort, an dem du nicht unterbrochen wirst.</p>
 			<hr>
-			<p><strong>Wenn Matthias aufhört zu sprechen, höre Dir die folgende Aufnahme an und schreibe das Gehörte in das Textfeld darunter.</strong></p>
+			<p><strong>Wenn Matthias aufhört zu sprechen, höre dir die folgende Aufnahme an und schreibe das Gehörte in das Textfeld darunter.</strong></p>
 			<audio controls src="../resources/audio/audiotest.mp3">
 				Dein aktueller Browser scheint das Audio-Element nicht zu unterstützen. Falls möglich, wechsle in einen anderen Browser.
 			</audio>
 			<input id="transcript" size="30" name="transcript"/> &nbsp; Was sagt Matthias im Audio? (Klicke auf &#9654)
-			<p><strong> Wenn du die Aufnahme nicht hörst, kannst Du die Demo leider nicht durchführen. Probiere es evtl. mit einem anderen Browser*.</strong></p>
+			<p><strong> Wenn du die Aufnahme nicht hörst, kannst du die Demo leider nicht durchführen. Probiere es evtl. mit einem anderen Browser*.</strong></p>
 			<hr>
 			<p>*die Demo sollte in Firefox, Chrome und Opera auf Mac, Windows und Linux funktionieren. Safari wird <strong>nicht</strong> unterstützt.</p>
 			<button id="audiotest_done">Fortfahren</button>
 		</dialog>
-		
+
 		<dialog id="prelim_question">
-			<p>Inwieweit bist Du bereit, Matthias' Anweisungen (zu Pentomino-Spielsteinen) zu befolgen?</p>
+			<p>Inwieweit bist du bereit, Matthias' Anweisungen (zu Pentomino-Spielsteinen) zu befolgen?</p>
 			<label for="follow_agent1">sehr wenig</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label for="follow_agent1">&nbsp;1<br/>
 				<input type="radio" name="follow_agent" value=1 id="follow_agent1"/>
@@ -83,17 +83,15 @@
 			<br><br>
 			<button id="prelim_question_done">Fortfahren</button>
 		</dialog>
-		
+
 		<!-- Start questionnaire, opens after first task as a tutorial -->
 		<dialog id="start_questionnaire">
 			<h2>Fragebogen</h2>
-			<p><strong>An dieser Stelle wirst Du aufgefordert, die Beschreibungen zu bewerten.</strong></p>
+			<p><strong>An dieser Stelle wirst du aufgefordert, die Beschreibungen zu bewerten.</strong></p>
 
 			<p>Du wirst gefragt, ob Matthias' Anweisung:</p>
 			<p>1. eindeutig oder mehrdeutig war</p>
-			<p>2. maschinell oder menschlich wirkte</p>
-			<p>3. zu viel oder zu wenig Information enthielt</p>
-			<p>4. zu wenig oder zu sehr bemüht wirkte</p>
+			<p>2. zu viel oder zu wenig Information enthielt</p>
 
 			<br>
 			<button id="start_questionnaire_done">Start</button>
@@ -102,7 +100,7 @@
 		<!-- Questionnaire, opens after each piece selection -->
 		<dialog id="questionnaire">
 			<h2>Fragebogen</h2>
-			<p><strong>Bitte bewerte die Beschreibung, die Du gerade gehört hast.</strong></p>
+			<p><strong>Bitte bewerte die Beschreibung, die du gerade gehört hast.</strong></p>
 
 			<!-- Clarity -->
 			<p>Matthias' Anweisung war ...</p>
@@ -131,33 +129,6 @@
 			<label for="clear7">mehrdeutig</label>
 			<br><br>
 
-			<!-- Humanlike -->
-			<p>Matthias' Anweisung war ...</p>
-			<label for="humanlike1">maschinell</label>&nbsp;&nbsp;&nbsp;
-			<label for="humanlike1">&nbsp;1<br/>
-				<input type="radio" name="humanlike" value=1 id="humanlike1"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike2">&nbsp;2<br/>
-				<input type="radio" name="humanlike" value=2 id="humanlike2"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike3">&nbsp;3<br/>
-				<input type="radio" name="humanlike" value=3 id="humanlike3"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike4">&nbsp;4<br/>
-				<input type="radio" name="humanlike" value=4 id="humanlike4"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike5">&nbsp;5<br/>
-				<input type="radio" name="humanlike" value=5 id="humanlike5"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike6">&nbsp;6<br/>
-				<input type="radio" name="humanlike" value=6 id="humanlike6"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="humanlike7">&nbsp;7<br/>
-				<input type="radio" name="humanlike" value=7 id="humanlike7"/>
-			</label>&nbsp;&nbsp;&nbsp;
-			<label for="humanlike7">menschlich</label>
-			<br><br>
-
 			<!-- Information -->
 			<p>Matthias' Anweisung enthielt ... Information</p>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -184,34 +155,6 @@
 				<input type="radio" name="info" value=7 id="info7"/>
 			</label>&nbsp;&nbsp;&nbsp;
 			<label for="info7">zu viel</label>
-			<br><br>
-
-			<!-- Effort -->
-			<p>Matthias hat sich ... Mühe gegeben</p>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort1">zu wenig</label>&nbsp;
-			<label for="effort1">&nbsp;1<br/>
-				<input type="radio" name="effort" value=1 id="effort1"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort2">&nbsp;2<br/>
-				<input type="radio" name="effort" value=2 id="effort2"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort3">&nbsp;3<br/>
-				<input type="radio" name="effort" value=3 id="effort3"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort4">&nbsp;4<br/>
-				<input type="radio" name="effort" value=4 id="effort4"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort5">&nbsp;5<br/>
-				<input type="radio" name="effort" value=5 id="effort5"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort6">&nbsp;6<br/>
-				<input type="radio" name="effort" value=6 id="effort6"/>
-			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="effort7">&nbsp;7<br/>
-				<input type="radio" name="effort" value=7 id="effort7"/>
-			</label>&nbsp;&nbsp;&nbsp;
-			<label for="effort7">zu viel</label>
 			<br><br>
 
 			<input type="checkbox" name="task_error" id="task_error">
@@ -247,7 +190,7 @@
 				<br>
 
 				<!-- Fluency -->
-				<p>Wie gut sprichst Du Deutsch?</p>
+				<p>Wie gut sprichst du Deutsch?</p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<label for="fluent1">geringe Sprachkompetenz</label>&nbsp;&nbsp;&nbsp;
 				<label for="fluent1">&nbsp;1<br/>
@@ -271,7 +214,7 @@
 				<label for="fluent7">&nbsp;7<br/>
 					<input type="radio" name="fluent" value=7 id="fluent7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="fluent3">hohe Sprachkompetenz</label>
+				<label for="fluent3">hohe Sprachkompetenz (Muttersprache)</label>
 				<br><br>
 
 				<!-- Understanding -->
@@ -358,7 +301,7 @@
 				<br>
 
 				<!-- Collaboration -->
-				<label for="collaborative1">nicht kollaborative</label>&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative1">nicht kollaborativ</label>&nbsp;&nbsp;&nbsp;&nbsp;
 				<label for="collaborative1">&nbsp;1<br/>
 					<input type="radio" name="collaborative" value=1 id="collaborative1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -384,9 +327,9 @@
 				<br><br>
 
 				<!-- Likeability 1 -->
-				<p>Bitte beschreibe Deinen Eindruck von Matthias:</p>
+				<p>Bitte beschreibe deinen Eindruck von Matthias:</p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label for="like1">Gesamteindruck: negativ</label>&nbsp;&nbsp;&nbsp;
+				<label for="like1">Gesamteindruck: mochte ich nicht</label>&nbsp;&nbsp;&nbsp;
 				<label for="like1">&nbsp;1<br/>
 					<input type="radio" name="like" value=1 id="like1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -408,7 +351,7 @@
 				<label for="like7">&nbsp;7<br/>
 					<input type="radio" name="like" value=7 id="like7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="like7">positiv</label>
+				<label for="like7">mochte ich</label>
 				<br>
 
 				<!-- Likeability 2 -->
@@ -440,7 +383,7 @@
 
 				<!-- Likeability 3 -->
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label for="kind1">unkind</label>&nbsp;&nbsp;&nbsp;
+				<label for="kind1">unhöflich</label>&nbsp;&nbsp;&nbsp;
 				<label for="kind1">&nbsp;1<br/>
 					<input type="radio" name="kind" value=1 id="kind1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -462,7 +405,7 @@
 				<label for="kind7">&nbsp;7<br/>
 					<input type="radio" name="kind" value=7 id="kind7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="kind7">kind</label>
+				<label for="kind7">höflich</label>
 				<br>
 
 				<!-- Likeability 4 -->
@@ -549,7 +492,7 @@
 
 				<!-- Intelligence 2 -->
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label for="knowledgeable1">unwissend</label>&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable1">ungebildet</label>&nbsp;&nbsp;&nbsp;
 				<label for="knowledgeable1">&nbsp;1<br/>
 					<input type="radio" name="knowledgeable" value=1 id="knowledgeable1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -571,12 +514,12 @@
 				<label for="knowledgeable7">&nbsp;7<br/>
 					<input type="radio" name="knowledgeable" value=7 id="knowledgeable7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="knowledgeable7">wissend</label>
+				<label for="knowledgeable7">unterrichtet</label>
 				<br>
 
 				<!-- Intelligence 3 -->
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label for="responsible1">unverantwortungsvoll</label>&nbsp;&nbsp;&nbsp;
+				<label for="responsible1">verantwortungslos</label>&nbsp;&nbsp;&nbsp;
 				<label for="responsible1">&nbsp;1<br/>
 					<input type="radio" name="responsible" value=1 id="responsible1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -598,7 +541,7 @@
 				<label for="responsible7">&nbsp;7<br/>
 					<input type="radio" name="responsible" value=7 id="responsible7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="responsible7">verantwortungsvoll</label>
+				<label for="responsible7">verantwortungsbewusst</label>
 				<br>
 
 				<!-- Intelligence 4 -->
@@ -630,7 +573,7 @@
 
 				<!-- Intelligence 5 -->
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label for="sensible1">unsensibel</label>&nbsp;&nbsp;&nbsp;
+				<label for="sensible1">unvernünftig</label>&nbsp;&nbsp;&nbsp;
 				<label for="sensible1">&nbsp;1<br/>
 					<input type="radio" name="sensible" value=1 id="sensible1"/>
 				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -652,7 +595,7 @@
 				<label for="sensible7">&nbsp;7<br/>
 					<input type="radio" name="sensible" value=7 id="sensible7"/>
 				</label>&nbsp;&nbsp;&nbsp;
-				<label for="sensible7">empfindsam</label>
+				<label for="sensible7">vernünftig</label>
 				<br><br>
 
 				<!-- Complying -->
@@ -718,7 +661,7 @@
 
 				<!-- Robot -->
 				<input type="checkbox" id="robot_before" name="robot_before">
-				<label for="robot_before">Ich bereits mit einem Roboter interagiert.</label>
+				<label for="robot_before">Ich habe bereits mit einem Roboter interagiert.</label>
 				<br>
 
 				<!-- Pento -->
@@ -726,7 +669,7 @@
 				<label for="played_pento_before">Ich habe bereits Pentomino-Steine verwendet.</label>
 				<br>
 
-				<p>Mit welchem Gerät hast Du den Zeiger auf dem Bildschirm bewegt?</p>
+				<p>Mit welchem Gerät hast du den Zeiger auf dem Bildschirm bewegt?</p>
 				<input type="radio" name="track_device" value="mouse" id="device_mouse">
 				<label for="device_mouse">Maus</label>
 				<input type="radio" name="track_device" value="trackpad" id="device_trackpad">
@@ -736,7 +679,7 @@
 				<input name="other_device" id="other_device">
 				<br>
 
-				<p>Wusstest Du immer, was Matthias wollte?</p>
+				<p>Wusstest du immer, was Matthias wollte?</p>
 				<input id="know_want" size="70">
 
 				<p>Was war die größte Schwierigkeit beim Erfüllen der Aufgabe?</p>
@@ -748,7 +691,7 @@
 				<p>Welche Strategie von Matthias war am wenigsten hilfreich, um Spielsteine zu identifizieren?</p>
 				<input id="worst_strategy" size="70">
 
-				<p>Hast Du eine Idee, wozu diese Studie durchgeführt wird?</p>
+				<p>Hast du eine Idee, wozu diese Studie durchgeführt wird?</p>
 				<input id="why_study" size="70">
 
 				<p>Weitere Kommentare? (Ist irgendetwas schiefgelaufen? Wir freuen uns über jede Art von Feedback!)</p>
@@ -781,4 +724,3 @@
 </body>
 
 </html>
-

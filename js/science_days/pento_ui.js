@@ -440,7 +440,7 @@ $(document).ready(function() {
 			track_device = (track_device=='other') ? $('#other_device').val() : track_device;
 
 			if (age == '') {
-				alert('Bitte gib Dein Alter ein oder schreibe "none".');
+				alert('Bitte gib dein Alter ein oder schreibe "none".');
 				$('#age').css('borderColor', 'red');
 			} else if (gender == '') {
 				alert('Bitte gib dein Geschlecht ein oder schreibe "none".');
@@ -455,55 +455,55 @@ $(document).ready(function() {
 				alert('Bitte gib deine Sprachfähigkeit für Deutsch an.');
 				$('#fluency').css('borderColor', 'red');
 			} else if (!understanding) {
-				alert('Bitte bewerte die Verständlichkeit');
+				alert('Bitte bewerte die Verständlichkeit.');
 				$('#understanding').css('borderColor', 'red');
 			} else if (!complete) {
-				alert('Bitte bewerte die Vollständigkeit');
+				alert('Bitte bewerte die Vollständigkeit.');
 				$('#complete').css('borderColor', 'red');
 			} else if (!helpful) {
-				alert('Bitte bewerte, wie hilfreich die Beschreibungen waren');
+				alert('Bitte bewerte, wie hilfreich die Beschreibungen waren.');
 				$('#helpful').css('borderColor', 'red');
 			} else if (!collaborative) {
-				alert('Bitte bewerte, wie kollaborativ Matthias war');
+				alert('Bitte bewerte, wie kollaborativ Matthias war.');
 				$('#collaborative').css('borderColor', 'red');
 			} else if (!like) {
-				alert('Bitte gib an, wie sehr du Matthias mochtest');
+				alert('Bitte gib an, wie sehr du Matthias mochtest.');
 				$('#like').css('borderColor', 'red');
 			} else if (!friendly) {
-				alert("Bitte bewerte Matthias' Freundlichkeit");
+				alert("Bitte bewerte Matthias' Freundlichkeit.");
 				$('#friendly').css('borderColor', 'red');
 			} else if (!kind) {
-				alert('Bitte bewerte, wie nett Matthias war');
+				alert('Bitte bewerte, wie nett Matthias war.');
 				$('#kind').css('borderColor', 'red');
 			} else if (!pleasant) {
-				alert('Bitte bewerte, wie angenehm Matthias war');
+				alert('Bitte bewerte, wie angenehm Matthias war.');
 				$('#pleasant').css('borderColor', 'red');
 			} else if (!nice) {
-				alert('Bitte bewerte, wie nett Matthias war');
+				alert('Bitte bewerte, wie nett Matthias war.');
 				$('#nice').css('borderColor', 'red');
 			} else if (!competent) {
-				alert("Bitte bewerte Matthias' Kompetenz");
+				alert("Bitte bewerte Matthias' Kompetenz.");
 				$('#competent').css('borderColor', 'red');
 			} else if (!knowledgeable) {
-				alert("Bitte bewerte Matthias' Wissen");
+				alert("Bitte bewerte Matthias' Wissen.");
 				$('#knowledge').css('borderColor', 'red');
 			} else if (!responsible) {
-				alert("Bitte bewerte Matthias' Verantwortungsbewusstsein");
+				alert("Bitte bewerte Matthias' Verantwortungsbewusstsein.");
 				$('#responsible').css('borderColor', 'red');
 			} else if (!intelligent) {
-				alert("Bitte bewerte Matthias' Intelligenz");
+				alert("Bitte bewerte Matthias' Intelligenz.");
 				$('#intelligent').css('borderColor', 'red');
 			} else if (!sensible) {
-				alert("Bitte bewerte Matthias' Sensibilität");
+				alert("Bitte bewerte Matthias' Sensibilität.");
 				$('#sensible').css('borderColor', 'red');
 			} else if (!comply) {
-				alert('Bitte gib an, wie sehr du den Anweisungen gefolgt bist');
+				alert('Bitte gib an, wie sehr du den Anweisungen gefolgt bist.');
 				$('#comply').css('borderColor', 'red');
 			} else if (!easy) {
-				alert('Bitte gib die Schwierigkeit an');
+				alert('Bitte gib die Schwierigkeit an.');
 				$('#easy').css('borderColor', 'red');
 			} else if (!track_device) {
-				alert('Bitte gib an, mit welchem Gerät du den Mauszeiger bedient hast');
+				alert('Bitte gib an, mit welchem Gerät du den Mauszeiger bedient hast.');
 				$('#track_device').css('borderColor', 'red');
 			} else {
 				// save given demographic info

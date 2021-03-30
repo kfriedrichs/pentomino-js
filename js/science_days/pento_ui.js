@@ -34,7 +34,8 @@ $(document).ready(function() {
 	let taskboard_size_str = $(`#${TASK_BOARD_NAME}`).css('width');
 	let taskboard_size = Number(taskboard_size_str.slice(0, taskboard_size_str.length-2));
 	this.task_board = new document.PentoSelectionBoard(`#${TASK_BOARD_NAME}`, TASK_BOARD_NAME, WITH_GRID, new document.PentoConfig(board_size=taskboard_size), read_only=true,);
-	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board);
+	// Use audio path variable to access German audios
+	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, audio_path='../resources/audio/de/');
 
 	// Helper function to pause the study for a moment
 	function sleep(ms) {
@@ -212,7 +213,8 @@ $(document).ready(function() {
 						if (window.DEMO) {
 							// load next task & update elephant
 							// small breather for the participant
-							await sleep(3000);
+							updateProgressBar(Math.floor(100 * current_file / FILES.length));
+							await sleep(2000);
 							let tasks_remaining = loadNewFile();
 
 							// update elephant image
@@ -222,6 +224,7 @@ $(document).ready(function() {
 							// finish the run
 							if (!tasks_remaining) {
 								updateProgressBar(100);
+								document.instruction_manager.well_done();
 								document.open_popup(endscreen);
 							}
 						} else {
@@ -341,7 +344,7 @@ $(document).ready(function() {
 	})
 
 	// submit task questionnaire, load new task or move to demographic questionnaire
-	$('#questionnaire_done').click(async function() {f
+	$('#questionnaire_done').click(async function() {
 		// get and save the questionnaire answer
 		// all questions are mandatory!
 		clear = $('input[name="clear"]:checked').val();
@@ -350,7 +353,7 @@ $(document).ready(function() {
 		effort = $('input[name="effort"]:checked').val();
 
 		if ((!clear) || (!humanlike) || (!info) || (!effort)) {
-			alert("Please answer all questions")
+			alert("Bitte beantworte alle Fragen")
 		} else {
 			if (document.instruction_manager) {
 				// save all answers
@@ -362,35 +365,11 @@ $(document).ready(function() {
 			}
 
 			// clear selections
-			document.getElementById("clear1").checked = false;
-			document.getElementById("clear2").checked = false;
-			document.getElementById("clear3").checked = false;
-			document.getElementById("clear4").checked = false;
-			document.getElementById("clear5").checked = false;
-			document.getElementById("clear6").checked = false;
-			document.getElementById("clear7").checked = false;
-			document.getElementById("humanlike1").checked = false;
-			document.getElementById("humanlike2").checked = false;
-			document.getElementById("humanlike3").checked = false;
-			document.getElementById("humanlike4").checked = false;
-			document.getElementById("humanlike5").checked = false;
-			document.getElementById("humanlike6").checked = false;
-			document.getElementById("humanlike7").checked = false;
-			document.getElementById("info1").checked = false;
-			document.getElementById("info2").checked = false;
-			document.getElementById("info3").checked = false;
-			document.getElementById("info4").checked = false;
-			document.getElementById("info5").checked = false;
-			document.getElementById("info6").checked = false;
-			document.getElementById("info7").checked = false;
-			document.getElementById("effort1").checked = false;
-			document.getElementById("effort2").checked = false;
-			document.getElementById("effort3").checked = false;
-			document.getElementById("effort4").checked = false;
-			document.getElementById("effort5").checked = false;
-			document.getElementById("effort6").checked = false;
-			document.getElementById("effort7").checked = false;
-			document.getElementById("task_error").checked = false;
+			$('input[name="clear"]').prop('checked', false);
+			$('input[name="humanlike"]').prop('checked', false);
+			$('input[name="info"]').prop('checked', false);
+			$('input[name="effort"]').prop('checked', false);
+			$('#task_error').prop('checked', false);
 
 			questionnaire.close();
 			updateProgressBar(Math.floor(100 * current_file / FILES.length));
@@ -414,152 +393,91 @@ $(document).ready(function() {
 	$('#demographic_done').click(function() {
 		if (document.instruction_manager) {
 			// make sure form is filled out
-			let age = $('#age').val();
-			let gender = $('#gender').val();
-			let education = $('#education').val();
-			let language = $('#language').val();
-			let fluent = $('input[name="fluent"]:checked').val();
-			let understanding = $('input[name="understanding"]:checked').val();
-			let complete = $('input[name="complete"]:checked').val();
-			let helpful = $('input[name="helpful"]:checked').val();
-			let collaborative = $('input[name="collaborative"]:checked').val();
-			let like = $('input[name="like"]:checked').val();
-			let friendly = $('input[name="friendly"]:checked').val();
-			let kind = $('input[name="kind"]:checked').val();
-			let pleasant = $('input[name="pleasant"]:checked').val();
-			let nice = $('input[name="nice"]:checked').val();
-			let competent = $('input[name="competent"]:checked').val();
-			let knowledgeable = $('input[name="knowledgeable"]:checked').val();
-			let responsible = $('input[name="responsible"]:checked').val();
-			let intelligent = $('input[name="intelligent"]:checked').val();
-			let sensible = $('input[name="sensible"]:checked').val();
-			let comply = $('input[name="comply"]:checked').val();
-			let easy = $('input[name="easy"]:checked').val();
+			let freeform_input	= new Map([['age', 'Bitte gib Dein Alter ein oder schreibe "none".'],
+									['gender', 'Bitte gib Dein Geschlecht ein oder schreibe "none".'],
+									['education', 'Bitte gib Deinen Bildungsgrad ein.'],
+									['language', 'Bitte gib deine Muttersprache ein.']]);
+			
+			let likert_input	= new Map([['fluent', 'Bitte gib Deine Sprachfähigkeit für Deutsch an.'],
+									['understanding', 'Bitte bewerte die Verständlichkeit'],
+									['complete', 'Bitte bewerte die Vollständigkeit'],
+									['helpful', 'Bitte bewerte, wie hilfreich die Beschreibungen waren'],
+									['collaborative', 'Bitte bewerte, wie kollaborativ Matthias war'],
+									['like', 'Bitte gib an, wie sehr Du Matthias mochtest'],
+									['friendly', 'Bitte bewerte Matthias\' Freundlichkeit'],
+									['kind', 'Bitte bewerte, wie nett Matthias war'],
+									['pleasant', 'Bitte bewerte, wie angenehm Matthias war'],
+									['nice', 'Bitte bewerte, wie nett Matthias war'],
+									['competent', 'Bitte bewerte Matthias\' Kompetenz'],
+									['knowledgeable', 'Bitte bewerte Matthias\' Wissen'],
+									['responsible', 'Bitte bewerte Matthias\' Verantwortungsbewusstsein'],
+									['intelligent', 'Bitte bewerte Matthias\' Intelligenz'],
+									['sensible', 'Bitte bewerte Matthias\' Sensibilität'],
+									['comply', 'Bitte gib an, wie sehr Du den Anweisungen gefolgt bist'],
+									['easy', 'Bitte gib die Schwierigkeit an']]);
+			
+			for (v of freeform_input.keys()) {
+				let input = $(`#${v}`).val();
+				// if some input is missing, emit an error message and return to demographic
+				if (!input) {
+					alert(freeform_input.get(v));
+					$(`#${v}`).css('borderColor', 'red');
+					return;
+				}
+				// else, save the input
+				document.instruction_manager.add_info(v, input);
+			}
+			
+			for (v of likert_input.keys()) {
+				let input = $(`input[name="${v}"]:checked`).val();
+				// if some input is missing, emit an error message and return to demographic
+				if (!input) {
+					alert(likert_input.get(v));
+					return;
+				}
+				// else, save the input
+				document.instruction_manager.add_info(v, input);
+			}
+
 			// track device must either be one of the preset options or 'other' and manually specified other_device
 			let track_device = $('input[name="track_device"]:checked').val();
 			track_device = (track_device=='other') ? $('#other_device').val() : track_device;
-
-			if (age == '') {
-				alert('Bitte gib Dein Alter ein oder schreibe "none".');
-				$('#age').css('borderColor', 'red');
-			} else if (gender == '') {
-				alert('Bitte gib dein Geschlecht ein oder schreibe "none".');
-				$('#gender').css('borderColor', 'red');
-			} else if (!education) {
-				alert('Bitte gib deinen Bildungsgrad ein.');
-				$('#education').css('borderColor', 'red');
-			} else if (!language) {
-				alert('Bitte gib deine Muttersprache ein.');
-				$('#language').css('borderColor', 'red');
-			} else if (!fluent) {
-				alert('Bitte gib deine Sprachfähigkeit für Deutsch an.');
-				$('#fluency').css('borderColor', 'red');
-			} else if (!understanding) {
-				alert('Bitte bewerte die Verständlichkeit');
-				$('#understanding').css('borderColor', 'red');
-			} else if (!complete) {
-				alert('Bitte bewerte die Vollständigkeit');
-				$('#complete').css('borderColor', 'red');
-			} else if (!helpful) {
-				alert('Bitte bewerte, wie hilfreich die Beschreibungen waren');
-				$('#helpful').css('borderColor', 'red');
-			} else if (!collaborative) {
-				alert('Bitte bewerte, wie kollaborativ Matthias war');
-				$('#collaborative').css('borderColor', 'red');
-			} else if (!like) {
-				alert('Bitte gib an, wie sehr du Matthias mochtest');
-				$('#like').css('borderColor', 'red');
-			} else if (!friendly) {
-				alert("Bitte bewerte Matthias' Freundlichkeit");
-				$('#friendly').css('borderColor', 'red');
-			} else if (!kind) {
-				alert('Bitte bewerte, wie nett Matthias war');
-				$('#kind').css('borderColor', 'red');
-			} else if (!pleasant) {
-				alert('Bitte bewerte, wie angenehm Matthias war');
-				$('#pleasant').css('borderColor', 'red');
-			} else if (!nice) {
-				alert('Bitte bewerte, wie nett Matthias war');
-				$('#nice').css('borderColor', 'red');
-			} else if (!competent) {
-				alert("Bitte bewerte Matthias' Kompetenz");
-				$('#competent').css('borderColor', 'red');
-			} else if (!knowledgeable) {
-				alert("Bitte bewerte Matthias' Wissen");
-				$('#knowledge').css('borderColor', 'red');
-			} else if (!responsible) {
-				alert("Bitte bewerte Matthias' Verantwortungsbewusstsein");
-				$('#responsible').css('borderColor', 'red');
-			} else if (!intelligent) {
-				alert("Bitte bewerte Matthias' Intelligenz");
-				$('#intelligent').css('borderColor', 'red');
-			} else if (!sensible) {
-				alert("Bitte bewerte Matthias' Sensibilität");
-				$('#sensible').css('borderColor', 'red');
-			} else if (!comply) {
-				alert('Bitte gib an, wie sehr du den Anweisungen gefolgt bist');
-				$('#comply').css('borderColor', 'red');
-			} else if (!easy) {
-				alert('Bitte gib die Schwierigkeit an');
-				$('#easy').css('borderColor', 'red');
-			} else if (!track_device) {
-				alert('Bitte gib an, mit welchem Gerät du den Mauszeiger bedient hast');
+			
+			if (!track_device) {
+				alert('Bitte gib an, mit welchem Gerät Du den Mauszeiger bedient hast');
 				$('#track_device').css('borderColor', 'red');
-			} else {
-				// save given demographic info
-				document.instruction_manager.add_info('age', age);
-				document.instruction_manager.add_info('gender', gender);
-				document.instruction_manager.add_info('education', education);
-				document.instruction_manager.add_info('language', language);
-				document.instruction_manager.add_info('fluent', fluent);
-				document.instruction_manager.add_info('understanding', understanding);
-				document.instruction_manager.add_info('complete', complete);
-				document.instruction_manager.add_info('helpful', helpful);
-				document.instruction_manager.add_info('collaborative', collaborative);
-				document.instruction_manager.add_info('like', like);
-				document.instruction_manager.add_info('friendly', friendly);
-				document.instruction_manager.add_info('kind', kind);
-				document.instruction_manager.add_info('pleasant', pleasant);
-				document.instruction_manager.add_info('nice', nice);
-				document.instruction_manager.add_info('competent', competent);
-				document.instruction_manager.add_info('knowledgeable', knowledgeable);
-				document.instruction_manager.add_info('responsible', responsible);
-				document.instruction_manager.add_info('intelligent', intelligent);
-				document.instruction_manager.add_info('sensible', sensible);
-				document.instruction_manager.add_info('comply', comply);
-				document.instruction_manager.add_info('easy', easy);
-				document.instruction_manager.add_info('ci_before', $('#ci_before').is(':checked'));
-				document.instruction_manager.add_info('robot_before', $('#robot_before').is(':checked'));
-				document.instruction_manager.add_info('played_pento_before', $('#played_pento_before').is(':checked'));
-				document.instruction_manager.add_info('track_device', track_device);
-				document.instruction_manager.add_info('know_want', $('#know_want').val());
-				document.instruction_manager.add_info('greatest_difficulty', $('#greatest_difficulty').val());
-				document.instruction_manager.add_info('best_strategy', $('#best_strategy').val());
-				document.instruction_manager.add_info('worst_strategy', $('#worst_strategy').val());
-				document.instruction_manager.add_info('why_study', $('#why_study').val());
-				document.instruction_manager.add_info('comments', $('#comments').val());
-				document.instruction_manager.add_info('end_time', new Date().toString());
-
-				// save collected data to server-side resource/data_collection directory
-				let data = document.instruction_manager.data_to_JSON();
-				let file_saver_script = '../php/save_userdata.php';
-				fetch(file_saver_script, {
-					method: 'POST',
-					body: data,
-				}).then((response) => {
-					// if something went wrong, log to console
-					let resp_code = response.status;
-					if (resp_code < 200 || resp_code >= 300) {
-						console.log(`Error: Something went wrong during saving of collected data. Response code: ${resp_code}`);
-					}
-				})
-
-				// proceed to endscreen
-				document.instruction_manager.well_done();
-				demographic.close();
-				document.open_popup(endscreen);
+				return;
 			}
-		} else {
+			document.instruction_manager.add_info('track_device', track_device);
+			// add other (partially optional) inputs
+			document.instruction_manager.add_info('end_time', new Date().toString());
+			for (checkbox of ['ci_before', 'robot_before', 'played_pento_before']) {
+				document.instruction_manager.add_info(checkbox, $(`#${checkbox}`).is(':checked'));
+			}
+			for (optional of ['know_want', 'greatest_difficulty', 'best_strategy', 'worst_strategy', 'why_study', 'comments']) {
+				document.instruction_manager.add_info(optional, $(`#${optional}`).val());
+			}
+
+			// save collected data to server-side resource/data_collection directory
+			let data = document.instruction_manager.data_to_JSON();
+			let file_saver_script = '../php/save_userdata.php';
+			fetch(file_saver_script, {
+				method: 'POST',
+				body: data,
+			}).then((response) => {
+				// if something went wrong, log to console
+				let resp_code = response.status;
+				if (resp_code < 200 || resp_code >= 300) {
+					console.log(`Error: Something went wrong during saving of collected data. Response code: ${resp_code}`);
+				}
+			})
+
+			// proceed to endscreen
+			document.instruction_manager.well_done();
+			demographic.close();
+			document.open_popup(endscreen);
+			
+		} else { // no instruction manager
 			demographic.close();
 			document.open_popup(endscreen);
 		}

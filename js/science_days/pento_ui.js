@@ -393,28 +393,28 @@ $(document).ready(function() {
 	$('#demographic_done').click(function() {
 		if (document.instruction_manager) {
 			// make sure form is filled out
-			let freeform_input	= new Map([['age', 'Bitte gib Dein Alter ein oder schreibe "none".'],
-									['gender', 'Bitte gib Dein Geschlecht ein oder schreibe "none".'],
-									['education', 'Bitte gib Deinen Bildungsgrad ein.'],
+			let freeform_input	= new Map([['age', 'Bitte gib dein Alter ein oder schreibe "none".'],
+									['gender', 'Bitte gib dein Geschlecht ein oder schreibe "none".'],
+									['education', 'Bitte gib deinen Bildungsgrad ein.'],
 									['language', 'Bitte gib deine Muttersprache ein.']]);
 			
-			let likert_input	= new Map([['fluent', 'Bitte gib Deine Sprachfähigkeit für Deutsch an.'],
-									['understanding', 'Bitte bewerte die Verständlichkeit'],
-									['complete', 'Bitte bewerte die Vollständigkeit'],
-									['helpful', 'Bitte bewerte, wie hilfreich die Beschreibungen waren'],
-									['collaborative', 'Bitte bewerte, wie kollaborativ Matthias war'],
-									['like', 'Bitte gib an, wie sehr Du Matthias mochtest'],
-									['friendly', 'Bitte bewerte Matthias\' Freundlichkeit'],
-									['kind', 'Bitte bewerte, wie nett Matthias war'],
-									['pleasant', 'Bitte bewerte, wie angenehm Matthias war'],
-									['nice', 'Bitte bewerte, wie nett Matthias war'],
-									['competent', 'Bitte bewerte Matthias\' Kompetenz'],
-									['knowledgeable', 'Bitte bewerte Matthias\' Wissen'],
-									['responsible', 'Bitte bewerte Matthias\' Verantwortungsbewusstsein'],
-									['intelligent', 'Bitte bewerte Matthias\' Intelligenz'],
-									['sensible', 'Bitte bewerte Matthias\' Sensibilität'],
-									['comply', 'Bitte gib an, wie sehr Du den Anweisungen gefolgt bist'],
-									['easy', 'Bitte gib die Schwierigkeit an']]);
+			let likert_input	= new Map([['fluent', 'Bitte gib deine Sprachfähigkeit für Deutsch an.'],
+									['understanding', 'Bitte bewerte die Verständlichkeit.'],
+									['complete', 'Bitte bewerte die Vollständigkeit.'],
+									['helpful', 'Bitte bewerte, wie hilfreich die Beschreibungen waren.'],
+									['collaborative', 'Bitte bewerte, wie kollaborativ Matthias war.'],
+									['like', 'Bitte gib an, wie sehr du Matthias mochtest.'],
+									['friendly', 'Bitte bewerte Matthias\' Freundlichkeit.'],
+									['kind', 'Bitte bewerte, wie nett Matthias war.'],
+									['pleasant', 'Bitte bewerte, wie angenehm Matthias war.'],
+									['nice', 'Bitte bewerte, wie nett Matthias war.'],
+									['competent', 'Bitte bewerte Matthias\' Kompetenz.'],
+									['knowledgeable', 'Bitte bewerte Matthias\' Wissen.'],
+									['responsible', 'Bitte bewerte Matthias\' Verantwortungsbewusstsein.'],
+									['intelligent', 'Bitte bewerte Matthias\' Intelligenz.'],
+									['sensible', 'Bitte bewerte Matthias\' Sensibilität.'],
+									['comply', 'Bitte gib an, wie sehr du den Anweisungen gefolgt bist.'],
+									['easy', 'Bitte gib die Schwierigkeit an.']]);
 			
 			for (v of freeform_input.keys()) {
 				let input = $(`#${v}`).val();
@@ -442,9 +442,9 @@ $(document).ready(function() {
 			// track device must either be one of the preset options or 'other' and manually specified other_device
 			let track_device = $('input[name="track_device"]:checked').val();
 			track_device = (track_device=='other') ? $('#other_device').val() : track_device;
-			
+	
 			if (!track_device) {
-				alert('Bitte gib an, mit welchem Gerät Du den Mauszeiger bedient hast');
+				alert('Bitte gib an, mit welchem Gerät du den Mauszeiger bedient hast.');
 				$('#track_device').css('borderColor', 'red');
 				return;
 			}

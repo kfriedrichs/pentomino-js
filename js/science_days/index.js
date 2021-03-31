@@ -1,20 +1,20 @@
 $(function(){
 	// randomly assign a design number in interval 1-25
 	window.PARTICIPANT = Math.ceil(Math.random()*25);
-	
+
 	// --- Pop-ups ---
 	// open a popup element
 	document.open_popup = function(popup) {
 		popup.showModal();
 		}
-	
+
 	var welcome				= document.getElementById('welcome');
-	
+
 	// polyfill is used to help with browsers without native support for 'dialog'
 	dialogPolyfill.registerDialog(welcome);
-	
+
 	// --- Button functions ---
-	
+
 	// move on to audiotest
 	$('#welcome_done').click(function() {
 		welcome.close();
@@ -30,30 +30,30 @@ $(function(){
 			alert("Diese Studie funktioniert am besten mit Firefox oder Chrome. Wenn möglich, verwende einen dieser Browser.");
 		}
 	});
-	
+
 	$('#load_demo').click(function() {
 		window.DEMO = true;
 		$("#includedContent").load("pento_ui.html");
 	});
-	
+
 	$('#load_study').click(function() {
 		window.NAME = $('#name').val();
 		window.EMAIL = $('#email').val();
 		if (window.NAME == "") {
-			alert('Bitte gib Deinen Namen ein, wenn Du an der Studie teilnehmen möchtest');
+			alert('Bitte gib deinen Namen ein, wenn du an der Studie teilnehmen möchtest.');
 			$('#name').css('borderColor', 'red');
 		} else if (window.EMAIL == "") {
-			alert('Bitte gib Deine E-Mail-Adresse ein, wenn Du an der Studie teilnehmen möchtest');
+			alert('Bitte gib deine E-Mail-Adresse ein, wenn du an der Studie teilnehmen möchtest.');
 			$('#email').css('borderColor', 'red');
 		} else if (!$('#consent_agree').is(':checked')) {
-			alert('Bitte bestätige Deine Einwilligung zur Teilnahme an der Studie.');
+			alert('Bitte bestätige deine Einwilligung zur Teilnahme an der Studie.');
 		} else {
 			window.DEMO = false;
 			$("#includedContent").load("pento_ui.html");
 		}
 	});
-	
+
 	// --- Start ---
-	
+
 	document.open_popup(welcome);
 });

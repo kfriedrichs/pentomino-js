@@ -14,12 +14,13 @@ $(document).ready(function () {
 		 * @param {board pieces are selected from} selection_board
 		 * @param {board to represent task} task_board
 		 */
-		constructor(selection_board, task_board, track_interval=200) {
+		constructor(selection_board, task_board, audio_path='../resources/audio/', track_interval=200) {
 			this.selection_board		= selection_board;
 			this.task_board 			= task_board;
 			// for each task and each instruction, log mouse movement, time, selected piece
 			this.follower_data 			= {};
 			this.task_name; // name of current task (e.g. file name)
+			this.audio_path				= audio_path;
 			// for current instruction
 			this.shape; // shape name
 			this.instruction; // audio of current instruction
@@ -66,9 +67,9 @@ $(document).ready(function () {
 				if (audio) {
 					// get audio for instruction and play it
 					// remove '#' from shape name to get file name
-					let instr_file = '../resources/audio/start.mp3';
+					let instr_file = this.audio_path + 'start.mp3';
 					if (START == 0) {
-						instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
+						instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;//this.audio_path + `p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
 					}
 					this.instruction = new Audio(instr_file);
 					// start instruction as soon as audio is loaded sufficiently
@@ -154,7 +155,7 @@ $(document).ready(function () {
 		 * Play an example audiofile
 		 */
 		audiotest() {
-			let test_file = '../resources/audio/intro.mp3';
+			let test_file = this.audio_path + 'intro.mp3';
 			let test_audio = new Audio(test_file);
 			test_audio.oncanplaythrough = (event) => {test_audio.play();};
 		}
@@ -165,7 +166,7 @@ $(document).ready(function () {
 		 */
 		well_done(audio=true) {
 			if (audio) {
-				let well_done_file = '../resources/audio/done.mp3';
+				let well_done_file = this.audio_path + 'done.mp3';
 				let well_done_audio = new Audio(well_done_file);
 				well_done_audio.oncanplaythrough = (event) => {
 					well_done_audio.play();
@@ -183,7 +184,7 @@ $(document).ready(function () {
 			var random_num = 0;
 			if (audio) {
 				random_num = Math.floor(Math.random() * 3) + 1
-				let correct_piece_file = '../resources/audio/correct'+random_num+'.mp3';
+				let correct_piece_file = this.audio_path + 'correct' + random_num + '.mp3';
 				let correct_piece_audio = new Audio(correct_piece_file);
 				correct_piece_audio.oncanplaythrough = (event) => {
 					correct_piece_audio.play();
@@ -201,7 +202,7 @@ $(document).ready(function () {
 			var random_num = 0;
 			if (audio) {
 				random_num = Math.floor(Math.random() * 3) + 1
-				let incorrect_piece_file = '../resources/audio/incorrect'+random_num+'.mp3';
+				let incorrect_piece_file = this.audio_path + 'incorrect' + random_num + '.mp3';
 				let incorrect_piece_audio = new Audio(incorrect_piece_file);
 				incorrect_piece_audio.oncanplaythrough = (event) => {
 					incorrect_piece_audio.play();

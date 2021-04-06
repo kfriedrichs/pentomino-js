@@ -105,7 +105,8 @@ $(document).ready(function () {
 			// Note: The highlighting only really makes sense for single-piece tasks,
 			// as the highlights are removed as soon as the next instruction is generated
 			// highlight correct shape in green
-			if (START == 0) {
+			// START is used to not perform highlighting for the first (tutorial) task
+			if (!START) {
 				this.highlight_correct();
 				// correct shape selected
 				if (this.shape == selected_shape) {
@@ -128,18 +129,20 @@ $(document).ready(function () {
 		}
 
 		/**
-		 * Highlight the goal shape in green.
+		 * Highlight the goal shape in green and redraw the board to apply change.
 		 */
 		highlight_correct() {
 			this.selection_board.get_shape(this.shape).set_highlight('green');
+			this.selection_board.draw();
 		}
 
 		/**
-		 * Highlight a given shape in red.
+		 * Highlight a given shape in red and redraw the board to apply change.
 		 * @param {name of incorrect shape} shape
 		 */
 		highlight_incorrect(shape) {
 			this.selection_board.get_shape(shape).set_highlight('red');
+			this.selection_board.draw();
 		}
 
 		/**

@@ -1,0 +1,13 @@
+Title	SSML content
+'Äh' filler	<prosody volume="soft" rate="60%"><phoneme alphabet='ipa' ph='ɘː'>äh</phoneme></prosody>
+'Ähm' filler	<prosody rate="50%"><phoneme alphabet='ipa' ph='ɐːm'>ähm</phoneme></prosody>
+intro	<prosody rate="90%"><amazon:auto-breaths>Hallo, ich bin Matthias. Schön dass ich heute mit dir arbeiten darf. Im nächsten Teil helfe ich dir, ein paar Pentomino-Steine auszuwählen. Höre dir vorher bitte das kurze Audio an und schreibe in das Feld daneben, was gesagt wird.</amazon:auto-breaths></prosody>
+start	<prosody rate="90%"><amazon:auto-breaths><p>Okay, lass uns anfangen. Ich werde dir einen der Steine auf dem linken Spielbrett beschreiben. Höre genau zu und klicke auf das Teil, das dir richtig erscheint. Ich werde daraus auf dem Brett rechts einen Elefanten legen. Vielleicht hilft es dir zu sehen, was wir gerade bauen. Bedenke aber, dass die Steine auch gedreht oder gespiegelt sein können.</p> <p>Um fortzufahren, klicke diesmal einfach auf irgendein Teil.</p></amazon:auto-breaths></prosody>
+audiotest	<prosody rate="90%">Hans hat ein <emphasis level="moderate">Käse</emphasis>brot.</prosody>
+done	Du hast es geschafft, herzlichen Glückwunsch. Vielen Dank für dein Interesse am Pentomino-Projekt. Wenn du noch Fragen hast, wende dich gerne an die Forscher*innen.
+correct1	Genau. Sehr gut!
+correct2	Das war richtig.
+correct3	Genau das. 
+incorrect1	Das war leider falsch.
+incorrect2	Nicht ganz.
+incorrect3	Das war nicht das richtige.

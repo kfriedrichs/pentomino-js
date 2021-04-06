@@ -345,47 +345,38 @@ $(document).ready(function() {
 
 	// submit task questionnaire, load new task or move to demographic questionnaire
 	$('#questionnaire_done').click(async function() {
-		// get and save the questionnaire answer
-		// all questions are mandatory!
-		clear = $('input[name="clear"]:checked').val();
-		humanlike = $('input[name="humanlike"]:checked').val();
-		info = $('input[name="info"]:checked').val();
-		effort = $('input[name="effort"]:checked').val();
-
-		if ((!clear) || (!humanlike) || (!info) || (!effort)) {
-			alert("Bitte beantworte alle Fragen")
-		} else {
-			if (document.instruction_manager) {
-				// save all answers
-				document.instruction_manager.add_info('clarity', clear, 'task');
-				document.instruction_manager.add_info('humanlike', humanlike, 'task');
-				document.instruction_manager.add_info('information', info, 'task');
-				document.instruction_manager.add_info('effort', effort, 'task');
-				document.instruction_manager.add_info('error', $('#task_error').is(":checked"), 'task');
+		// get and save the questionnaire answers
+		if (document.instruction_manager) {
+			for (field of ["clear", "info"]) {
+				let input = $(`input[name="${field}"]:checked`).val();
+				if (!input) { // all questions are mandatory!
+					alert("Bitte beantworte alle Fragen.")
+					return;
+				} else {
+					document.instruction_manager.add_info(field, input, 'task');
+					// clear selections
+					$(`input[name="${field}"]`).prop('checked', false);
+				}
 			}
-
-			// clear selections
-			$('input[name="clear"]').prop('checked', false);
-			$('input[name="humanlike"]').prop('checked', false);
-			$('input[name="info"]').prop('checked', false);
-			$('input[name="effort"]').prop('checked', false);
+			// add task error selection and clear the checkbox afterwards
+			document.instruction_manager.add_info('error', $('#task_error').is(":checked"), 'task');
 			$('#task_error').prop('checked', false);
+		}
 
-			questionnaire.close();
-			updateProgressBar(Math.floor(100 * current_file / FILES.length));
-			// small breather for the participant
-			await sleep(1000);
-			let tasks_remaining = loadNewFile();
+		questionnaire.close();
+		updateProgressBar(Math.floor(100 * current_file / FILES.length));
+		// small breather for the participant
+		await sleep(1000);
+		let tasks_remaining = loadNewFile();
 
-			// update elephant image
-			document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
-			elephant_c = elephant_c + 1;
+		// update elephant image
+		document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
+		elephant_c = elephant_c + 1;
 
-			// finish the run
-			if (!tasks_remaining) {
-				updateProgressBar(100);
-				document.open_popup(demographic);
-			}
+		// finish the run
+		if (!tasks_remaining) {
+			updateProgressBar(100);
+			document.open_popup(demographic);
 		}
 	})
 
@@ -482,6 +473,14 @@ $(document).ready(function() {
 			document.open_popup(endscreen);
 		}
 	});
+	
+	$('#test_button').click(function() {
+		//$('#furhat').get(0).pause();
+		$('#videosrc').attr('src', '../resources/video/example2.mov');
+		$('#furhat').get(0).load();
+		$('#furhat').get(0).play();
+	});
+
 
 	// --- Start ---
 	document.open_popup(audiotest);

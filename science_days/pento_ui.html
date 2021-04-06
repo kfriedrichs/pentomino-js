@@ -28,7 +28,12 @@
 				<canvas id="selection_board" width="550" height="550" style="border:1px solid #000000;"></canvas>
 			</div>
 			<div class="four columns">
-				<canvas id="task_board" width="300" height="300" style="border:1px solid #000000;"></canvas>
+				<video id="furhat" width="320" height="240" loop muted autoplay>
+					<source id="videosrc" src='../resources/video/example.mov'>
+				Your browser does not support the video tag.
+				</video>
+				<button id="test_button">Change video</button>
+				<canvas id="task_board" width="300" height="300" style="display:none; border:1px solid #000000;"></canvas>
 			</div>
 			<div class="four columns">
 				<img id="elephant" src="../resources/img/elephant.png" alt="" />

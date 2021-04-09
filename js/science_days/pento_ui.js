@@ -293,7 +293,7 @@ $(document).ready(function() {
 	$('#prelim_question_done').click(function() {
 		let follow_agent = $('input[name="follow_agent"]:checked').val();
 		if (!follow_agent) {
-			alert('Bitte wähle eine der Optionen aus');
+			alert('Bitte wähle eine der Optionen aus.');
 		} else {
 			// PARTICIPANT, NAME and EMAIL were given in index
 			document.instruction_manager.add_info('participant', window.PARTICIPANT);
@@ -388,7 +388,7 @@ $(document).ready(function() {
 									['gender', 'Bitte gib dein Geschlecht ein oder schreibe "none".'],
 									['education', 'Bitte gib deinen Bildungsgrad ein.'],
 									['language', 'Bitte gib deine Muttersprache ein.']]);
-			
+
 			let likert_input	= new Map([['fluent', 'Bitte gib deine Sprachfähigkeit für Deutsch an.'],
 									['understanding', 'Bitte bewerte die Verständlichkeit.'],
 									['complete', 'Bitte bewerte die Vollständigkeit.'],
@@ -406,7 +406,7 @@ $(document).ready(function() {
 									['sensible', 'Bitte bewerte Matthias\' Sensibilität.'],
 									['comply', 'Bitte gib an, wie sehr du den Anweisungen gefolgt bist.'],
 									['easy', 'Bitte gib die Schwierigkeit an.']]);
-			
+
 			for (v of freeform_input.keys()) {
 				let input = $(`#${v}`).val();
 				// if some input is missing, emit an error message and return to demographic
@@ -418,7 +418,7 @@ $(document).ready(function() {
 				// else, save the input
 				document.instruction_manager.add_info(v, input);
 			}
-			
+
 			for (v of likert_input.keys()) {
 				let input = $(`input[name="${v}"]:checked`).val();
 				// if some input is missing, emit an error message and return to demographic
@@ -433,7 +433,7 @@ $(document).ready(function() {
 			// track device must either be one of the preset options or 'other' and manually specified other_device
 			let track_device = $('input[name="track_device"]:checked').val();
 			track_device = (track_device=='other') ? $('#other_device').val() : track_device;
-	
+
 			if (!track_device) {
 				alert('Bitte gib an, mit welchem Gerät du den Mauszeiger bedient hast.');
 				$('#track_device').css('borderColor', 'red');
@@ -445,7 +445,7 @@ $(document).ready(function() {
 			for (checkbox of ['ci_before', 'robot_before', 'played_pento_before']) {
 				document.instruction_manager.add_info(checkbox, $(`#${checkbox}`).is(':checked'));
 			}
-			for (optional of ['know_want', 'greatest_difficulty', 'best_strategy', 'worst_strategy', 'why_study', 'comments']) {
+			for (optional of ['know_want', 'greatest_difficulty', 'best_strategy', 'worst_strategy', 'comments']) {
 				document.instruction_manager.add_info(optional, $(`#${optional}`).val());
 			}
 
@@ -467,13 +467,13 @@ $(document).ready(function() {
 			document.instruction_manager.well_done();
 			demographic.close();
 			document.open_popup(endscreen);
-			
+
 		} else { // no instruction manager
 			demographic.close();
 			document.open_popup(endscreen);
 		}
 	});
-	
+
 	$('#test_button').click(function() {
 		//$('#furhat').get(0).pause();
 		$('#videosrc').attr('src', '../resources/video/example2.mov');

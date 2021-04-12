@@ -39,6 +39,7 @@ $(function(){
 	$('#load_study').click(function() {
 		window.NAME = $('#name').val();
 		window.EMAIL = $('#email').val();
+		window.MINOR = $('#minor').is(':checked');
 		if (window.NAME == "") {
 			alert('Bitte gib deinen Namen ein, wenn du an der Studie teilnehmen möchtest.');
 			$('#name').css('borderColor', 'red');

@@ -35,7 +35,9 @@ $(document).ready(function() {
 	let taskboard_size = Number(taskboard_size_str.slice(0, taskboard_size_str.length-2));
 	this.task_board = new document.PentoSelectionBoard(`#${TASK_BOARD_NAME}`, TASK_BOARD_NAME, WITH_GRID, new document.PentoConfig(board_size=taskboard_size), read_only=true,);
 	// Use audio path variable to access German audios
-	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, audio_path='../resources/audio/de/');
+	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, mode='audio', resource_path='../resources/audio/de/');
+	//TODO: use this one for video instructions
+//	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, mode='video', resource_path='../resources/video/', video_selector='#furhat');
 
 	// Helper function to pause the study for a moment
 	function sleep(ms) {
@@ -225,7 +227,7 @@ $(document).ready(function() {
 							if (!tasks_remaining) {
 								updateProgressBar(100);
 								document.instruction_manager.well_done();
-								document.open_popup(endscreen);
+								$("#includedContent").load("leaderboard.html");
 							}
 						} else {
 							if (!START_QUEST) {
@@ -251,6 +253,7 @@ $(document).ready(function() {
 	var start_questionnaire	= document.getElementById('start_questionnaire');
 	var questionnaire		= document.getElementById('questionnaire');
 	var demographic			= document.getElementById('demographic');
+	var errorscreen			= document.getElementById('errorscreen');
 	var endscreen			= document.getElementById('endscreen');
 
 
@@ -259,6 +262,7 @@ $(document).ready(function() {
 	dialogPolyfill.registerDialog(start_questionnaire);
 	dialogPolyfill.registerDialog(questionnaire);
 	dialogPolyfill.registerDialog(demographic);
+	dialogPolyfill.registerDialog(errorscreen);
 	dialogPolyfill.registerDialog(endscreen);
 
 	// open popup element
@@ -274,7 +278,7 @@ $(document).ready(function() {
 			let tasks_remaining = loadNewFile();
 			if (!tasks_remaining) {
 				alert('Fehler, Pentomino konnte nicht geladen werden!');
-				document.open_popup(endscreen);
+				document.open_popup(errorscreen);
 			}
 		} else {
 			let transcript = $('#transcript').val();
@@ -296,10 +300,12 @@ $(document).ready(function() {
 			alert('Bitte wähle eine der Optionen aus.');
 		} else {
 			// PARTICIPANT, NAME and EMAIL were given in index
+			console.log(window.MINOR)
 			document.instruction_manager.add_info('participant', window.PARTICIPANT);
 			document.instruction_manager.add_info('browser_os_info', window.navigator.userAgent);
 			document.instruction_manager.add_info('name', window.NAME);
 			document.instruction_manager.add_info('email', window.EMAIL);
+			document.instruction_manager.add_info('minor', window.MINOR);
 			document.instruction_manager.add_info('follow_agent', follow_agent);
 			document.instruction_manager.add_info('start_time', new Date().toString());
 
@@ -321,7 +327,7 @@ $(document).ready(function() {
 			let tasks_remaining = loadNewFile();
 			if (!tasks_remaining) {
 				alert('Fehler, Pentomino konnte nicht geladen werden!');
-				document.open_popup(endscreen);
+				document.open_popup(errorscreen);
 			}
 		}
 	});
@@ -335,7 +341,7 @@ $(document).ready(function() {
 		let tasks_remaining = loadNewFile();
 		if (!tasks_remaining) {
 			alert('Fehler, Pentomino konnte nicht geladen werden!');
-			document.open_popup(endscreen);
+			document.open_popup(errorscreen);
 		}
 
 		// update elephant image
@@ -442,7 +448,7 @@ $(document).ready(function() {
 			document.instruction_manager.add_info('track_device', track_device);
 			// add other (partially optional) inputs
 			document.instruction_manager.add_info('end_time', new Date().toString());
-			for (checkbox of ['ci_before', 'robot_before', 'played_pento_before']) {
+			for (checkbox of ['ci_before', 'robot_before', 'played_pento_before', 'participated_before']) {
 				document.instruction_manager.add_info(checkbox, $(`#${checkbox}`).is(':checked'));
 			}
 			for (optional of ['know_want', 'greatest_difficulty', 'best_strategy', 'worst_strategy', 'comments']) {
@@ -463,24 +469,22 @@ $(document).ready(function() {
 				}
 			})
 
-			// proceed to endscreen
+			// proceed to the leaderboard page
 			document.instruction_manager.well_done();
 			demographic.close();
-			document.open_popup(endscreen);
-
-		} else { // no instruction manager
+			$("#includedContent").load("leaderboard.html");
+		} else { // no instruction manager, open a "Thanks for participating" dialog
 			demographic.close();
 			document.open_popup(endscreen);
 		}
 	});
-
-	$('#test_button').click(function() {
-		//$('#furhat').get(0).pause();
-		$('#videosrc').attr('src', '../resources/video/example2.mov');
-		$('#furhat').get(0).load();
-		$('#furhat').get(0).play();
-	});
-
+	
+//	$('#test_button').click(function() {
+//		//$('#furhat').get(0).pause();
+//		$('#videosrc').attr('src', '../resources/video/example2.mov');
+//		$('#furhat').get(0).load();
+//		$('#furhat').get(0).play();
+//	});
 
 	// --- Start ---
 	document.open_popup(audiotest);

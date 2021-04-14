@@ -113,6 +113,10 @@ button{
     padding: 0 15px;
 }
 
+table {
+    width: 100%;
+}
+
 .complexity-container button{
     float: right;
 }

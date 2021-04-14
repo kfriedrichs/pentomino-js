@@ -1,0 +1,76 @@
+{
+  "scores": [
+    {
+      "nickname": "Mastermind",
+      "correct": 13,
+      "time": 111,
+      "score": 9001
+    },
+    {
+      "nickname": "Loser1",
+      "correct": 1,
+      "time": 600,
+      "score": 10
+    },
+    {
+      "nickname": "Loser2",
+      "correct": 1,
+      "time": 600,
+      "score": 9
+    },
+    {
+      "nickname": "Loser3",
+      "correct": 1,
+      "time": 600,
+      "score": 8
+    },
+    {
+      "nickname": "Loser4",
+      "correct": 1,
+      "time": 600,
+      "score": 7
+    },
+    {
+      "nickname": "Loser5",
+      "correct": 1,
+      "time": 600,
+      "score": 6
+    },
+    {
+      "nickname": "Loser6",
+      "correct": 1,
+      "time": 600,
+      "score": 5
+    },
+    {
+      "nickname": "Loser7",
+      "correct": 1,
+      "time": 600,
+      "score": 4
+    },
+    {
+      "nickname": "Loser8",
+      "correct": 1,
+      "time": 600,
+      "score": 3
+    },
+    {
+      "nickname": "Loser9",
+      "correct": 1,
+      "time": 600,
+      "score": 2
+    },
+    {
+      "nickname": "Loser10",
+      "correct": 1,
+      "time": 600,
+      "score": 1
+    },
+    {
+      "nickname": "Loser11",
+      "correct": 1,
+      "time": 600,
+      "score": 0
+    }
+  ]
+}

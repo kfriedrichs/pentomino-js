@@ -40,6 +40,11 @@ test the game without committing to take part in a study.
 Interfaces and instructions are translated, the questionnaires are in parts shorter, and 
 there is a video of Furhat instead of the right-hand canvas.
 
+Additionally, a leaderboard is implemented: participants in both *demo* and *study mode* 
+get points for correctly chosen pieces and extra points for speed. At the end of the game,
+participants can see where they rank among saved scores and opt-in to save their own score
+after entering some nickname.
+
 ### task_creator_study1.html
 
 Interface to create task for the *study1* interface. 

@@ -227,7 +227,9 @@ $(document).ready(function() {
 							if (!tasks_remaining) {
 								updateProgressBar(100);
 								document.instruction_manager.well_done();
-								$("#includedContent").load("leaderboard.html");
+								//TODO: For now, just use these default results
+								window.SCORE = {'nickname': 'DU', 'correct':7, 'time':293, 'score':6};
+								$('#includedContent').load('leaderboard.html');
 							}
 						} else {
 							if (!START_QUEST) {
@@ -472,7 +474,9 @@ $(document).ready(function() {
 			// proceed to the leaderboard page
 			document.instruction_manager.well_done();
 			demographic.close();
-			$("#includedContent").load("leaderboard.html");
+			//TODO: For now, just use these default results
+			window.SCORE = {'nickname': 'DU', 'correct':7, 'time':293, 'score':6};
+			$('#includedContent').load('leaderboard.html');
 		} else { // no instruction manager, open a "Thanks for participating" dialog
 			demographic.close();
 			document.open_popup(endscreen);

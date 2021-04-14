@@ -4,13 +4,14 @@ $(document).ready(function() {
 	var SCORE_FILE = '../resources/leaderboard/leaderboard.json';
 
 	/**
-	 * Takes a time in seconds and returns a more human-readable string.
-	 * @param {time to convert in seconds} seconds
+	 * Takes a time in milliseconds and returns a more human-readable string.
+	 * @param {time to convert in milliseconds} ms
 	 * @return string: given time converted to format m:ss
 	 */
-	this.prettifyTime = function(seconds) {
-		let s = ((seconds%60) < 10) ? "0" + (seconds%60) : (seconds%60).toString();
-		return `${Math.floor(seconds/60)}:${s}`;
+	this.prettifyTime = function(ms) {
+		let s = Math.floor((ms%60000)/1000);
+		s = (s < 10) ? "0" + s : s.toString();
+		return `${Math.floor(ms/60000)}:${s}`;
 	};
 	
 	/**

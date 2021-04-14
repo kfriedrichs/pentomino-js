@@ -165,6 +165,7 @@ $(document).ready(function () {
 		/**
 		 * Stop data collection for current instruction and handle the follower action.
 		 * @param {name of shape selected by follower} selected_shape
+		 * @return true if selection was correct, false if incorrect, undefined if START
 		 */
 		complete_instruction(selected_shape) {
 			this.add_info('selected', selected_shape, 'shape');
@@ -174,26 +175,29 @@ $(document).ready(function () {
 			// as the highlights are removed as soon as the next instruction is generated
 			// highlight correct shape in green
 			// START is used to not perform highlighting for the first (tutorial) task
+			let correct;
 			if (!START) {
 				this.highlight_correct();
 				// correct shape selected
 				if (this.shape == selected_shape) {
-					this.add_info('correct', true, 'shape');
+					correct = true;
 					this.correct_counter += 1;
 					this.correct_piece();
 				// incorrect shape selected
 				} else {
+					correct = false;
 					// highlight shape as incorrect
 					this.highlight_incorrect(selected_shape);
-					this.add_info('correct', false, 'shape');
 					// handle the incorrectly selected shape
 					this.task_board.handle_selection(selected_shape);
 					this.incorrect_piece();
 				}
+				this.add_info('correct', correct, 'shape');
 			}
 			START = 0;
 			// make task_board handle the selection
 			this.task_board.handle_selection(this.shape);
+			return correct;
 		}
 
 		/**

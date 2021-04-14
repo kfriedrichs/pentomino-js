@@ -113,6 +113,10 @@ button{
     padding: 0 15px;
 }
 
+table {
+    width: 100%;
+}
+
 .complexity-container button{
     float: right;
 }
@@ -146,6 +150,12 @@ dialog::backdrop{
 
 
 #timer{
+	padding-right: 10px;
+	padding-left: 10px;
+	float:right;
+}
+
+#time_points{
 	padding-right: 10px;
 	padding-left: 10px;
 	float:right;

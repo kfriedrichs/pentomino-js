@@ -9,6 +9,9 @@ $(document).ready(function() {
 	if (!window.DEMO) {
 		window.DEMO				= false;
 	}
+	
+	// Create a score object, points will be updated during the game
+	window.SCORE = {'nickname': 'DU', 'correct':0, 'time':0, 'score':0};
 
 	var FILES					= ['../resources/tasks/start.json',
 								   '../resources/tasks/z.json',
@@ -119,9 +122,11 @@ $(document).ready(function() {
 						document.instruction_manager.new_task(FILES[current_file -1]);
 						// give first instruction
 						document.instruction_manager.generate_instruction();
+						if (!START_QUEST) {
+							document.startPointCountdown();
 						}
-					});
-			startTimer();
+					}
+			});
 			// increment file counter
 			current_file += 1;
 			return true;
@@ -129,51 +134,53 @@ $(document).ready(function() {
 		return false;
 	}
 
-	// --- Timer ---
-	var timerId;
+	// --- Timer and points ---
+	document.time;
+	document.timePointsId;
+	document.timePoints;
+	
 	/**
-	 * Sets up a timer and starts an update loop
-	 * Saves the id of timer loop in global timerId; use stopTimer(id) to stop the timer
+	 * Sets up a point countdown and starts an update loop
+	 * Saves the id of timer loop in global timePointsId; use stopPointCountdown() to stop the timer
 	 */
-	function startTimer() {
+	this.startPointCountdown = function() {
+		///
+		document.timePoints = 1000;
+		$('#time_points span').html(`${document.timePoints}`);
+		
 		var start_time = Date.now()
 		var m; // minutes since start
 		var s; // seconds since start
 		// id is used to stop timer later
-		document.timerId = setInterval(updateTimer, 500, start_time);
+		document.timePointsId = setInterval(updateTimePoints, 100, start_time);
 	}
 
 	/**
-	 * Stops the update loop for a timer
-	 * @param {id returned by startTimer function} timerId
+	 * Stops the update loop for the time points countdown
 	 */
-	function stopTimer() {
-		clearInterval(document.timerId);
+	function stopPointCountdown() {
+		clearInterval(document.timePointsId);
 	}
 
 	/**
 	 * Updates the timer to depict the time passed since some start_time
 	 * @param {point of time in milliseconds since 01/01/1970 00:00:00 UTC} start_time
 	 */
-	function updateTimer(start_time) {
-		let time_passed = Date.now() - start_time;
-		m = Math.floor(time_passed / 60000);
-		s = Math.floor((time_passed % 60000) / 1000);
-		$('#timer').html(`<span style="color:red">${_timeToString(m)}:${_timeToString(s)}</span>`);
+	function updateTimePoints(start_time) {
+		document.time = Date.now() - start_time;
+		// Up to 1000 extra points are given for clicking before 30s have passed
+		if (document.time > 30000) {
+			document.timePoints = 0;
+		} else {
+			document.timePoints = 1000 - Math.floor((document.time/30000)*1000);
+		}
+		$('#time_points span').html(`${document.timePoints}`);
+	}
+	
+	function updatePoints() {
+		$('#points').html(`${window.SCORE.score}`);
 	}
 
-	/**
-	 * Converts number of hours/minutes/seconds to printable string
-	 * @param {hours, minutes or seconds as int} time
-	 * @return string with 0 added to numbers below 10
-	 */
-	function _timeToString(time){
-		// add zero in front of numbers < 10
-		if (time < 10) {
-			return "0" + time.toString();
-		}
-		return time.toString();
-	}
 
 	// --- Correct counter ---
 	/**
@@ -181,7 +188,7 @@ $(document).ready(function() {
 	 */
 	this.updateCorrectCounter = function() {
 		if (document.instruction_manager) {
-			$('#correct_counter').html(`Correct: <span style="color:green">${document.instruction_manager.correct_counter}</span> / 12`);
+			$('#correct_counter span').html(`${document.instruction_manager.correct_counter}`);
 		}
 	}
 
@@ -204,14 +211,25 @@ $(document).ready(function() {
 				// task board will check whether correct shape was selected
 				// and make correct pieces visible on the task board
 				if (document.instruction_manager) {
-					document.instruction_manager.complete_instruction(event.object_id);
+					let correct = document.instruction_manager.complete_instruction(event.object_id);
 					document.updateCorrectCounter();
 					// Try to give new instruction, is task is already finished,
 					// show questionnaire
 					if (!document.instruction_manager.generate_instruction()) {
 						// make selection_board read-only
 						document.selection_board.pento_read_only = true;
-						stopTimer();
+						if (!START_QUEST) {
+							stopPointCountdown();
+							// update the user's score
+							window.SCORE.time += document.time;
+							if (correct) {
+								window.SCORE.score += 1000 + document.timePoints;
+								window.SCORE.correct += 1;
+							}
+							// update points in the UI
+							updatePoints();
+						}
+						
 						if (window.DEMO) {
 							// load next task & update elephant
 							// small breather for the participant
@@ -227,7 +245,7 @@ $(document).ready(function() {
 							if (!tasks_remaining) {
 								updateProgressBar(100);
 								document.instruction_manager.well_done();
-								$("#includedContent").load("leaderboard.html");
+								$('#includedContent').load('leaderboard.html');
 							}
 						} else {
 							if (!START_QUEST) {
@@ -235,8 +253,8 @@ $(document).ready(function() {
 							} else {
 								document.open_popup(start_questionnaire);
 							}
-							START_QUEST = false;
 						}
+						START_QUEST = false;
 					}
 				} else {
 					// simply make the shape disappear
@@ -300,7 +318,6 @@ $(document).ready(function() {
 			alert('Bitte wähle eine der Optionen aus.');
 		} else {
 			// PARTICIPANT, NAME and EMAIL were given in index
-			console.log(window.MINOR)
 			document.instruction_manager.add_info('participant', window.PARTICIPANT);
 			document.instruction_manager.add_info('browser_os_info', window.navigator.userAgent);
 			document.instruction_manager.add_info('name', window.NAME);
@@ -472,7 +489,7 @@ $(document).ready(function() {
 			// proceed to the leaderboard page
 			document.instruction_manager.well_done();
 			demographic.close();
-			$("#includedContent").load("leaderboard.html");
+			$('#includedContent').load('leaderboard.html');
 		} else { // no instruction manager, open a "Thanks for participating" dialog
 			demographic.close();
 			document.open_popup(endscreen);

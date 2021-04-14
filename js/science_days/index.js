@@ -33,7 +33,7 @@ $(function(){
 
 	$('#load_demo').click(function() {
 		window.DEMO = true;
-		$("#includedContent").load("pento_ui.html");
+		$('#includedContent').load('pento_ui.html');
 	});
 
 	$('#load_study').click(function() {
@@ -50,7 +50,7 @@ $(function(){
 			alert('Bitte bestätige deine Einwilligung zur Teilnahme an der Studie.');
 		} else {
 			window.DEMO = false;
-			$("#includedContent").load("pento_ui.html");
+			$('#includedContent').load('pento_ui.html');
 		}
 	});
 

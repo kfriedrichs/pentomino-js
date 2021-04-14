@@ -2,18 +2,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="twelve columns">
-				<h1>DIES IST EIN LEADERBOARD</h1>
+				<h1>Vielen Dank für deine Teilnahme!</h1>
+				<p>Auf <a href="https://www.ling.uni-potsdam.de/science-day/"> https://www.ling.uni-potsdam.de/science-day/</a>  kannst du mehr über unsere aktuellen Studien herausfinden.</p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="four columns">
-				<p>INHALT</p>
-			</div>
-			<div class="eight columns">
-				<p>MEHR INHALT</p>
+			<div class="twelve columns">
+				<div id="leaderboard_info">
+					<h3>Rangliste</h3>
+					<p>Hier siehst du, wie du im Vergleich zu anderen Teilnehmer*innen abgeschnitten hast. <br>
+					Du darfst es gerne erneut versuchen, wähle dazu bitte den <strong>Demo</strong>-Modus! <a href="https://www.ling.uni-potsdam.de/science-day/pentomino/">Hier</a> gelangst du zurück zum Start.</p>
+					<p><strong>Möchtest du dein Ergebnis in die Rangliste eintragen?</strong></p>
+					<p><label>Spitzname: <input id="nickname" size="30"></label> <button id="save_score">Ergebnis speichern</button></p>
+				</div>
+				<table id="leaderboard">
+					<thead>
+						<tr>
+							<th>Rang</th>
+							<th>Name</th>
+							<th>Richtige</th>
+							<th>Zeit</th>
+							<th>Punkte</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
+	
+	<script src='../js/science_days/leaderboard.js'></script>
 
 </html>
 

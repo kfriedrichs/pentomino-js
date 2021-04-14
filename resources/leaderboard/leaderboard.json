@@ -1,0 +1,22 @@
+{
+  "scores": [
+    {
+      "nickname": "Mastermind",
+      "correct": 6,
+      "time": 36669,
+      "score": 11488
+    },
+    {
+      "nickname": "Dolores Haze",
+      "correct": 3,
+      "time": 147984,
+      "score": 4927
+    },
+    {
+      "nickname": "Ollie",
+      "correct": 1,
+      "time": 600000,
+      "score": 1000
+    }
+  ]
+}

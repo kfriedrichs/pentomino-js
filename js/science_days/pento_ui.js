@@ -326,20 +326,6 @@ $(document).ready(function() {
 			document.instruction_manager.add_info('follow_agent', follow_agent);
 			document.instruction_manager.add_info('start_time', new Date().toString());
 
-			// send initial data to email when a user starts
-			let user_data = document.instruction_manager.data_to_JSON();
-			let email_script = '../php/send_userdata.php';
-			fetch(email_script, {
-				method: 'POST',
-				body: user_data,
-			}).then((response) => {
-				// if something went wrong, log to console
-				let resp_code = response.status;
-				if (resp_code < 200 || resp_code >= 300) {
-					console.log(`Error: Something went wrong during sending of collected data. Response code: ${resp_code}`);
-				}
-			})
-
 			prelim_question.close();
 			let tasks_remaining = loadNewFile();
 			if (!tasks_remaining) {
@@ -474,7 +460,7 @@ $(document).ready(function() {
 
 			// save collected data to server-side resource/data_collection directory
 			let data = document.instruction_manager.data_to_JSON();
-			let file_saver_script = '../php/save_userdata.php';
+			let file_saver_script = '../php/save_userdata_sd.php';
 			fetch(file_saver_script, {
 				method: 'POST',
 				body: data,

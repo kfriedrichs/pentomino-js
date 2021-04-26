@@ -35,7 +35,9 @@ $(document).ready(function() {
 	 * @return rank of window.SCORE, counting from 0
 	 */
 	this.getUserRank = function(scores) {
+		//console.log(scores);
 		for (let rank = 0; rank<scores.length; rank++) {
+			//console.log(scores[rank].NAME, scores[rank].SCORE);
 			if (window.SCORE.score > scores[rank].SCORE) {
 				return rank;
 			}
@@ -118,14 +120,14 @@ $(document).ready(function() {
 	
 	/**
 	 * Verifies user nickname that is meant to be displayed on the page afterwards.
-	 * Only [a-z,A-Z,0-9] and spaces are allowed.
+	 * To prevent SQL injection and CSS, only [a-z,A-Z,0-9] and spaces are allowed.
 	 * @param {user input to be checked} input
 	 */
 	function verifyNickname(input) {
 		if (input.length == 0) {
 			return 'Gib einen Spitznamen ein, um dich in die Rangliste einzutragen.';
 		} else {
-			// We don't want any scripts inserted here, so a strict character policy is applied.
+			// Prevent SQL injection and cross-site scripting: a strict character policy is applied
 			let allowed = /^[A-Za-z0-9 äöüÄÖÜ]*$/
 			if (!input.match(allowed)) {
 				return 'Der Spitzname darf nur aus den Buchstaben a-z, A-Z, Umlauten und Leerzeichen bestehen.'
@@ -135,10 +137,29 @@ $(document).ready(function() {
 	}
 	
 	/**
+	 * Verifies a user e-mail address that is meant to be stored
+	 * to a database. Performs parsing to prevent SQL injection.
+	 * @param {user input to be checked} input
+	 */
+	function verifyEmail(input) {
+		if (input.length == 0) {
+			return 'Gib eine E-Mail-Adresse ein, um dich in die Mailingliste einzutragen.';
+		} else {
+			// Check for allowed characters
+			// regex copied from https://www.w3resource.com/javascript/form/email-validation.php
+			let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+			if (!input.match(allowed)) {
+				return 'Gib eine gültige E-Mail-Adresse ein!'
+			}
+			return '';
+		}
+	}
+	
+	/**
 	 * Save the user's score
 	 */
 	function saveScore() {
-		// Save to file
+		// Save to database
 		let leaderboard_saver_script = '../php/save_score.php';
 		$.ajax({
 			method: 'POST',
@@ -148,13 +169,28 @@ $(document).ready(function() {
 			console.log(response);
 		});
 	}
+	
+	/**
+	 * Save an e-mail address to the maillist database.
+	 * (Addresses are collected to invite to future studies)
+	 * @param {e-mail address: string to save} address
+	 */
+	function saveEmail(address) {
+		let maillist_saver_script = '../php/add_to_maillist.php';
+		$.ajax({
+			method: 'POST',
+			url: maillist_saver_script,
+			data: { email: address }
+		}).done(function( response ) {
+			console.log(response);
+		});
+	}
 
-	//TODO: You can't save multiple TIMES!
 	// get input nickname. Verify for only letters + space
 	// save to database, remove Input, display Congrats, Thanks for participating.
 	$('#save_score').click(function() {
 		// verify the nickname input is non-empty and contains only allowed characters
-		let input = $(`#nickname`).val()
+		let input = $('#nickname').val();
 		let msg = verifyNickname(input);
 		// If the input didn't pass, display the error message
 		if (msg) {
@@ -169,6 +205,19 @@ $(document).ready(function() {
 			$('#leaderboard_input').css('display', 'none');
 		}
 		
+	});
+	
+	$('#add_to_maillist').click(function() {
+		let input = $('#info_email').val();
+		let msg = verifyEmail(input);
+		// If the input didn't pass, display the error message
+		if (msg) {
+			alert(msg);
+			return;
+		} else {
+			$('#mailinglist').html('<strong>Danke für dein Interesse! </strong><br>Du kannst dich jederzeit an jana.goetze [at] uni-potsdam.de wenden, falls du dich von der Mailliste wieder abmelden möchtest.');
+			saveEmail(input);
+		}
 	});
 	
 	// --- Start ---

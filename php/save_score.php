@@ -1,7 +1,7 @@
 <?php
-	class LeaderboardDB extends SQLite3 {
+	class ScienceDayDB extends SQLite3 {
 		function __construct() {
-		$this->open("../resources/leaderboard/leaderboard.db");
+		$this->open("../resources/db/science_days.db");
 		}
 	}
 	
@@ -11,16 +11,18 @@
 	$time = $data['time'];
 	$score = $data['score'];
 
-	$db = new LeaderboardDB();
+	$db = new ScienceDayDB();
 	if(!$db){
 		echo $db->lastErrorMsg();
 	}
 	
-	$sql =<<<EOF
-	INSERT INTO LEADERBOARD (NAME, CORRECT, TIME, SCORE) VALUES ("$nickname", $correct, $time, $score);
-	EOF;
-	
-	$ret = $db->exec($sql);
+	$stmt = $db->prepare('INSERT INTO LEADERBOARD (NAME, CORRECT, TIME, SCORE) VALUES (:nick, :corr, :time, :score);');
+	$stmt->bindValue(':nick', $nickname, SQLITE3_TEXT);
+	$stmt->bindValue(':corr', $correct, SQLITE3_INTEGER);
+	$stmt->bindValue(':time', $time, SQLITE3_INTEGER);
+	$stmt->bindValue(':score', $score, SQLITE3_INTEGER);
+
+	$ret = $stmt->execute();
 	if(!$ret) {
 		echo $db->lastErrorMsg();
 	} else {

@@ -231,21 +231,25 @@ $(document).ready(function() {
 						}
 						
 						if (window.DEMO) {
-							// load next task & update elephant
-							// small breather for the participant
-							updateProgressBar(Math.floor(100 * current_file / FILES.length));
-							await sleep(2000);
-							let tasks_remaining = loadNewFile();
+							if (START_QUEST) {
+								document.open_popup(game_info);
+							} else {
+								// load next task & update elephant
+								// small breather for the participant
+								updateProgressBar(Math.floor(100 * current_file / FILES.length));
+								await sleep(2000);
+								let tasks_remaining = loadNewFile();
 
-							// update elephant image
-							document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
-							elephant_c = elephant_c + 1;
+								// update elephant image
+								document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
+								elephant_c = elephant_c + 1;
 
-							// finish the run
-							if (!tasks_remaining) {
-								updateProgressBar(100);
-								document.instruction_manager.well_done();
-								$('#includedContent').load('leaderboard.html');
+								// finish the run
+								if (!tasks_remaining) {
+									updateProgressBar(100);
+									document.instruction_manager.well_done();
+									$('#includedContent').load('leaderboard.html');
+								}
 							}
 						} else {
 							if (!START_QUEST) {
@@ -269,6 +273,7 @@ $(document).ready(function() {
 	var audiotest			= document.getElementById('audiotest');
 	var prelim_question		= document.getElementById('prelim_question');
 	var start_questionnaire	= document.getElementById('start_questionnaire');
+	var game_info			= document.getElementById('game_info');
 	var questionnaire		= document.getElementById('questionnaire');
 	var demographic			= document.getElementById('demographic');
 	var errorscreen			= document.getElementById('errorscreen');
@@ -278,6 +283,7 @@ $(document).ready(function() {
 	dialogPolyfill.registerDialog(audiotest);
 	dialogPolyfill.registerDialog(prelim_question);
 	dialogPolyfill.registerDialog(start_questionnaire);
+	dialogPolyfill.registerDialog(game_info);
 	dialogPolyfill.registerDialog(questionnaire);
 	dialogPolyfill.registerDialog(demographic);
 	dialogPolyfill.registerDialog(errorscreen);
@@ -326,20 +332,6 @@ $(document).ready(function() {
 			document.instruction_manager.add_info('follow_agent', follow_agent);
 			document.instruction_manager.add_info('start_time', new Date().toString());
 
-			// send initial data to email when a user starts
-			let user_data = document.instruction_manager.data_to_JSON();
-			let email_script = '../php/send_userdata.php';
-			fetch(email_script, {
-				method: 'POST',
-				body: user_data,
-			}).then((response) => {
-				// if something went wrong, log to console
-				let resp_code = response.status;
-				if (resp_code < 200 || resp_code >= 300) {
-					console.log(`Error: Something went wrong during sending of collected data. Response code: ${resp_code}`);
-				}
-			})
-
 			prelim_question.close();
 			let tasks_remaining = loadNewFile();
 			if (!tasks_remaining) {
@@ -352,7 +344,12 @@ $(document).ready(function() {
 	// start task, load new task
 	$('#start_questionnaire_done').click(async function() {
 		start_questionnaire.close();
-
+		document.open_popup(game_info);
+	})
+	
+	$('#game_info_done').click(async function() {
+		game_info.close();
+		updateProgressBar(Math.floor(100 * current_file / FILES.length));
 		// small breather for the participant
 		await sleep(1000);
 		let tasks_remaining = loadNewFile();
@@ -364,7 +361,7 @@ $(document).ready(function() {
 		// update elephant image
 		document.getElementById('elephant').src='../resources/img/elephant'+elephant_c+'.png';
 		elephant_c = elephant_c + 1;
-	})
+	});
 
 	// submit task questionnaire, load new task or move to demographic questionnaire
 	$('#questionnaire_done').click(async function() {
@@ -474,7 +471,7 @@ $(document).ready(function() {
 
 			// save collected data to server-side resource/data_collection directory
 			let data = document.instruction_manager.data_to_JSON();
-			let file_saver_script = '../php/save_userdata.php';
+			let file_saver_script = '../php/save_userdata_sd.php';
 			fetch(file_saver_script, {
 				method: 'POST',
 				body: data,

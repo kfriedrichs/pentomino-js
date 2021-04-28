@@ -94,8 +94,7 @@ $(document).ready(function () {
 						if (START) {
 							instr_file = this.resource_path + 'start.mp3';
 						} else {
-							//TODO: german instructions not yet generated
-							instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;//this.resource_path + `p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
+							instr_file = this.resource_path + `p/${PARTICIPANT}/${this.selection_board.get_shape(this.shape).type}.mp3`;
 						}
 						this.instruction = new Audio(instr_file);
 						// start instruction as soon as audio is loaded sufficiently
@@ -111,6 +110,7 @@ $(document).ready(function () {
 						if (START) {
 							instr_file = this.resource_path + 'start.ogg';
 						} else {
+							console.log("WARNING: video instructions not yet implemented")
 							instr_file = '../resources/video/Z.mp4';
 						}
 						this.video_panel.attr('loop', false);

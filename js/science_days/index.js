@@ -1,6 +1,6 @@
 $(function(){
-	// randomly assign a design number in interval 1-25
-	window.PARTICIPANT = Math.ceil(Math.random()*25);
+	// randomly assign a design number in interval 1-10
+	window.PARTICIPANT = Math.ceil(Math.random()*10);
 
 	// --- Pop-ups ---
 	// open a popup element

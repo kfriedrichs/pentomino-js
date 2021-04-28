@@ -4,6 +4,12 @@
 			<div class="twelve columns">
 				<h1>Vielen Dank für deine Teilnahme!</h1>
 				<p>Auf <a href="https://www.ling.uni-potsdam.de/science-day/"> https://www.ling.uni-potsdam.de/science-day/</a>  kannst du mehr über unsere aktuellen Studien herausfinden.</p>
+				<div id="mailinglist">
+				<p><strong>Es gibt noch so viel mehr zu erforschen!</strong></p>
+				<p>Wenn du Lust hast, an zukünftigen Studien unserer Forschungsgruppe teilzunehmen, trage gerne deine E-Mail-Adresse in das Feld ein.<br>(Die Adressen werden nur zu diesem Zweck verwendet!) </p>
+					<p><label>E-Mail: <input id="info_email" size="30"></label> <button id="add_to_maillist">Ich möchte zu weiteren Studien eingeladen werden</button></p>
+				</div>
+				<hr>
 			</div>
 		</div>
 		<div class="row">
@@ -12,8 +18,13 @@
 					<h3>Rangliste</h3>
 					<p>Hier siehst du, wie du im Vergleich zu anderen Teilnehmer*innen abgeschnitten hast. <br>
 					Du darfst es gerne erneut versuchen, wähle dazu bitte den <strong>Demo</strong>-Modus! <a href="https://www.ling.uni-potsdam.de/science-day/pentomino/">Hier</a> gelangst du zurück zum Start.</p>
+				</div>
+				<div id="leaderboard_input">
+					<!-- If the user makes the first place, a congrats message is displayed -->
+					<h5 id="congrats", style="display:none; color:#f08080"><strong>Neuer Highscore!</strong></h5>
 					<p><strong>Möchtest du dein Ergebnis in die Rangliste eintragen?</strong></p>
 					<p><label>Spitzname: <input id="nickname" size="30"></label> <button id="save_score">Ergebnis speichern</button></p>
+				</div>
 				</div>
 				<table id="leaderboard">
 					<thead>

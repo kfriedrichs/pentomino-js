@@ -6,10 +6,14 @@
 	}
 	
 	$data = $_POST['score'];
-	$nickname = $data['nickname'];
-	$correct = $data['correct'];
-	$time = $data['time'];
-	$score = $data['score'];
+	// escape special chars and validate to prevent CSS
+	$nickname = trim(htmlspecialchars($data['nickname']));
+	$correct = filter_var($data['correct'], FILTER_VALIDATE_INT);
+	$time = filter_var($data['time'], FILTER_VALIDATE_INT);
+	$score = filter_var($data['score'], FILTER_VALIDATE_INT);
+	if ($correct === false || $time === false || $score === false) {
+		die('error');
+	}
 
 	$db = new ScienceDayDB();
 	if(!$db){

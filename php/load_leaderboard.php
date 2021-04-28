@@ -1,11 +1,11 @@
 <?php
-	class LeaderboardDB extends SQLite3 {
+	class ScienceDayDB extends SQLite3 {
 		function __construct() {
-		$this->open("../resources/leaderboard/leaderboard.db");
+		$this->open("../resources/db/science_days.db");
 		}
 	}
 
-	$db = new LeaderboardDB();
+	$db = new ScienceDayDB();
 	if(!$db){
 		die("error");
 	}

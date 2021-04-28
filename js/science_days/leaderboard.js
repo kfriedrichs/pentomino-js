@@ -149,7 +149,7 @@ $(document).ready(function() {
 			// regex copied from https://www.w3resource.com/javascript/form/email-validation.php
 			let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 			if (!input.match(allowed)) {
-				return 'Gib eine gültige E-Mail-Adresse ein!'
+				return 'Gib eine gültige E-Mail-Adresse ein.'
 			}
 			return '';
 		}
@@ -170,6 +170,7 @@ $(document).ready(function() {
 		});
 	}
 	
+	this.valid_email_input;
 	/**
 	 * Save an e-mail address to the maillist database.
 	 * (Addresses are collected to invite to future studies)
@@ -177,12 +178,19 @@ $(document).ready(function() {
 	 */
 	function saveEmail(address) {
 		let maillist_saver_script = '../php/add_to_maillist.php';
-		$.ajax({
+		// valid_email_input is used as a flag for php response
+		document.valid_email_input = false;
+		let ret = $.ajax({
 			method: 'POST',
 			url: maillist_saver_script,
 			data: { email: address }
 		}).done(function( response ) {
-			console.log(response);
+			if (response == 'error') {
+				alert('Gib eine gültige E-Mail-Adresse ein!');
+				return;
+			} else {
+				$('#mailinglist').html('<strong>Danke für dein Interesse! </strong><br>Du kannst dich jederzeit an jana.goetze [at] uni-potsdam.de wenden, falls du dich von der Mailliste wieder abmelden möchtest.');
+			}
 		});
 	}
 
@@ -215,7 +223,7 @@ $(document).ready(function() {
 			alert(msg);
 			return;
 		} else {
-			$('#mailinglist').html('<strong>Danke für dein Interesse! </strong><br>Du kannst dich jederzeit an jana.goetze [at] uni-potsdam.de wenden, falls du dich von der Mailliste wieder abmelden möchtest.');
+			// php makes a check too
 			saveEmail(input);
 		}
 	});

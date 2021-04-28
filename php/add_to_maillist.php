@@ -5,8 +5,14 @@
 		}
 	}
 	
-	$email = $_POST['email'];
-
+	// verify the email
+	$email = trim(htmlspecialchars($_POST['email']));
+	$valid = filter_var($email, FILTER_VALIDATE_EMAIL);
+	
+	if (!$valid) {
+		die("error");
+	}
+	
 	$db = new ScienceDayDB();
 	if(!$db){
 		echo $db->lastErrorMsg();

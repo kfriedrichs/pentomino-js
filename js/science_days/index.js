@@ -9,9 +9,11 @@ $(function(){
 		}
 
 	var welcome				= document.getElementById('welcome');
+	var privacy_study		= document.getElementById('privacy_study');
 
 	// polyfill is used to help with browsers without native support for 'dialog'
 	dialogPolyfill.registerDialog(welcome);
+	dialogPolyfill.registerDialog(privacy_study);
 
 	// --- Button functions ---
 
@@ -24,15 +26,21 @@ $(function(){
 			alert("Diese Studie kann nicht auf mobilen Endgeräten durchgeführt werden. Bitte versuche es auf einem Computer.");
 		}
 
-		// Check for Firefox or Chrome
-		//TODO: Opera?
-		if(! /Firefox|Chrome/i.test(navigator.userAgent) ) {
+		// Check for browser
+		if(! /Firefox|Chrome|Safari|Opera/i.test(navigator.userAgent) ) {
 			alert("Diese Studie funktioniert am besten mit Firefox oder Chrome. Wenn möglich, verwende einen dieser Browser.");
 		}
 	});
+	
+	$('#open_privacy_study').click(function() { document.open_popup(privacy_study); });
+	$('#close_privacy_study').click(function() { privacy_study.close(); });
 
 	$('#load_demo').click(function() {
 		window.DEMO = true;
+		// uncomment these two lines instead of loading pento_ui for debugging purposes:
+		// jump straight to the leaderboard with a dummy score
+//		window.SCORE = {'nickname': 'DU', 'correct':0, 'time':0, 'score':0};
+//		$('#includedContent').load('leaderboard.html');
 		$('#includedContent').load('pento_ui.html');
 	});
 

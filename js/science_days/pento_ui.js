@@ -39,8 +39,6 @@ $(document).ready(function() {
 	this.task_board = new document.PentoSelectionBoard(`#${TASK_BOARD_NAME}`, TASK_BOARD_NAME, WITH_GRID, new document.PentoConfig(board_size=taskboard_size), read_only=true,);
 	// Use audio path variable to access German audios
 	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, mode='audio', resource_path='../resources/audio/de/');
-	//TODO: use this one for video instructions
-//	this.instruction_manager = new document.InstructionManager(this.selection_board, this.task_board, mode='video', resource_path='../resources/video/', video_selector='#furhat');
 
 	// Helper function to pause the study for a moment
 	function sleep(ms) {
@@ -492,13 +490,6 @@ $(document).ready(function() {
 			document.open_popup(endscreen);
 		}
 	});
-	
-//	$('#test_button').click(function() {
-//		//$('#furhat').get(0).pause();
-//		$('#videosrc').attr('src', '../resources/video/example2.mov');
-//		$('#furhat').get(0).load();
-//		$('#furhat').get(0).play();
-//	});
 
 	// --- Start ---
 	document.open_popup(audiotest);

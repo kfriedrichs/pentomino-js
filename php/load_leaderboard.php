@@ -10,12 +10,9 @@
 		die("error");
 	}
 	
-	$sql =<<<EOF
-	SELECT NAME, CORRECT, TIME, SCORE FROM LEADERBOARD ORDER BY SCORE DESC;
-	EOF;
-	
-	$ret = $db->query($sql);
-	if ($ret->numColumns() && $ret->columnType(0) != SQLITE3_NULL) {
+	$ret = $db->query("SELECT NAME, CORRECT, TIME, SCORE FROM LEADERBOARD ORDER BY SCORE DESC;");
+
+	if ($ret->numColumns()) {
 		// not empty
 		$rows = array();
 		while($row = $ret->fetchArray(SQLITE3_ASSOC)) {

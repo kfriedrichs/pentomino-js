@@ -6,7 +6,7 @@ $(document).ready(function() {
 	this.loadLeaderboard = function() {
 		let leaderboard_loader_script = '../php/load_leaderboard.php';
 		$.ajax({
-			method: 'POST',
+			method: 'GET',
 			url: leaderboard_loader_script,
 		}).done(function( response ) {
 			if (response == 'error') {
@@ -169,8 +169,7 @@ $(document).ready(function() {
 			console.log(response);
 		});
 	}
-	
-	this.valid_email_input;
+
 	/**
 	 * Save an e-mail address to the maillist database.
 	 * (Addresses are collected to invite to future studies)
@@ -178,8 +177,6 @@ $(document).ready(function() {
 	 */
 	function saveEmail(address) {
 		let maillist_saver_script = '../php/add_to_maillist.php';
-		// valid_email_input is used as a flag for php response
-		document.valid_email_input = false;
 		let ret = $.ajax({
 			method: 'POST',
 			url: maillist_saver_script,
@@ -193,6 +190,13 @@ $(document).ready(function() {
 			}
 		});
 	}
+	
+	// --- Dialogs --- //
+	
+	var privacy_maillist = document.getElementById('privacy_maillist');
+	dialogPolyfill.registerDialog(privacy_maillist);
+	
+	// --- Button functions --- //
 
 	// get input nickname. Verify for only letters + space
 	// save to database, remove Input, display Congrats, Thanks for participating.
@@ -227,6 +231,9 @@ $(document).ready(function() {
 			saveEmail(input);
 		}
 	});
+	
+	$('#open_privacy_maillist').click(function() { document.open_popup(privacy_maillist); });
+	$('#close_privacy_maillist').click(function() { privacy_maillist.close(); });
 	
 	// --- Start ---
 	this.loadLeaderboard();

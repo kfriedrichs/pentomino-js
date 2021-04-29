@@ -8,7 +8,6 @@
 	// verify the email
 	$email = trim(htmlspecialchars($_POST['email']));
 	$valid = filter_var($email, FILTER_VALIDATE_EMAIL);
-	
 	if (!$valid) {
 		die("error");
 	}

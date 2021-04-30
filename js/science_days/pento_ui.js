@@ -321,11 +321,10 @@ $(document).ready(function() {
 		if (!follow_agent) {
 			alert('Bitte wähle eine der Optionen aus.');
 		} else {
-			// PARTICIPANT, NAME and EMAIL were given in index
+			// PARTICIPANT and ID were given in index
 			document.instruction_manager.add_info('participant', window.PARTICIPANT);
 			document.instruction_manager.add_info('browser_os_info', window.navigator.userAgent);
-			document.instruction_manager.add_info('name', window.NAME);
-			document.instruction_manager.add_info('email', window.EMAIL);
+			document.instruction_manager.add_info('id', window.ID);
 			document.instruction_manager.add_info('minor', window.MINOR);
 			document.instruction_manager.add_info('follow_agent', follow_agent);
 			document.instruction_manager.add_info('start_time', new Date().toString());
@@ -404,7 +403,6 @@ $(document).ready(function() {
 			// make sure form is filled out
 			let freeform_input	= new Map([['age', 'Bitte gib dein Alter ein oder schreibe "none".'],
 									['gender', 'Bitte gib dein Geschlecht ein oder schreibe "none".'],
-									['education', 'Bitte gib deinen Bildungsgrad ein.'],
 									['language', 'Bitte gib deine Muttersprache ein.']]);
 
 			let likert_input	= new Map([['fluent', 'Bitte gib deine Sprachfähigkeit für Deutsch an.'],
@@ -473,6 +471,7 @@ $(document).ready(function() {
 			fetch(file_saver_script, {
 				method: 'POST',
 				body: data,
+				data: { filename: window.ID }
 			}).then((response) => {
 				// if something went wrong, log to console
 				let resp_code = response.status;

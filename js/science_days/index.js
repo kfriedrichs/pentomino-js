@@ -1,6 +1,37 @@
 $(function(){
 	// randomly assign a design number in interval 1-10
 	window.PARTICIPANT = Math.ceil(Math.random()*10);
+	
+	
+	// Warning: Should find a better solution for the future here: a timestamp id
+	// is used to match personal information and collected data. The id is saved
+	// with the collected data, but the file name is a different timestamp
+	// (might be confusing).
+	/** Register a participant of the study by saving name and email.
+	 * Sets window.ID and loads the study at success.
+	 * @param {participant name} name
+	 * @param {participant email address} email
+	 */
+	function registerParticipant(name, email) {
+		let id = Date.now();
+		let register_script = '../php/register_participant.php';
+		$.ajax({
+			method: 'POST',
+			url: register_script,
+			data: { name: name, email: email, id: id }
+		}).done(function( response ) {
+			if (response == "1") { // invalid input
+				alert('Bitte gib eine gültige E-Mail-Adresse ein, wenn du an der Studie teilnehmen möchtest.');
+				$('#email').css('borderColor', 'red');
+			} else if (response == "0"){
+				// id is a time stamp
+				window.ID = id;
+				$('#includedContent').load('pento_ui.html');
+			} else { // 2 or unknown response: database / internal error?
+				alert('Es scheint etwas schiefgegangen zu sein. Versuche es nochmal oder wähle den Demo-Modus.');
+			}
+		});
+	}
 
 	// --- Pop-ups ---
 	// open a popup element
@@ -45,20 +76,23 @@ $(function(){
 	});
 
 	$('#load_study').click(function() {
-		window.NAME = $('#name').val();
-		window.EMAIL = $('#email').val();
-		window.MINOR = $('#minor').is(':checked');
-		if (window.NAME == "") {
+		let name = $('#name').val();
+		let email = $('#email').val();
+		// email regex copied from https://www.w3resource.com/javascript/form/email-validation.php
+		let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+		if (name == "") {
 			alert('Bitte gib deinen Namen ein, wenn du an der Studie teilnehmen möchtest.');
 			$('#name').css('borderColor', 'red');
-		} else if (window.EMAIL == "") {
-			alert('Bitte gib deine E-Mail-Adresse ein, wenn du an der Studie teilnehmen möchtest.');
+		} else if (email == "" || !email.match(allowed)) {
+			alert('Bitte gib eine gültige E-Mail-Adresse ein, wenn du an der Studie teilnehmen möchtest.');
 			$('#email').css('borderColor', 'red');
 		} else if (!$('#consent_agree').is(':checked')) {
 			alert('Bitte bestätige deine Einwilligung zur Teilnahme an der Studie.');
 		} else {
+			window.MINOR = $('#minor').is(':checked');
 			window.DEMO = false;
-			$('#includedContent').load('pento_ui.html');
+			// try registering the given name and email, php makes additional checks
+			registerParticipant(name, email);
 		}
 	});
 

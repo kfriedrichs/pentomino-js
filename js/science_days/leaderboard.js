@@ -7,7 +7,7 @@ $(document).ready(function() {
 		let leaderboard_loader_script = '../php/load_leaderboard.php';
 		$.ajax({
 			method: 'GET',
-			url: leaderboard_loader_script,
+			url: leaderboard_loader_script
 		}).done(function( response ) {
 			if (response == 'error') {
 				// display user as only table entry
@@ -191,11 +191,6 @@ $(document).ready(function() {
 		});
 	}
 	
-	// --- Dialogs --- //
-	
-	var privacy_maillist = document.getElementById('privacy_maillist');
-	dialogPolyfill.registerDialog(privacy_maillist);
-	
 	// --- Button functions --- //
 
 	// get input nickname. Verify for only letters + space
@@ -232,7 +227,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#open_privacy_maillist').click(function() { document.open_popup(privacy_maillist); });
+	$('#open_privacy_maillist').click(function() { document.open_popup(privacy_study); });
 	$('#close_privacy_maillist').click(function() { privacy_maillist.close(); });
 	
 	// --- Start ---

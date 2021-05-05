@@ -8,14 +8,19 @@ $(document).ready(function () {
 			this.type = type;
 			this.color = color;
 			this.rotation = rotation;
-			this.is_mirrored = is_mirrored || false;
+			this._is_mirrored = is_mirrored || false;
 			this.writable = true;
 			this.active = false;
 			this.highlight;
+			this.visible = true; // for layerless boards only
 
 			// shape internal grid and bounding box
 			this._internal_grid_size = [5, 5];
-			this._internal_grid_shifts = [1, 0];
+			// internal grid shifts: blocks have coordinates ranging from -60 to 60,
+			// these are mapped to the internal grid by dividing by the block size
+			// and adding the x or y grid shift constant:
+			// (coordinate / block_size) + internal_grid_shift
+			this._internal_grid_shifts = [2, 2];
 			this._internal_grid = [];
 			this._init_grid();
 
@@ -27,8 +32,15 @@ $(document).ready(function () {
 			this.blocks = [];
 			this.block_size = block_size;
 
-			// conntected shapes
+			// connected shapes
 			this.connected = [];
+			
+			// shapes that don't have a mirrored version
+			this.SYMMETRIC_SHAPES = new Set(['I', 'T', 'U', 'V', 'W', 'X', 'point'])
+		}
+		
+		get is_mirrored() {
+			return ( (!this.SYMMETRIC_SHAPES.has(this.type)) && this._is_mirrored );
 		}
 		
 		/**
@@ -294,6 +306,17 @@ $(document).ready(function () {
 			var col = (block_x / this.block_size) + this._internal_grid_shifts[0];
 			this._set_grid_value(row, col, 1);
 		}
+		
+		/**
+		 * Fills the internal grid with zeros, i.e. deletes all block markers
+		 */
+		_empty_grid() {
+			for (var x = 0; x < this._internal_grid_size[0]; x++) {
+				for (var y = 0; y < this._internal_grid_size[1]; y++) {
+					this._set_grid_value(x, y, 0);
+				}
+			}
+		}
 
 		/**
 		 * Rolls back N steps of modifications done to the shape (except initial placement) 
@@ -322,6 +345,25 @@ $(document).ready(function () {
 					break;
 			}
 		}
+		
+		/**
+		 * Updates the block edge styles.
+		 * To be used after rearranging blocks so that the black outline still
+		 * matches the shape formation.
+		 */
+		_update_outline() {
+			for (var i = 0; i < this.get_blocks().length; i++) {
+				var block = this.get_blocks()[i];
+				var adjacent_blocks = this.get_adjacent_blocks(block.get_x(), block.get_y());
+				for (var a = 0; a < adjacent_blocks.length; a++) {
+					if (adjacent_blocks[a] == 0) {
+						block.set_edge_style(a, 2);
+					} else {
+						block.set_edge_style(a, 0.5);
+					}
+				}
+			}
+		}
 
 		/**
 		 * Returns the true angle for rotation
@@ -343,15 +385,62 @@ $(document).ready(function () {
 		}
 
 		/**
-		 * Rotates the shape by delta angle
-		 * @param {*} angle 
+		 * Rotates the shape by angle
+		 * @param {difference to current angle in degrees} angle
+		 * @param {true to log the action to the changes array} track
 		 */
 		rotate(angle, track) {
+			if (angle == 0) { return; }
 			if (track != false) {
 				this.changes.push({ 'name': 'rotate', 'angle': angle });
 			}
 			this.rotation = this._get_true_angle(angle);
-			this._rotate_blocks(angle);
+			// use rearrange method if possible
+			if (angle % 90 == 0) {
+				this.rotateByRearrange(angle);
+			} else {
+				this._rotate_blocks(angle);
+			}
+		}
+		
+		/**
+		 * Rotates the shape by angle. This implementation rearranges the blocks on the
+		 * internal matrix. Only angles 90, -90, 180 and -180 are possible
+		 * @param {turning angle, one of [90,-90,180,-180]} angle
+		 * @param {true to log the action to the changes array} track
+		 */
+		rotateByRearrange(angle, track) {
+			// empty the grid (since the blocks will be rearranged)
+			this._empty_grid();
+			for (var i = 0; i < this.get_blocks().length; i++) {
+				var block = this.get_blocks()[i];
+				block.rotateByRearrange(angle, this.rotation);
+				// update the internal grid
+				this._update_grid(block.get_x(), block.get_y());
+			}
+			// redraw the outline
+			this._update_outline();
+		}
+		
+		/**
+		 * Flips the shape by rearranging the blocks
+		 * @param {one of ['horizontal', 'vertical']} axis
+		 * @param {true to log the action to the changes array} track
+		 */
+		flip(axis, track) {
+			if (track != false) {
+				this.changes.push({ 'name': 'flip', 'axis': axis});
+			}
+			// empty grid (since blocks will be rearranged)
+			this._empty_grid()
+			for (var i = 0; i < this.get_blocks().length; i++) {
+				var block = this.get_blocks()[i];
+				block.flip(axis);
+				this._update_grid(block.get_x(), block.get_y());
+			}
+			// redraw the black outline after block rearrangement
+			this._update_outline();
+			this._is_mirrored = !this._is_mirrored;
 		}
 
 		/**
@@ -538,16 +627,16 @@ $(document).ready(function () {
 	// draw F 
 	this.pento_F = function (shape) {
 		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = document.pento_create_block(0, + i * shape.block_size, shape.block_size, shape.color);
+		for (var y = -1; y < 2; y++) {
+			var block = document.pento_create_block(0, + y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
 		if (shape.is_mirrored) {
-			shape.add_block(this.pento_create_block(shape.block_size, + shape.block_size, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(shape.block_size, - shape.block_size, shape.block_size, shape.color));
 			shape.add_block(this.pento_create_block(- shape.block_size, 0, shape.block_size, shape.color));
 		} else {
-			shape.add_block(this.pento_create_block(- shape.block_size, + shape.block_size, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(- shape.block_size, - shape.block_size, shape.block_size, shape.color));
 			shape.add_block(this.pento_create_block(shape.block_size, 0, shape.block_size, shape.color));
 		}
 	};
@@ -555,8 +644,8 @@ $(document).ready(function () {
 	// Draw I
 	this.pento_I = function (shape) {
 		// Draw blocks
-		for (var i = 0; i < 5; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		for (var y = -2; y < 3; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 	};
@@ -564,15 +653,15 @@ $(document).ready(function () {
 	// Draw L
 	this.pento_L = function (shape) {
 		// Draw blocks
-		for (var i = 0; i < 4; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		for (var y = -2; y < 2; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
 		if (shape.is_mirrored) {
-			var block = this.pento_create_block(shape.block_size, 3 * shape.block_size, shape.block_size, shape.color);
+			var block = this.pento_create_block(shape.block_size, 1 * shape.block_size, shape.block_size, shape.color);
 		} else {
-			var block = this.pento_create_block(- shape.block_size, 3 * shape.block_size, shape.block_size, shape.color);
+			var block = this.pento_create_block(- shape.block_size, 1 * shape.block_size, shape.block_size, shape.color);
 		}
 		shape.add_block(block);
 	};
@@ -581,16 +670,16 @@ $(document).ready(function () {
 	this.pento_N = function (shape) {
 
 		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(0, + i * shape.block_size, shape.block_size, shape.color);
+		for (var y = -1; y < 2; y++) {
+			var block = this.pento_create_block(0, + y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		for (var i = 2; i < 4; i++) {
+		for (var y = -2; y < 0; y++) {
 			if (shape.is_mirrored) {
-				var block = this.pento_create_block(shape.block_size, + i * shape.block_size, shape.block_size, shape.color);
+				var block = this.pento_create_block(- shape.block_size, + y * shape.block_size, shape.block_size, shape.color);
 			} else {
-				var block = this.pento_create_block(shape.block_size, + i * shape.block_size, shape.block_size, shape.color);
+				var block = this.pento_create_block(+ shape.block_size, + y * shape.block_size, shape.block_size, shape.color);
 			}
 			shape.add_block(block);
 		}
@@ -600,16 +689,16 @@ $(document).ready(function () {
 	this.pento_P = function (shape) {
 
 		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		for (var y = -1; y < 2; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		for (var i = 0; i < 2; i++) {
+		for (var y = 0; y < 2; y++) {
 			if (shape.is_mirrored) {
-				var block = this.pento_create_block(shape.block_size, + i * shape.block_size, shape.block_size, shape.color);
+				var block = this.pento_create_block(shape.block_size, + y * shape.block_size, shape.block_size, shape.color);
 			} else {
-				var block = this.pento_create_block(- shape.block_size, + i * shape.block_size, shape.block_size, shape.color);
+				var block = this.pento_create_block(- shape.block_size, + y * shape.block_size, shape.block_size, shape.color);
 			}
 			shape.add_block(block);
 		}
@@ -617,41 +706,41 @@ $(document).ready(function () {
 
 	// Draw T
 	this.pento_T = function (shape) {
-		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(0, + i * shape.block_size, shape.block_size, shape.color);
+		// Draw blocks (no mirrored version here)
+		for (var x = -1; x < 2; x++) {
+			var block = this.pento_create_block(+ x * shape.block_size, 0, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		shape.add_block(this.pento_create_block(- shape.block_size, 0, shape.block_size, shape.color));
-		shape.add_block(this.pento_create_block(shape.block_size, 0, shape.block_size, shape.color));
+		shape.add_block(this.pento_create_block(shape.block_size, - shape.block_size, shape.block_size, shape.color));
+		shape.add_block(this.pento_create_block(shape.block_size, + shape.block_size, shape.block_size, shape.color));
 	};
 
 	// draw U
 	this.pento_U = function (shape) {
-		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(i * shape.block_size, + shape.block_size, shape.block_size, shape.color);
+		// Draw blocks (no mirrored version here)
+		for (var y = -1; y < 2; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		var block = this.pento_create_block(0, 0, shape.block_size, shape.color);
+		var block = this.pento_create_block(shape.block_size, - shape.block_size, shape.block_size, shape.color);
 		shape.add_block(block);
 
-		var block = this.pento_create_block(2 * shape.block_size, 0, shape.block_size, shape.color);
+		var block = this.pento_create_block(shape.block_size, shape.block_size, shape.block_size, shape.color);
 		shape.add_block(block);
 	};
 
 	// draw V
 	this.pento_V = function (shape) {
-		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(i * shape.block_size, 2 * shape.block_size, shape.block_size, shape.color);
+		// Draw blocks (no mirrored version here)
+		for (var y = -1; y < 2; y++) {
+			var block = this.pento_create_block(- shape.block_size, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		for (var i = 0; i < 2; i++) {
-			var block = this.pento_create_block(2 * shape.block_size, i * shape.block_size, shape.block_size, shape.color);
+		for (var x = 0; x < 2; x++) {
+			var block = this.pento_create_block(x * shape.block_size, - shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 	};
@@ -659,45 +748,45 @@ $(document).ready(function () {
 	// draw W
 	this.pento_W = function (shape) {
 
-		// Draw blocks
-		for (var i = 0; i < 2; i++) {
-			var block = this.pento_create_block(i * shape.block_size, 2 * shape.block_size, shape.block_size, shape.color);
+		// Draw blocks (no mirrored version here)
+		for (var y = -1; y < 1; y++) {
+			var block = this.pento_create_block(- shape.block_size, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		for (var i = 1; i < 3; i++) {
-			var block = this.pento_create_block(i * shape.block_size, 1 * shape.block_size, shape.block_size, shape.color);
+		for (var y = 0; y < 2; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		var block = this.pento_create_block(2 * shape.block_size, 0, shape.block_size, shape.color);
+		var block = this.pento_create_block(shape.block_size, shape.block_size, shape.block_size, shape.color);
 		shape.add_block(block);
 	};
 
 	// Draw X
 	this.pento_X = function (shape) {
-		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		// Draw blocks (no mirrored version here)
+		for (var y = -1; y < 2; y++) {
+			var block = this.pento_create_block(0, y * shape.block_size, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
-		shape.add_block(this.pento_create_block(- shape.block_size, shape.block_size, shape.block_size, shape.color));
-		shape.add_block(this.pento_create_block(shape.block_size, shape.block_size, shape.block_size, shape.color));
+		shape.add_block(this.pento_create_block(- shape.block_size, 0, shape.block_size, shape.color));
+		shape.add_block(this.pento_create_block(shape.block_size, 0, shape.block_size, shape.color));
 	};
 
 	// Draw Y
 	this.pento_Y = function (shape) {
 		// Draw blocks
-		for (var i = 0; i < 4; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		for (var x = -2; x < 2; x++) {
+			var block = this.pento_create_block(x * shape.block_size, 0, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
 		if (shape.is_mirrored) {
-			var block = this.pento_create_block(shape.block_size, shape.block_size, shape.block_size, shape.color);
+			var block = this.pento_create_block(0, - shape.block_size, shape.block_size, shape.color);
 		} else {
-			var block = this.pento_create_block(- shape.block_size, shape.block_size, shape.block_size, shape.color);
+			var block = this.pento_create_block(0, + shape.block_size, shape.block_size, shape.color);
 		}
 		shape.add_block(block);
 	};
@@ -705,17 +794,17 @@ $(document).ready(function () {
 	// draw Z
 	this.pento_Z = function (shape) {
 		// Draw blocks
-		for (var i = 0; i < 3; i++) {
-			var block = this.pento_create_block(0, i * shape.block_size, shape.block_size, shape.color);
+		for (var x = -1; x < 2; x++) {
+			var block = this.pento_create_block(x * shape.block_size, 0, shape.block_size, shape.color);
 			shape.add_block(block);
 		}
 
 		if (shape.is_mirrored) {
-			shape.add_block(this.pento_create_block(shape.block_size, 2 * shape.block_size, shape.block_size, shape.color));
-			shape.add_block(this.pento_create_block(-shape.block_size, 0, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(- shape.block_size, - shape.block_size, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(shape.block_size, shape.block_size, shape.block_size, shape.color));
 		} else {
-			shape.add_block(this.pento_create_block(shape.block_size, 0, shape.block_size, shape.color));
-			shape.add_block(this.pento_create_block(- shape.block_size, 2 * shape.block_size, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(- shape.block_size, shape.block_size, shape.block_size, shape.color));
+			shape.add_block(this.pento_create_block(shape.block_size, -  shape.block_size, shape.block_size, shape.color));
 		}
 
 	};
@@ -784,4 +873,3 @@ $(document).ready(function () {
 		return new_shape
 	};
 })
-

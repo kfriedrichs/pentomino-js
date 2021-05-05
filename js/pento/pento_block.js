@@ -130,6 +130,46 @@ $(document).ready(function () {
 		}
 		
 		/**
+		 * Rotates the shape by angle. This implementation rearranges the blocks on the
+		 * internal matrix. Only angles 90, -90, 180 and -180 are possible
+		 * @param {turning angle, one of [90,-90,180,-180]} angle
+		 * @param {true to log the action to the changes array} track
+		 */
+		rotateByRearrange(delta_angle, new_angle) {
+			if (delta_angle == 90 || delta_angle == -270) {
+				// new x is (-1) * old y; new y is old x
+				this._move((-1) * this.y - this.x, this.x - this.y);
+			} else if (delta_angle == -90 || delta_angle == 270) {
+				// new x is old y; new y is (-1) * old x
+				this._move(this.y - this.x, (-1) * this.x  - this.y);
+			} else if (Math.abs(delta_angle) == 180) {
+				// new x is (-1) * old x; new y is (-1) * old y
+				this._move((-1) * this.x - this.x, (-1) * this.y - this.y);
+			} else {
+				console.log(`Angle ${delta_angle} not applicable to method rotateByRearrange. ` +
+					'Only angles [90,-90,180,-180] allowed, use method rotate otherwise');
+				return;
+			}
+			// store current rotation
+			this.rotation = new_angle;
+		}
+		
+		/**
+		 * Moves the block to perform a shape flip
+		 * @param {reflection axis: one of [horizontal, vertical]} axis
+		 */
+		flip(axis) {
+			if (axis == 'horizontal') {
+				this._move(0, (-2) * this.y);
+			} else if (axis == 'vertical') {
+				this._move((-2) * this.x, 0);
+			} else {
+				console.log(`Unknown axis: ${axis} at PentoBlock.flip(). `+
+					'Options: [horizontal, vertical');
+			}
+		}
+		
+		/**
 		 * Resizes the block and adapts its coordinates to match a new board size.
 		 * @param {new size} block_size
 		 * @param {new board size / old board size} pos_factor

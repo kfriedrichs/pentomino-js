@@ -45,6 +45,37 @@ get points for correctly chosen pieces and extra points for speed. At the end of
 participants can see where they rank among saved scores and opt-in to save their own score
 after entering some nickname.
 
+
+### furhat_selection_ui.html
+
+Baseline interface, all button functions are to be replaced by interactions with a Furhat robot.
+
+Click *Start new game* first. The shapes' colors are selected randomly. All shapes are placed with
+random positions (collisions are minimized), random rotations and occasional flips on the left board.
+
+Pieces on the left are selected by clicking the corresponding button. *Place selected* removes the piece
+from the left side and shows it on the board on the right side; each piece starting in the upper left corner.
+
+The currently selected shape can then be manipulated using some arrow buttons. Possible actions
+are:
+
+ * move
+ * flip
+ * rotate
+
+There is a predefined goal position for each piece, currently forming the classic pentomino elephant. Once a shape is
+in its goal position (including correct rotation and flip state), it is deactivated and the 
+corresponding button is hidden, stopping any further changes.
+
+**The interface uses a 'layerless' PentoBoard, meaning all contents are drawn directly to the canvas.
+This has the advantage of improved compatibility (especially for creating Furhat GUIs which use the React framework),
+but on the otherhand, everything has to be redrawn at any update. (At the current level of complexity this
+does not seem to pose a problem.)**
+
+### elephant_ui.html
+
+Interface with a PentoElephantBoard. Pieces are selected by clicking and can be moved, rotated and flipped using arrow buttons on the side.
+
 ### task_creator_study1.html
 
 Interface to create task for the *study1* interface. 

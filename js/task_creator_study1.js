@@ -185,5 +185,21 @@ $(document).ready(function () {
 	$('input').change(function () {
 		update(config, pento_config);
 	});
+	
+	//--- Flip pieces by pressing 'F' with an active shape
+	$(document).keydown(function (event) {
+				switch(event.keyCode) {
+					case 70: // 'f' key
+						// check whether there is an active shape on one of the boards
+						if (generator.pento_board_initial.pento_active_shape != null) {
+							generator.pento_board_initial.flip_shape('vertical');
+							generator.pento_board_initial.draw();
+						} else if (generator.pento_board_target.pento_active_shape != null) {
+							generator.pento_board_target.flip_shape('vertical');
+							generator.pento_board_target.draw();
+						}
+						break;
+				}
+			});
 
 })

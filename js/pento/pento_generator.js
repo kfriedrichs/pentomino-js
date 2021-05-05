@@ -107,21 +107,25 @@ $(document).ready(function () {
 			var max = this.pento_config.board_size;
 			var min = 0;
 			var rotations = [45, 90, 135, 180, 225, 270, 315];
+			var axis = ['horizontal', 'vertical'];
 
 			switch (action_type) {
 				case 'move':
-					var rand_x = this.random_in_range(min, max, this.pento_config.block_size);
-					var rand_y = this.random_in_range(min, max, this.pento_config.block_size);
-					return { 'x': rand_x, 'y': rand_y }
+					let rand_x = this.random_in_range(min, max, this.pento_config.block_size);
+					let rand_y = this.random_in_range(min, max, this.pento_config.block_size);
+					return { 'x': rand_x, 'y': rand_y };
 				case 'rotate':
-					var rand_angle = rotations[Math.floor(Math.random() * rotations.length)];
-					return { 'rotation': rand_angle }
+					let rand_angle = rotations[Math.floor(Math.random() * rotations.length)];
+					return { 'rotation': rand_angle };
 				case 'connect':
-					var random_other = shapes[Math.floor(Math.random() * shapes.length)];
-					return { 'other_shape': random_other }
+					let random_other = shapes[Math.floor(Math.random() * shapes.length)];
+					return { 'other_shape': random_other };
+				case 'flip':
+					let rand_axis = axis[Math.floor(Math.random() * axis.length)];
+					return { 'axis': rand_axis };
 				default:
 					console.log('Not implemented: ' + action_type);
-					return
+					return;
 			}
 		}
 

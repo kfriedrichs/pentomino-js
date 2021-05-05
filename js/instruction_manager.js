@@ -13,13 +13,37 @@ $(document).ready(function () {
 		 *
 		 * @param {board pieces are selected from} selection_board
 		 * @param {board to represent task} task_board
+		 * @param {'audio' or 'video'. With any other value, instructions are logged to the console. Default: 'audio'.} mode
+		 * @param {jquery selector of the video panel for instructions. Only for 'video' mode.} video_selector
+		 * @param {directory of audio/video files. Default: '../resources/audio/'} resource_path
+		 * @param {frequency of mouse tracking in milliseconds. Default: 200} track_interval
 		 */
-		constructor(selection_board, task_board, track_interval=200) {
+		constructor(selection_board, task_board, mode='audio', resource_path='../resources/audio/', video_selector='', track_interval=200) {
 			this.selection_board		= selection_board;
 			this.task_board 			= task_board;
+			
 			// for each task and each instruction, log mouse movement, time, selected piece
 			this.follower_data 			= {};
 			this.task_name; // name of current task (e.g. file name)
+			
+			// Type of instruction giving
+			this.mode					= mode;
+			this.resource_path			= resource_path;
+			// Make sure we know where to play videos
+			if (mode == 'video') {
+				if (video_selector) {
+					this.video_panel = $(video_selector);
+					this.video_src = $(video_selector + ' source');
+				}
+				else {
+				console.log('WARNING: \'video\' mode was selected for an instruction_manager instance but no reference to video panel was passed!');
+				// try falling back to audio and default path
+				this.mode = 'audio';
+				this.resource_path = '../resources/audio/';
+				}
+			}
+			this.add_info('instruction_mode', this.mode);
+			
 			// for current instruction
 			this.shape; // shape name
 			this.instruction; // audio of current instruction
@@ -49,7 +73,7 @@ $(document).ready(function () {
 		 * @param {true to play instruction as audio, false for console output. default: true} audio
 		 * @return true if instruction was generated, false if task is complete
 		 */
-		generate_instruction(audio=true) {
+		generate_instruction() {
 			let next_shape = this.task_board.next_shape;
 			if (!next_shape) {
 				return false;
@@ -63,23 +87,50 @@ $(document).ready(function () {
 					'target_x': Math.floor(target.x * this.selection_board.scale_to_source_size()),
 					'target_y': Math.floor(target.y * this.selection_board.scale_to_source_size())
 				}, 'task');
-				if (audio) {
-					// get audio for instruction and play it
-					// remove '#' from shape name to get file name
-					let instr_file = '../resources/audio/start.mp3';
-					if (START == 0) {
-						instr_file = `../resources/audio/p/${PARTICIPANT}/${this.shape.slice(0,2)}${this.shape.slice(3)}.mp3`;
-					}
-					this.instruction = new Audio(instr_file);
-					// start instruction as soon as audio is loaded sufficiently
-					this.instruction.oncanplaythrough = (event) => {
-						this.instruction.play();
+				let instr_file;
+				switch (this.mode) {
+					case 'audio':
+						// get audio for instruction and play it
+						if (START) {
+							instr_file = this.resource_path + 'start.mp3';
+						} else {
+							instr_file = this.resource_path + `p/${PARTICIPANT}/${this.selection_board.get_shape(this.shape).type}.mp3`;
+						}
+						this.instruction = new Audio(instr_file);
+						// start instruction as soon as audio is loaded sufficiently
+						this.instruction.oncanplaythrough = (event) => {
+							this.instruction.play();
+							this._start_instruction(); // start tracking etc.
+							this.add_info('audio_duration', this.instruction.duration, 'shape');
+						};
+						break;
+					//TODO: Video instructions not yet generated
+					case 'video':
+						// get video for instruction and play it
+						if (START) {
+							instr_file = this.resource_path + 'start.ogg';
+						} else {
+							console.log("WARNING: video instructions not yet implemented")
+							instr_file = '../resources/video/Z.mp4';
+						}
+						this.video_panel.attr('loop', false);
+						this.video_src.attr('src', instr_file);
+						this.video_panel.get(0).load();
+						this.video_panel.get(0).play(); //TODO: can remove?
+						let panel = this.video_panel;
+						let src = this.video_panel;
+						let rsrc = this.resource_path;
+						this.video_panel.on('ended', function() {
+							panel.attr('loop', true);
+							src.attr('src', rsrc + 'idle.mp4');
+						});
 						this._start_instruction(); // start tracking etc.
-						this.add_info('audio_duration', this.instruction.duration, 'shape');
-					};
-				} else {
-					console.log(`Please select ${this.shape}`);
-					this._start_instruction(); // start tracking etc.
+						//TODO: add video length instead
+//						this.add_info('audio_duration', this.instruction.duration, 'shape');
+						break;
+					default:
+						console.log(`Please select ${this.shape}`);
+						this._start_instruction(); // start tracking etc.
 				}
 				return true;
 			}
@@ -92,53 +143,78 @@ $(document).ready(function () {
 			this.current_start_time = Date.now();
 			this._start_mouse_track();
 		}
+		
+		_abort_instruction() {
+			switch (this.mode) {
+				case "audio":
+					this.instruction.pause(); // stop audio
+					break;
+				case "video":
+					this._idle_video();
+			}
+		}
+		
+		/**
+		 * Change the current video display to a loop of this.resource_path+"idle.mp4"
+		 */
+		_idle_video() {
+			this.video_panel.attr('loop', true);
+			this.video_src.attr('src', this.resource_path + 'idle.mp4');
+		}
 
 		/**
-		 Stop data collection for current instruction and handle the follower action.
-		 @param {name of shape selected by follower} selected_shape
+		 * Stop data collection for current instruction and handle the follower action.
+		 * @param {name of shape selected by follower} selected_shape
+		 * @return true if selection was correct, false if incorrect, undefined if START
 		 */
 		complete_instruction(selected_shape) {
 			this.add_info('selected', selected_shape, 'shape');
 			this._stop_mouse_track(); // saves mouse movement
-			this.instruction.pause(); // stop audio
+			this._abort_instruction(); // stop audio or video
 			// Note: The highlighting only really makes sense for single-piece tasks,
 			// as the highlights are removed as soon as the next instruction is generated
 			// highlight correct shape in green
-			if (START == 0) {
+			// START is used to not perform highlighting for the first (tutorial) task
+			let correct;
+			if (!START) {
 				this.highlight_correct();
 				// correct shape selected
 				if (this.shape == selected_shape) {
-					this.add_info('correct', true, 'shape');
+					correct = true;
 					this.correct_counter += 1;
 					this.correct_piece();
 				// incorrect shape selected
 				} else {
+					correct = false;
 					// highlight shape as incorrect
 					this.highlight_incorrect(selected_shape);
-					this.add_info('correct', false, 'shape');
 					// handle the incorrectly selected shape
 					this.task_board.handle_selection(selected_shape);
 					this.incorrect_piece();
 				}
+				this.add_info('correct', correct, 'shape');
 			}
 			START = 0;
 			// make task_board handle the selection
 			this.task_board.handle_selection(this.shape);
+			return correct;
 		}
 
 		/**
-		 * Highlight the goal shape in green.
+		 * Highlight the goal shape in green and redraw the board to apply change.
 		 */
 		highlight_correct() {
 			this.selection_board.get_shape(this.shape).set_highlight('green');
+			this.selection_board.draw();
 		}
 
 		/**
-		 * Highlight a given shape in red.
+		 * Highlight a given shape in red and redraw the board to apply change.
 		 * @param {name of incorrect shape} shape
 		 */
 		highlight_incorrect(shape) {
 			this.selection_board.get_shape(shape).set_highlight('red');
+			this.selection_board.draw();
 		}
 
 		/**
@@ -154,7 +230,7 @@ $(document).ready(function () {
 		 * Play an example audiofile
 		 */
 		audiotest() {
-			let test_file = '../resources/audio/intro.mp3';
+			let test_file = this.resource_path + 'intro.mp3';
 			let test_audio = new Audio(test_file);
 			test_audio.oncanplaythrough = (event) => {test_audio.play();};
 		}
@@ -165,7 +241,7 @@ $(document).ready(function () {
 		 */
 		well_done(audio=true) {
 			if (audio) {
-				let well_done_file = '../resources/audio/done.mp3';
+				let well_done_file = this.resource_path + 'done.mp3';
 				let well_done_audio = new Audio(well_done_file);
 				well_done_audio.oncanplaythrough = (event) => {
 					well_done_audio.play();
@@ -183,7 +259,7 @@ $(document).ready(function () {
 			var random_num = 0;
 			if (audio) {
 				random_num = Math.floor(Math.random() * 3) + 1
-				let correct_piece_file = '../resources/audio/correct'+random_num+'.mp3';
+				let correct_piece_file = this.resource_path + 'correct' + random_num + '.mp3';
 				let correct_piece_audio = new Audio(correct_piece_file);
 				correct_piece_audio.oncanplaythrough = (event) => {
 					correct_piece_audio.play();
@@ -201,7 +277,7 @@ $(document).ready(function () {
 			var random_num = 0;
 			if (audio) {
 				random_num = Math.floor(Math.random() * 3) + 1
-				let incorrect_piece_file = '../resources/audio/incorrect'+random_num+'.mp3';
+				let incorrect_piece_file = this.resource_path + 'incorrect' + random_num + '.mp3';
 				let incorrect_piece_audio = new Audio(incorrect_piece_file);
 				incorrect_piece_audio.oncanplaythrough = (event) => {
 					incorrect_piece_audio.play();

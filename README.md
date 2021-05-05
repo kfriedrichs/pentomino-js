@@ -25,6 +25,27 @@ saved to a server-side file in ```resources/data_collection```
 
 Tasks are hard-coded into ```study1.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
 
+### science_days/index.html
+
+**Please note: for spoken instructions, make sure your browser does not block automatically playing audio.**
+
+'Dialog' popups are not fully supported in all browsers. [dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill) is used to help with this issue. If the interface does not seem to work, you might want to change your browser to a [supported one](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#Browser_compatibility).
+
+**REQUIRES SERVER SETUP.** Using [MAMP (Mac/Windows)](https://www.mamp.info/de/mac/): Once you have MAMP installed, create a server using the pentomino-js directory.
+(Preferences > Server > select pentomino-js directory as root). Start the server and visit [http://localhost:8888/science_days/index.html](http://localhost:8888/science_days/index.html).
+
+German-language variant of study1, created for the UP's Science Days. In addition to *study mode*, which performs a data collection similar to study1, a *demo mode* offers to 
+test the game without committing to take part in a study. 
+
+Interfaces and instructions are translated, the questionnaires are in parts shorter, and 
+there is a video of Furhat instead of the right-hand canvas.
+
+Additionally, a leaderboard is implemented: participants in both *demo* and *study mode* 
+get points for correctly chosen pieces and extra points for speed. At the end of the game,
+participants can see where they rank among saved scores and opt-in to save their own score
+after entering some nickname.
+
+
 ### furhat_selection_ui.html
 
 Baseline interface, all button functions are to be replaced by interactions with a Furhat robot.

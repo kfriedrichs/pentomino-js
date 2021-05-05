@@ -8,11 +8,11 @@ $(document).ready(function () {
 	 * @param {*} offsetY 
 	 */
 	var draw_block = function (ctx, block, offsetX, offsetY, active, highlight=null) {
-		if (active) {
-			ctx.shadowColor = 'grey';
-			ctx.shadowBlur = 10;	
-		} else if (highlight) {
+		if (highlight) {
 			ctx.shadowColor = highlight;
+			ctx.shadowBlur = 10;
+    } else if (active) {
+			ctx.shadowColor = 'grey';
 			ctx.shadowBlur = 10;
 		} else {
 			ctx.shadowBlur = 0; // set invisible

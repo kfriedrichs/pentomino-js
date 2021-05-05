@@ -6,14 +6,14 @@ A pentomino framework built with jQuery, jCanvas and HTML5 canvas.
 
 Interfaces provided in this repository: 
 
-### prelim_study.html
+### study1.html
 
 **Please note: for spoken instructions, make sure your browser does not block automatically playing audio.**
 
 'Dialog' popups are not fully supported in all browsers. [dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill) is used to help with this issue. If the interface does not seem to work, you might want to change your browser to a [supported one](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#Browser_compatibility).
 
 **REQUIRES SERVER SETUP.** Using [MAMP (Mac/Windows)](https://www.mamp.info/de/mac/): Once you have MAMP installed, create a server using the pentomino-js directory.
-(Preferences > Server > select pentomino-js directory as root). Start the server and visit [http://localhost:8888/prelim_study_ui.html](http://localhost:8888/prelim_study_ui.html)
+(Preferences > Server > select pentomino-js directory as root). Start the server and visit [http://localhost:8888/study1/p1.html](http://localhost:8888/study1/p1.html), for P1 participant (replace 1 with participant no).
 
 Interface to study the effect of different instruction giving strategies.
 Includes a board showing different pentomino pieces to select from and a task board (which can't be manipulated be the user).
@@ -23,13 +23,35 @@ In the task, the user is prompted by a voiceover to select a specific piece. A t
 During the task, the mouse tracked and the users decisions and answers to the questionnaire are collected. Finally, all data is 
 saved to a server-side file in ```resources/data_collection```
 
-Tasks are hard-coded into ```prelim_study.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
+Tasks are hard-coded into ```study1.js```, new tasks can be generated using ```task_creator.html``` (examples can be found in the ```tasks``` folder). 
 
-### task_creator.html
+### science_days/index.html
 
-Interface to create task for the *preliminary study* interface. 
+**Please note: for spoken instructions, make sure your browser does not block automatically playing audio.**
+
+'Dialog' popups are not fully supported in all browsers. [dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill) is used to help with this issue. If the interface does not seem to work, you might want to change your browser to a [supported one](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#Browser_compatibility).
+
+**REQUIRES SERVER SETUP.** Using [MAMP (Mac/Windows)](https://www.mamp.info/de/mac/): Once you have MAMP installed, create a server using the pentomino-js directory.
+(Preferences > Server > select pentomino-js directory as root). Start the server and visit [http://localhost:8888/science_days/index.html](http://localhost:8888/science_days/index.html).
+
+German-language variant of study1, created for the UP's Science Days. In addition to *study mode*, which performs a data collection similar to study1, a *demo mode* offers to 
+test the game without committing to take part in a study. 
+
+Interfaces and instructions are translated, the questionnaires are in parts shorter, and 
+there is a video of Furhat instead of the right-hand canvas.
+
+Additionally, a leaderboard is implemented: participants in both *demo* and *study mode* 
+get points for correctly chosen pieces and extra points for speed. At the end of the game,
+participants can see where they rank among saved scores and opt-in to save their own score
+after entering some nickname.
+
+### task_creator_study1.html
+
+Interface to create task for the *study1* interface. 
 
 A number of pieces can be generated at random first, then the position on both the initial and the goal board can be edited. Pieces be removed from the goal board by right-clicking. 
+*all selected types once* allows to generate exactly one piece of each 
+shape that is currently selected. 
 
 The task can finally be exported in JSON format, containing two entries 'initial' and 'task' with the respective board configurations.
 
@@ -38,13 +60,20 @@ The task can finally be exported in JSON format, containing two entries 'initial
 An interactive pentomino board and instructions for participants. Pieces can either be randomly generated on the board or imported from a json file.
 The goal is to move / turn pieces until a target configuration is reached. Currently, instructions are logged to the console, but they could as well be spoken e.g. by a Furhat robot (see commented code in instruction_giver.js).
 
-### index.html
+### task_creator_steps.html
 
-This UI is made to generate and edit groups of shapes that can make bigger shapes.
+In this interface, you can randomly generate and place a number of pentomino pieces on a board. 
+An initial and target board will be created that differ by some pentomino actions (moving or rotating pieces). 
+Additionally, the interface displays snapshots, showing the transition from initial to target board step by step.
+For generation, there are the options *monocolor* and *monoshape*, a grid can be shown in the  background and the piece 
+shapes can be selected to be excluded individually.
+By switching off *read-only*, the pieces can be moved and rotated manually.
+
+NOTE: The option *number of connections* is not implemented, *number of rotations* and *number of flips* are not fully implemented and can cause unwanted behaviour.
 
 ### interactive_ifollower_ui.html
 
-Interactive UI for actions in the pentomino domain.
+Prototype interactive UI for actions in the pentomino domain.
 
 ### simple_igiver_ui.html
 

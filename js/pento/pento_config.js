@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	/**
-	 * Dictionary class that returns a default value if nonexistant keys are accessed
+	 * Dictionary class that returns a default value if nonexistent keys are accessed
 	 */
 	this.DefaultDict = class DefaultDict {
 		constructor(default_value) {

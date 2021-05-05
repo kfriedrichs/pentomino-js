@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<link rel="icon" href="favicon.ico">
+	
+	<title>Pentomino Board</title>
+	<meta name="description" content="Instruction follower interface for Pentomino">
+	<meta name="author" content="clpresearch">
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<h5>Pentomino Task creator</h5>
+			<p>Generate start position, move pieces freely, right-click to remove pieces, save task as a json file and png
+			<hr>
+		<div class="row">
+			<div class="eight columns">
+				<!-- 20 rows and columns with block size 20 -->
+					<h5>Task goal</h5>
+					<canvas id="board" width="400" height="400" style="border:1px solid #000000;"></canvas>
+					<h5>Initial board</h5>
+					<canvas id="initial" width="400" height="400" style="border:1px solid #000000;"></canvas>
+			</div>
+			<div class="four columns">
+				<h5>Configuration</h5>
+					<div class="form">
+						<hr>
+						<label class="config">Number of shapes</label>
+						<input id="nshapes" type="text" value="0" />
+
+						<hr>
+						<label class="config">Monocolor</label>
+						<input id="colors" type="checkbox" />
+
+						<br>
+						<label class="config">Monoshape</label>
+						<input id="shapes" type="checkbox" />
+						
+						<br>
+						<label class="config">All selected types <strong>once</strong></label>
+						<input id="all_selected_once" type="checkbox"/>
+
+						<br>
+						<label class="config">Show Grid</label>
+						<input id="showgrid" type="checkbox" />
+
+						<hr>
+						<p>Available shapes<button class="toggle btn" onclick="toggle_shape_select()">Switch selection</button></p>
+						<div class="row shape-select">
+						</div>
+
+					</div>
+					<hr>
+				<button type="button" id="generate" onclick="generate()">Generate</button>
+				<button type="button" id="save" onclick="export_as_png()">Export PNG</button>
+				<button class="save btn" onclick="export_as_json()">Export JSON</button>
+			</div>
+		</div>
+
+	</div>
+
+	<script src='./js/jquery.min.js'></script>
+	<script src='./js/jcanvas.min.js'></script>
+	<script src='./js/FileSaver.js'></script>
+
+	<script src='./js/pento/pento_config.js'></script>
+	<script src='./js/pento/pento_block.js'></script>
+	<script src='./js/pento/pento_shape.js'></script>
+	<script src='./js/pento/pento_render.js'></script>
+	<script src='./js/pento/pento_board.js'></script>
+	<script src='./js/pento/pento_generator.js'></script>
+	<script src='./js/task_creator_study1.js'></script>
+</body>
+
+</html>

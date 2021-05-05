@@ -47,9 +47,12 @@ $(document).ready(function () {
 		 * Retrieves the latest prefix
 		 */
 		get_prefix() {
-			return this.prefix_log[this.prefix_log.length-1]
+			return this.prefix_log[this.prefix_log.length-1];
 		}
-
+		
+		/**
+		 * Updates the properties 'readonly' and 'showgrid' for both boards.
+		 */
 		update() {
 			this.pento_board_target.set('readonly', this.config['readonly']);
 			this.pento_board_target.set('showgrid', this.config['showgrid']);
@@ -101,7 +104,7 @@ $(document).ready(function () {
 		 * @param {copy of target shapes} shapes
 		 */
 		generate_params(rand_shape, action_type, shapes) {
-			var max = 400;
+			var max = this.pento_config.board_size;
 			var min = 0;
 			var rotations = [45, 90, 135, 180, 225, 270, 315];
 
@@ -136,7 +139,7 @@ $(document).ready(function () {
 				this.pento_board_initial.place_shape(shape);
 			}
 
-			var actions = this.pento_board_initial.get_actions();
+			var actions = this.pento_board_initial.actions;
 			for (var i = 0; i < nactions; i++) {
 				// select shape
 				var shape_index = Math.floor(Math.random() * shapes.length);
@@ -159,7 +162,7 @@ $(document).ready(function () {
 						i -= 1;
 						continue;
 					}
-					//this.pento_board_initial.draw()
+					this.pento_board_initial.draw()
 					pento_generator_actions[random_shape.name].push(random_action);
 					this._fire_event(this.events[1], {'shape': random_shape, 'action': random_action, 'params': params});
 					
@@ -178,7 +181,7 @@ $(document).ready(function () {
 		 * Generates target and initial state
 		 */
 		generate() {
-			// remove all previously generated shapesx
+			// remove all previously generated shapes
 			this.pento_board_target.destroy_all_shapes();
 			this.pento_board_initial.destroy_all_shapes();
 
@@ -189,7 +192,7 @@ $(document).ready(function () {
 			if (!this.config['colors']) {
 				var colors = this.pento_config.get_pento_colors();
 			} else {
-				var colors = ['lightblue'];
+				var colors = ['lightblue']; // all pieces get same color
 			}
 
 			var pento_types = this.pento_config.get_pento_types();
@@ -208,10 +211,12 @@ $(document).ready(function () {
 			var flip_counter = 0;
 			var generated_shapes = [];
 			var r = 0;
-			while (r < this.config['nshapes']) {
+			var nshapes = this.config['all_selected_once'] ? pento_types.length : this.config['nshapes'];
+			
+			while (r < nshapes) {
 
-				// generate random types
-				var rand_type = pento_types[Math.floor(Math.random() * pento_types.length)];
+				// generate random type or use each type exactly once
+				var rand_type = this.config['all_selected_once'] ? pento_types[r] : pento_types[Math.floor(Math.random() * pento_types.length)];
 				var rand_color = colors[Math.floor(Math.random() * colors.length)];
 
 				// random position
@@ -240,7 +245,6 @@ $(document).ready(function () {
 
 				if (this.pento_board_target.isValidAction('place', new_shape, {})) {
 					this.pento_board_target.place_shape(new_shape);
-					// why increment id here? same shape
 					generated_shapes.push(new_shape.copy(r));
 					r++;
 

@@ -1,2 +1,6 @@
 .DS_Store
 .vscode/launch.json
+*.ini
+php/save_userdata.php
+php/send_userdata.php
+resources/data_collection/

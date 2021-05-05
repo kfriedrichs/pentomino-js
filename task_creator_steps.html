@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	
+	<link rel="icon" href="favicon.ico">
+
+	<title>Task creator with steps</title>
+	<meta name="description" content="Pentomino Framework">
+	<meta name="author" content="clpresearch">
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="pentomino container">
+		<div class="row">
+			<div class="four columns">
+				<div class="row with-margin">
+					<h5>Steps</h5>
+					<hr>
+					<div class="snapshots"></div>
+				</div>
+			</div>
+			<div class="four columns">
+				<div class="row with-margin">
+					<h5>Boards</h5>
+					<hr>
+					<div class="row">
+						<div class="twelf columns">
+							<h6>Initial</h6>
+							<canvas id="initial"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="twelf columns">
+							<h6>Target</h6>
+							<canvas id="target"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="twelf columns">
+							<button class="save btn" onclick="export_as_png()">Export PNG</button>
+							<button class="save btn" onclick="export_as_json()">Export JSON</button>
+
+							<button class="save btn" onclick="import_json()">Import JSON</button>
+							<input id="target_file" type="file" style="visibility: hidden;"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="four columns">
+				<div class="row with-margin">
+					<h5>Configuration</h5>
+					<div class="form">
+						<hr>
+						<p>Target State Config</p>
+						<label class="config">Number of shapes</label>
+						<input id="nshapes" type="text" value="0" />
+
+						<label class="config">Number of rotations</label>
+						<input id="nrotations" type="text" value="0" />
+
+						<label class="config">Number of connections</label>
+						<input id="nconnections" type="text" value="0" />
+						
+						<label class="config">Number of flips</label>
+						<input id="nflips" type="text" value="0" />
+
+						<hr>
+						<p>Initial State Config</p>
+						<label class="config">Number of changes</label>
+						<input id="nchanges" type="text" value="0" />
+
+						<hr>
+						<p>Additional Config</p>
+						<label class="config">Monocolor</label>
+						<input id="colors" type="checkbox" />
+
+						<br>
+						<label class="config">Monoshape</label>
+						<input id="shapes" type="checkbox" />
+
+						<br>
+						<label class="config">Read-only</label>
+						<input id="readonly" type="checkbox" />
+
+						<br>
+						<label class="config">Show Grid</label>
+						<input id="showgrid" type="checkbox" />
+
+						<hr>
+						<p>Available shapes<button class="toggle btn" onclick="toggle_shape_select()">Switch selection</button></p>
+						<div class="row shape-select">
+						</div>
+
+					</div>
+					<hr>
+					<div class="complexity-container">
+						<h6>Minimum Required Actions</h6>
+						<b class="complexity-actions">0</b>
+						<button class="generate btn" onclick="generate()">Generate</button>
+					</div>
+					<hr>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!--External Dependencies-->
+	<!--Version 3.3.1-->
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jcanvas.min.js"></script>
+	<script src='./js/FileSaver.js'></script>
+
+	<!--Pento Framework-->
+	<script src='./js/pento/pento_config.js'></script>
+	<script src='./js/pento/pento_block.js'></script>
+	<script src='./js/pento/pento_shape.js'></script>
+	<script src='./js/pento/pento_render.js'></script>
+	<script src='./js/pento/pento_board.js'></script>
+	<script src='./js/pento/pento_generator.js'></script>
+
+	<!--Editor specific file-->
+	<script src='./js/task_creator_steps.js'></script>
+</body>
+
+</html>

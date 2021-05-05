@@ -1,7 +1,254 @@
 {
   "initial": {
-    "I0lightblue": {
+    "F0lightblue": {
       "id": 0,
+      "x": 280,
+      "y": 120,
+      "type": "F",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 286,
+          "y": 120
+        }
+      ],
+      "name": "F0lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              20
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              -20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "I1lightblue": {
+      "id": 1,
       "x": 120,
       "y": 180,
       "type": "I",
@@ -11,8 +258,8 @@
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -23,11 +270,6 @@
           0,
           1,
           0,
-          0
-        ],
-        [
-          0,
-          1,
           0,
           0
         ],
@@ -35,17 +277,39 @@
           0,
           1,
           0,
+          0,
           0
         ],
         [
           0,
           1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
           0,
           0
         ]
       ],
-      "changes": [],
-      "name": "I0lightblue",
+      "changes": [
+        {
+          "name": "move",
+          "x": 123,
+          "y": 186
+        }
+      ],
+      "name": "I1lightblue",
       "blocks": [
         {
           "x": 0,
@@ -184,6 +448,41 @@
             2,
             0.5,
             2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 80,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              80
+            ],
+            [
+              20,
+              80
+            ],
+            [
+              20,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
             2
           ]
         }
@@ -206,8 +505,8 @@
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -218,11 +517,6 @@
           0,
           1,
           0,
-          0
-        ],
-        [
-          0,
-          1,
           0,
           0
         ],
@@ -230,11 +524,27 @@
           0,
           1,
           0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
           0
         ],
         [
           1,
           1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
           0,
           0
         ]
@@ -242,8 +552,8 @@
       "changes": [
         {
           "name": "move",
-          "x": 61,
-          "y": 152
+          "x": 63,
+          "y": 147
         }
       ],
       "name": "L2lightblue",
@@ -431,19 +741,19 @@
       "shadowY": -1,
       "shadowBlur": 3
     },
-    "W5lightblue": {
-      "id": 5,
-      "x": 200,
+    "N3lightblue": {
+      "id": 3,
+      "x": 40,
       "y": 280,
-      "type": "W",
+      "type": "N",
       "color": "lightblue",
       "rotation": 0,
       "is_mirrored": false,
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -452,261 +762,48 @@
       "_internal_grid": [
         [
           0,
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          0,
           1,
-          1
-        ],
-        [
           0,
-          1,
-          1,
+          0,
           0
         ],
         [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
           0,
           0,
           0,
           0
         ]
       ],
-      "changes": [],
-      "name": "W5lightblue",
-      "blocks": [
+      "changes": [
         {
-          "x": 0,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              40
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              20,
-              60
-            ],
-            [
-              0,
-              60
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              40
-            ],
-            [
-              40,
-              40
-            ],
-            [
-              40,
-              60
-            ],
-            [
-              20,
-              60
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              20
-            ],
-            [
-              40,
-              20
-            ],
-            [
-              40,
-              40
-            ],
-            [
-              20,
-              40
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            0.5
-          ]
-        },
-        {
-          "x": 40,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              20
-            ],
-            [
-              60,
-              20
-            ],
-            [
-              60,
-              40
-            ],
-            [
-              40,
-              40
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": 40,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              0
-            ],
-            [
-              60,
-              0
-            ],
-            [
-              60,
-              20
-            ],
-            [
-              40,
-              20
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            2,
-            0.5
-          ]
+          "name": "move",
+          "x": 44,
+          "y": 285
         }
       ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "Y7lightblue": {
-      "id": 7,
-      "x": 200,
-      "y": 160,
-      "type": "Y",
-      "color": "lightblue",
-      "rotation": 0,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          1,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ]
-      ],
-      "changes": [],
-      "name": "Y7lightblue",
+      "name": "N3lightblue",
       "blocks": [
         {
           "x": 0,
@@ -772,7 +869,7 @@
             ]
           ],
           "_edge_style": [
-            0.5,
+            2,
             0.5,
             2,
             0.5
@@ -809,12 +906,47 @@
           "_edge_style": [
             2,
             0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              40
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              20,
+              60
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
             2,
             0.5
           ]
         },
         {
-          "x": 0,
+          "x": 20,
           "y": 60,
           "width": 20,
           "height": 20,
@@ -825,19 +957,19 @@
           "shape_center_y": 20,
           "_vertices": [
             [
-              0,
-              60
-            ],
-            [
               20,
               60
             ],
             [
-              20,
+              40,
+              60
+            ],
+            [
+              40,
               80
             ],
             [
-              0,
+              20,
               80
             ]
           ],
@@ -846,6 +978,218 @@
             0.5,
             2,
             2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "P4lightblue": {
+      "id": 4,
+      "x": 340,
+      "y": 220,
+      "type": "P",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 340,
+          "y": 227
+        }
+      ],
+      "name": "P4lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
           ]
         },
         {
@@ -878,7 +1222,7 @@
           ],
           "_edge_style": [
             2,
-            2,
+            0.5,
             0.5,
             2
           ]
@@ -891,19 +1235,266 @@
       "shadowY": -1,
       "shadowBlur": 3
     },
-    "X9lightblue": {
-      "id": 9,
-      "x": 200,
-      "y": 40,
-      "type": "X",
+    "T5lightblue": {
+      "id": 5,
+      "x": 120,
+      "y": 80,
+      "type": "T",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 132,
+          "y": 85
+        }
+      ],
+      "name": "T5lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": -20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -20,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              -20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              0
+            ],
+            [
+              40,
+              0
+            ],
+            [
+              40,
+              20
+            ],
+            [
+              20,
+              20
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            2,
+            2
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "U6lightblue": {
+      "id": 6,
+      "x": 120,
+      "y": 300,
+      "type": "U",
       "color": "lightblue",
       "rotation": 90,
       "is_mirrored": false,
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -914,9 +1505,11 @@
           0,
           1,
           0,
+          1,
           0
         ],
         [
+          0,
           1,
           1,
           1,
@@ -924,20 +1517,144 @@
         ],
         [
           0,
-          1,
+          0,
+          0,
           0,
           0
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
           0,
           0,
           0,
           0
         ]
       ],
-      "changes": [],
-      "name": "X9lightblue",
+      "changes": [
+        {
+          "name": "move",
+          "x": 120,
+          "y": 302
+        },
+        {
+          "name": "rotate",
+          "angle": 0
+        }
+      ],
+      "name": "U6lightblue",
       "blocks": [
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 90,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              19.999999999999996,
+              0
+            ],
+            [
+              20,
+              20
+            ],
+            [
+              0,
+              20.000000000000004
+            ],
+            [
+              -3.552713678800501e-15,
+              0
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 90,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
+            ],
+            [
+              0,
+              20.000000000000004
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 90,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              40
+            ],
+            [
+              20.000000000000004,
+              60
+            ],
+            [
+              0,
+              60
+            ],
+            [
+              0,
+              40
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
         {
           "x": 0,
           "y": 0,
@@ -974,8 +1691,8 @@
           ]
         },
         {
-          "x": 0,
-          "y": 20,
+          "x": 40,
+          "y": 0,
           "width": 20,
           "height": 20,
           "color": "lightblue",
@@ -985,7 +1702,616 @@
           "shape_center_y": 20,
           "_vertices": [
             [
-              19.999999999999996,
+              40,
+              40
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              20.000000000000004,
+              60
+            ],
+            [
+              20,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "V7lightblue": {
+      "id": 7,
+      "x": 300,
+      "y": 300,
+      "type": "V",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 301,
+          "y": 303
+        }
+      ],
+      "name": "V7lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              40
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              20,
+              60
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              40,
+              40
+            ],
+            [
+              60,
+              40
+            ],
+            [
+              60,
+              60
+            ],
+            [
+              40,
+              60
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 40,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              40,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              60,
+              20
+            ],
+            [
+              40,
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              40,
+              20
+            ],
+            [
+              60,
+              20
+            ],
+            [
+              60,
+              40
+            ],
+            [
+              40,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            0.5,
+            2,
+            0.5
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "W8lightblue": {
+      "id": 8,
+      "x": 200,
+      "y": 280,
+      "type": "W",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 207,
+          "y": 285
+        },
+        {
+          "name": "rotate",
+          "angle": 0
+        }
+      ],
+      "name": "W8lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              -7.105427357601002e-15,
+              40
+            ],
+            [
+              19.99999999999999,
+              40
+            ],
+            [
+              19.99999999999998,
+              60
+            ],
+            [
+              -1.4210854715202004e-14,
+              59.99999999999999
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 40,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              19.99999999999999,
+              40
+            ],
+            [
+              40,
+              40.00000000000001
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              19.99999999999998,
+              60
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              20,
+              20
+            ],
+            [
+              40,
+              20.00000000000001
+            ],
+            [
+              40,
+              40.00000000000001
+            ],
+            [
+              19.99999999999999,
+              40
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              40,
+              20.00000000000001
+            ],
+            [
+              60,
+              20.00000000000002
+            ],
+            [
+              59.99999999999999,
+              40.000000000000014
+            ],
+            [
+              40,
+              40.00000000000001
+            ]
+          ],
+          "_edge_style": [
+            0.5,
+            0.5,
+            2,
+            2
+          ]
+        },
+        {
+          "x": 40,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              40.00000000000001,
+              3.552713678800501e-15
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              60,
+              20.00000000000002
+            ],
+            [
+              40,
+              20.00000000000001
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        }
+      ],
+      "block_size": 20,
+      "connected": [],
+      "shadowColor": "transparent",
+      "shadowX": 1,
+      "shadowY": -1,
+      "shadowBlur": 3
+    },
+    "X9lightblue": {
+      "id": 9,
+      "x": 180,
+      "y": 20,
+      "type": "X",
+      "color": "lightblue",
+      "rotation": 0,
+      "is_mirrored": false,
+      "writable": false,
+      "active": false,
+      "_internal_grid_size": [
+        5,
+        5
+      ],
+      "_internal_grid_shifts": [
+        1,
+        0
+      ],
+      "_internal_grid": [
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "changes": [
+        {
+          "name": "move",
+          "x": 182,
+          "y": 25
+        }
+      ],
+      "name": "X9lightblue",
+      "blocks": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              20,
               0
             ],
             [
@@ -994,11 +2320,42 @@
             ],
             [
               0,
-              20.000000000000004
+              20
+            ]
+          ],
+          "_edge_style": [
+            2,
+            2,
+            2,
+            0.5
+          ]
+        },
+        {
+          "x": 0,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "color": "lightblue",
+          "border_color": "black",
+          "rotation": 0,
+          "shape_center_x": 20,
+          "shape_center_y": 20,
+          "_vertices": [
+            [
+              0,
+              20
             ],
             [
-              -3.552713678800501e-15,
-              0
+              20,
+              20
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              0,
+              40
             ]
           ],
           "_edge_style": [
@@ -1015,25 +2372,25 @@
           "height": 20,
           "color": "lightblue",
           "border_color": "black",
-          "rotation": 90,
+          "rotation": 0,
           "shape_center_x": 20,
           "shape_center_y": 20,
           "_vertices": [
             [
-              -3.552713678800501e-15,
-              0
+              0,
+              40
+            ],
+            [
+              20,
+              40
+            ],
+            [
+              20,
+              60
             ],
             [
               0,
-              20.000000000000004
-            ],
-            [
-              -20,
-              20.000000000000007
-            ],
-            [
-              -20,
-              0
+              60
             ]
           ],
           "_edge_style": [
@@ -1050,25 +2407,25 @@
           "height": 20,
           "color": "lightblue",
           "border_color": "black",
-          "rotation": 90,
+          "rotation": 0,
           "shape_center_x": 20,
           "shape_center_y": 20,
           "_vertices": [
             [
-              19.999999999999993,
-              -20
+              -20,
+              20
             ],
             [
-              19.999999999999996,
-              0
+              0,
+              20
             ],
             [
-              -3.552713678800501e-15,
-              0
+              0,
+              40
             ],
             [
-              -7.105427357601002e-15,
-              -20
+              -20,
+              40
             ]
           ],
           "_edge_style": [
@@ -1085,7 +2442,7 @@
           "height": 20,
           "color": "lightblue",
           "border_color": "black",
-          "rotation": 90,
+          "rotation": 0,
           "shape_center_x": 20,
           "shape_center_y": 20,
           "_vertices": [
@@ -1094,16 +2451,16 @@
               20
             ],
             [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
               20,
               40
-            ],
-            [
-              0,
-              40
-            ],
-            [
-              0,
-              20.000000000000004
             ]
           ],
           "_edge_style": [
@@ -1121,249 +2478,19 @@
       "shadowY": -1,
       "shadowBlur": 3
     },
-    "V13lightblue": {
-      "id": 13,
-      "x": 300,
-      "y": 300,
-      "type": "V",
+    "Y10lightblue": {
+      "id": 10,
+      "x": 200,
+      "y": 160,
+      "type": "Y",
       "color": "lightblue",
       "rotation": 0,
       "is_mirrored": false,
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          0,
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          1,
-          1,
-          1
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "changes": [],
-      "name": "V13lightblue",
-      "blocks": [
-        {
-          "x": 0,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              40
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              20,
-              60
-            ],
-            [
-              0,
-              60
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              40
-            ],
-            [
-              40,
-              40
-            ],
-            [
-              40,
-              60
-            ],
-            [
-              20,
-              60
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 40,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              40
-            ],
-            [
-              60,
-              40
-            ],
-            [
-              60,
-              60
-            ],
-            [
-              40,
-              60
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": 40,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              0
-            ],
-            [
-              60,
-              0
-            ],
-            [
-              60,
-              20
-            ],
-            [
-              40,
-              20
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 40,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              20
-            ],
-            [
-              60,
-              20
-            ],
-            [
-              60,
-              40
-            ],
-            [
-              40,
-              40
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            2,
-            0.5
-          ]
-        }
-      ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "N15lightblue": {
-      "id": 15,
-      "x": 40,
-      "y": 280,
-      "type": "N",
-      "color": "lightblue",
-      "rotation": 0,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -1374,35 +2501,46 @@
           0,
           1,
           0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
           0
         ],
         [
           0,
           1,
           0,
+          0,
           0
         ],
         [
           0,
           1,
-          1,
+          0,
+          0,
           0
         ],
         [
           0,
           0,
-          1,
+          0,
+          0,
           0
         ]
       ],
       "changes": [
         {
           "name": "move",
-          "x": 46,
-          "y": 295
+          "x": 206,
+          "y": 164
         }
       ],
-      "name": "N15lightblue",
+      "name": "Y10lightblue",
       "blocks": [
         {
           "x": 0,
@@ -1468,7 +2606,7 @@
             ]
           ],
           "_edge_style": [
-            2,
+            0.5,
             0.5,
             2,
             0.5
@@ -1505,47 +2643,12 @@
           "_edge_style": [
             2,
             0.5,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              40
-            ],
-            [
-              40,
-              40
-            ],
-            [
-              40,
-              60
-            ],
-            [
-              20,
-              60
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
             2,
             0.5
           ]
         },
         {
-          "x": 20,
+          "x": 0,
           "y": 60,
           "width": 20,
           "height": 20,
@@ -1556,876 +2659,20 @@
           "shape_center_y": 20,
           "_vertices": [
             [
+              0,
+              60
+            ],
+            [
               20,
               60
-            ],
-            [
-              40,
-              60
-            ],
-            [
-              40,
-              80
             ],
             [
               20,
               80
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            2,
-            2
-          ]
-        }
-      ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "U16lightblue": {
-      "id": 16,
-      "x": 120,
-      "y": 300,
-      "type": "U",
-      "color": "lightblue",
-      "rotation": 90,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          0,
-          1,
-          0,
-          1
-        ],
-        [
-          0,
-          1,
-          1,
-          1
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "changes": [
-        {
-          "name": "move",
-          "x": 129,
-          "y": 312
-        }
-      ],
-      "name": "U16lightblue",
-      "blocks": [
-        {
-          "x": 0,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 90,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              19.999999999999993,
-              0
-            ],
-            [
-              20,
-              20
             ],
             [
               0,
-              20.000000000000014
-            ],
-            [
-              -7.105427357601002e-15,
-              3.552713678800501e-15
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 90,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              20
-            ],
-            [
-              20.00000000000001,
-              40
-            ],
-            [
-              3.552713678800501e-15,
-              40.00000000000001
-            ],
-            [
-              0,
-              20.000000000000014
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 40,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 90,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20.00000000000001,
-              40
-            ],
-            [
-              20.00000000000002,
-              60
-            ],
-            [
-              0,
-              60
-            ],
-            [
-              3.552713678800501e-15,
-              40.00000000000001
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": 0,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 90,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40,
-              -7.105427357601002e-15
-            ],
-            [
-              40,
-              19.99999999999999
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              19.999999999999993,
-              0
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 40,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 90,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              40.00000000000001,
-              40
-            ],
-            [
-              40.000000000000014,
-              59.99999999999999
-            ],
-            [
-              20.00000000000002,
-              60
-            ],
-            [
-              20.00000000000001,
-              40
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            2,
-            0.5
-          ]
-        }
-      ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "P17lightblue": {
-      "id": 17,
-      "x": 340,
-      "y": 220,
-      "type": "P",
-      "color": "lightblue",
-      "rotation": 0,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          1,
-          1,
-          0,
-          0
-        ],
-        [
-          1,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "changes": [],
-      "name": "P17lightblue",
-      "blocks": [
-        {
-          "x": 0,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              0
-            ],
-            [
-              20,
-              0
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              0,
-              20
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              20
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              0,
-              40
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              40
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              20,
-              60
-            ],
-            [
-              0,
-              60
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": -20,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              -20,
-              0
-            ],
-            [
-              0,
-              0
-            ],
-            [
-              0,
-              20
-            ],
-            [
-              -20,
-              20
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            0.5
-          ]
-        },
-        {
-          "x": -20,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              -20,
-              20
-            ],
-            [
-              0,
-              20
-            ],
-            [
-              0,
-              40
-            ],
-            [
-              -20,
-              40
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            0.5,
-            2
-          ]
-        }
-      ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "T18lightblue": {
-      "id": 18,
-      "x": 120,
-      "y": 80,
-      "type": "T",
-      "color": "lightblue",
-      "rotation": 0,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          1,
-          1,
-          1,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "changes": [],
-      "name": "T18lightblue",
-      "blocks": [
-        {
-          "x": 0,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              0
-            ],
-            [
-              20,
-              0
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              0,
-              20
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            0.5,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              20
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              0,
-              40
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              40
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              20,
-              60
-            ],
-            [
-              0,
-              60
-            ]
-          ],
-          "_edge_style": [
-            2,
-            0.5,
-            2,
-            2
-          ]
-        },
-        {
-          "x": -20,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              -20,
-              0
-            ],
-            [
-              0,
-              0
-            ],
-            [
-              0,
-              20
-            ],
-            [
-              -20,
-              20
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            2
-          ]
-        },
-        {
-          "x": 20,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              0
-            ],
-            [
-              40,
-              0
-            ],
-            [
-              40,
-              20
-            ],
-            [
-              20,
-              20
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            2,
-            2
-          ]
-        }
-      ],
-      "block_size": 20,
-      "connected": [],
-      "shadowColor": "transparent",
-      "shadowX": 1,
-      "shadowY": -1,
-      "shadowBlur": 3
-    },
-    "F19lightblue": {
-      "id": 19,
-      "x": 280,
-      "y": 120,
-      "type": "F",
-      "color": "lightblue",
-      "rotation": 0,
-      "is_mirrored": false,
-      "writable": false,
-      "active": false,
-      "_internal_grid_size": [
-        4,
-        4
-      ],
-      "_internal_grid_shifts": [
-        1,
-        0
-      ],
-      "_internal_grid": [
-        [
-          0,
-          1,
-          1,
-          0
-        ],
-        [
-          1,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0
-        ]
-      ],
-      "changes": [],
-      "name": "F19lightblue",
-      "blocks": [
-        {
-          "x": 0,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              0
-            ],
-            [
-              20,
-              0
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              0,
-              20
-            ]
-          ],
-          "_edge_style": [
-            2,
-            2,
-            0.5,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 20,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              20
-            ],
-            [
-              20,
-              20
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              0,
-              40
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            0.5,
-            2,
-            0.5
-          ]
-        },
-        {
-          "x": 0,
-          "y": 40,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              0,
-              40
-            ],
-            [
-              20,
-              40
-            ],
-            [
-              20,
-              60
-            ],
-            [
-              0,
-              60
+              80
             ]
           ],
           "_edge_style": [
@@ -2469,41 +2716,6 @@
             0.5,
             2
           ]
-        },
-        {
-          "x": 20,
-          "y": 0,
-          "width": 20,
-          "height": 20,
-          "color": "lightblue",
-          "border_color": "black",
-          "rotation": 0,
-          "shape_center_x": 20,
-          "shape_center_y": 20,
-          "_vertices": [
-            [
-              20,
-              0
-            ],
-            [
-              40,
-              0
-            ],
-            [
-              40,
-              20
-            ],
-            [
-              20,
-              20
-            ]
-          ],
-          "_edge_style": [
-            0.5,
-            2,
-            2,
-            2
-          ]
         }
       ],
       "block_size": 20,
@@ -2513,8 +2725,8 @@
       "shadowY": -1,
       "shadowBlur": 3
     },
-    "Z20lightblue": {
-      "id": 20,
+    "Z11lightblue": {
+      "id": 11,
       "x": 60,
       "y": 40,
       "type": "Z",
@@ -2524,8 +2736,8 @@
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -2536,29 +2748,46 @@
           0,
           1,
           1,
+          0,
           0
         ],
         [
           0,
           1,
           0,
+          0,
           0
         ],
         [
           1,
           1,
           0,
+          0,
           0
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
           0,
           0,
           0,
           0
         ]
       ],
-      "changes": [],
-      "name": "Z20lightblue",
+      "changes": [
+        {
+          "name": "move",
+          "x": 70,
+          "y": 51
+        }
+      ],
+      "name": "Z11lightblue",
       "blocks": [
         {
           "x": 0,
@@ -2747,8 +2976,8 @@
   "task": {
     "X9lightblue": {
       "id": 9,
-      "x": 320,
-      "y": 170,
+      "x": 180,
+      "y": 180,
       "type": "X",
       "color": "lightblue",
       "rotation": 0,
@@ -2756,8 +2985,8 @@
       "writable": false,
       "active": false,
       "_internal_grid_size": [
-        4,
-        4
+        5,
+        5
       ],
       "_internal_grid_shifts": [
         1,
@@ -2768,28 +2997,45 @@
           0,
           1,
           0,
+          0,
           0
         ],
         [
           1,
           1,
           1,
+          0,
           0
         ],
         [
           0,
           1,
           0,
+          0,
           0
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
           0,
           0,
           0,
           0
         ]
       ],
-      "changes": [],
+      "changes": [
+        {
+          "name": "move",
+          "x": 195,
+          "y": 194
+        }
+      ],
       "name": "X9lightblue",
       "blocks": [
         {

@@ -1,0 +1,823 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Pentomino Board</title>
+
+	<link rel="icon" href="../favicon.ico">
+
+	<meta name="description" content="Pentomino Study 1">
+	<meta name="author" content="clpresearch">
+
+	<link rel="stylesheet" href="../css/normalize.css">
+	<link rel="stylesheet" href="../css/skeleton.css">
+	<link rel="stylesheet" href="../css/dialog-polyfill.css">
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h5>Click the described piece on the left board! <div id="timer"><span style="color:red">00:00</span></div><div id="correct_counter">Correct: <span style="color:green">0</span> / 12</div></h5>
+		<hr>
+		<div class="row">
+			<div class="eight columns">
+				<!-- 20 rows and columns with block size 20 -->
+				<canvas id="selection_board" width="550" height="550" style="border:1px solid #000000;"></canvas>
+			</div>
+			<div class="four columns">
+				<canvas id="task_board" width="300" height="300" style="border:1px solid #000000;"></canvas>
+			</div>
+			<div class="four columns">
+				<img id="elephant" src="../resources/img/elephant.png" alt="" />
+			</div>
+		</div>
+		<div id="progress_bg">
+			<div id="progress_bar">0%</div>
+		</div>
+
+		<!-- Pop-ups -->
+		<!-- Welcome screen -->
+		<dialog id="welcome">
+			<h2>Welcome to the PENTOMINO study!</h2>
+			<p>In this online study from KTH and the University of Potsdam you will assess <strong>natural language instructions</strong> to pick pentomino objects.<br>
+			It is important that you can <strong>clearly hear the spoken instructions</strong>. You may either use headphones or your computer speakers in a silent room.</p>
+			<p>You can <strong>only</strong> do the study on a computer, but not on a mobile device (no tablet or phone). It is also important that you try to make<br>
+			<strong>as few mistakes as possible</strong> in the task. If any problems occur with the interface, please let us know before you complete the task.</p>
+			<p>The study will last <strong>10-15 minutes</strong> and can be done at your home or office at your time of preference.</p>
+			<br>
+			<p>If you have any questions, do not hesitate to contact <strong>Dimos Kontogiorgos</strong> at diko @ kth.se or <strong>Jana Götze</strong> at jana.goetze @ uni-potsdam.de.<br>
+			*in collaboration with <strong>Hannah Pelikan</strong>, <strong>David Schlangen</strong> and <strong>Joakim Gustafson</strong>. <strong>Karla Friedrichs</strong> has contributed to this work.</p>
+			<br>
+			<button id="welcome_done">Continue</button>
+
+			<div id="participant_num"></div>
+			<script>
+				document.getElementById("participant_num").innerHTML = "Participant: " + PARTICIPANT;
+			</script>
+		</dialog>
+
+		<!-- Audio test -->
+		<dialog id="audiotest">
+			<h2>Mathew is speaking...</h2>
+			<p>Can you hear Mathew? You will need to follow spoken instructions. Try to find a quiet place where you won't be interrupted.</p>
+			<hr>
+			<p><strong>When Mathew stops speaking, listen to the following message and type what he said in the text box below.</strong></p>
+			<audio controls src="../resources/audio/audiotest.mp3">
+				Your current browser does not support the <code>audio</code> element. If you can, you may want to try a different browser.
+			</audio>
+			<p></p>
+			<input id="transcript" size="30" name="transcript"/> &nbsp; What did Mathew say? (Press the play button)
+			<p><strong>Unfortunately, if you can't hear the audio, you cannot take part in this study. You can also try another browser*.</strong></p>
+			<hr>
+			<p>*the study should work properly on Chrome and Firefox on Mac, Windows and Linux. It does <strong>NOT</strong> work on Safari.</p>
+			<button id="audiotest_done">Continue</button>
+		</dialog>
+
+		<!-- Consent form -->
+		<dialog id="consent">
+			<h2>Informed consent form</h2>
+			<p>In this study you will assess the suitability of instructions to pick pentomino objects in order to build an elephant shape.<br>
+			Mathew will instruct you what pieces to pick. He will then place (and may rotate/flip) the right pentominoes on the elephant.<br>
+			You can see your time and how many correct pieces you found at the top right part of your screen. You can see your<br>
+			overall progress on the bar below the boards.</p>
+			<p>It is important that you are fluent in English. The study is expected to last 10-15 minutes and is entirely voluntary.<br>
+			We collect your mouse movements and clicks as well as your responses to the questions provided.<br>
+			The questionnaire data will only be used for research purposes and may be shared with other researchers.</p>
+			<hr>
+			<label for="name">Name:</label>
+			<input id="name" name="name">
+			<br>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email">
+			<br>
+			<input type="checkbox" id="consent_agree" name="consent_agree">
+			<label for="consent_agree">I have read and understood the above information. I agree to take part in the study.</label>
+			<hr>
+			<p>How much are you willing to comply to Mathew's instructions (on Pentomino objects)?</p>
+			<label for="follow_agent1">very little</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent1">&nbsp;1<br/>
+				<input type="radio" name="follow_agent" value=1 id="follow_agent1"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent2">&nbsp;2<br/>
+  				<input type="radio" name="follow_agent" value=2 id="follow_agent2"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent3">&nbsp;3<br/>
+				<input type="radio" name="follow_agent" value=3 id="follow_agent3"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent4">&nbsp;4<br/>
+				<input type="radio" name="follow_agent" value=4 id="follow_agent4"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent5">&nbsp;5<br/>
+				<input type="radio" name="follow_agent" value=5 id="follow_agent5"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent6">&nbsp;6<br/>
+				<input type="radio" name="follow_agent" value=6 id="follow_agent6"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent7">&nbsp;7<br/>
+				<input type="radio" name="follow_agent" value=7 id="follow_agent7"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="follow_agent7">a lot</label>
+			<br><br>
+			<button id="consent_done">Submit & Continue</button>
+		</dialog>
+
+		<!-- Start Questionnaire -->
+		<dialog id="start_questionnaire">
+			<h2>Questionnaire</h2>
+			<p><strong>Here you will rate each instruction you hear.</strong></p>
+
+			<p>You will be asked if Mathew's instruction:</p>
+			<p>1. was unambiguous or ambiguous</p>
+			<p>2. was machine-like or human-like</p>
+			<p>3. had too little or too much information</p>
+			<p>4. had too little or too much effort</p>
+
+			<br>
+			<button id="start_questionnaire_done">Start</button>
+		</dialog>
+
+		<!-- Questionnaire, opens after each piece selection -->
+		<dialog id="questionnaire">
+			<h2>Questionnaire</h2>
+			<p><strong>Please rate the instruction you just heard.</strong></p>
+
+			<!-- Clarity -->
+			<p>Mathew's instruction was ...</p>
+			<label for="clear1">unambiguous</label>&nbsp;
+			<label for="clear1">&nbsp;1<br/>
+				<input type="radio" name="clear" value=1 id="clear1"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear2">&nbsp;2<br/>
+  				<input type="radio" name="clear" value=2 id="clear2"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear3">&nbsp;3<br/>
+				<input type="radio" name="clear" value=3 id="clear3"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear4">&nbsp;4<br/>
+				<input type="radio" name="clear" value=4 id="clear4"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear5">&nbsp;5<br/>
+				<input type="radio" name="clear" value=5 id="clear5"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear6">&nbsp;6<br/>
+				<input type="radio" name="clear" value=6 id="clear6"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="clear7">&nbsp;7<br/>
+				<input type="radio" name="clear" value=7 id="clear7"/>
+			</label>&nbsp;&nbsp;&nbsp;
+			<label for="clear7">ambiguous</label>
+			<br><br>
+
+			<!-- Humanlike -->
+			<p>Mathew's instruction was ...</p>
+			<label for="humanlike1">machine-like</label>&nbsp;&nbsp;&nbsp;
+			<label for="humanlike1">&nbsp;1<br/>
+				<input type="radio" name="humanlike" value=1 id="humanlike1"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike2">&nbsp;2<br/>
+				<input type="radio" name="humanlike" value=2 id="humanlike2"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike3">&nbsp;3<br/>
+				<input type="radio" name="humanlike" value=3 id="humanlike3"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike4">&nbsp;4<br/>
+				<input type="radio" name="humanlike" value=4 id="humanlike4"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike5">&nbsp;5<br/>
+				<input type="radio" name="humanlike" value=5 id="humanlike5"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike6">&nbsp;6<br/>
+				<input type="radio" name="humanlike" value=6 id="humanlike6"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="humanlike7">&nbsp;7<br/>
+				<input type="radio" name="humanlike" value=7 id="humanlike7"/>
+			</label>&nbsp;&nbsp;&nbsp;
+			<label for="humanlike7">human-like</label>
+			<br><br>
+
+			<!-- Information -->
+			<p>Mathew's instruction had ... information</p>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info1">too little</label>&nbsp;
+			<label for="info1">&nbsp;1<br/>
+				<input type="radio" name="info" value=1 id="info1"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info2">&nbsp;2<br/>
+				<input type="radio" name="info" value=2 id="info2"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info3">&nbsp;3<br/>
+				<input type="radio" name="info" value=3 id="info3"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info4">&nbsp;4<br/>
+				<input type="radio" name="info" value=4 id="info4"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info5">&nbsp;5<br/>
+				<input type="radio" name="info" value=5 id="info5"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info6">&nbsp;6<br/>
+				<input type="radio" name="info" value=6 id="info6"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="info7">&nbsp;7<br/>
+				<input type="radio" name="info" value=7 id="info7"/>
+			</label>&nbsp;&nbsp;&nbsp;
+			<label for="info7">too much</label>
+			<br><br>
+
+			<!-- Effort -->
+			<p>Mathew put ... effort in this instruction</p>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort1">too little</label>&nbsp;
+			<label for="effort1">&nbsp;1<br/>
+				<input type="radio" name="effort" value=1 id="effort1"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort2">&nbsp;2<br/>
+				<input type="radio" name="effort" value=2 id="effort2"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort3">&nbsp;3<br/>
+				<input type="radio" name="effort" value=3 id="effort3"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort4">&nbsp;4<br/>
+				<input type="radio" name="effort" value=4 id="effort4"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort5">&nbsp;5<br/>
+				<input type="radio" name="effort" value=5 id="effort5"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort6">&nbsp;6<br/>
+				<input type="radio" name="effort" value=6 id="effort6"/>
+			</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="effort7">&nbsp;7<br/>
+				<input type="radio" name="effort" value=7 id="effort7"/>
+			</label>&nbsp;&nbsp;&nbsp;
+			<label for="effort7">too much</label>
+			<br><br>
+
+			<input type="checkbox" name="task_error" id="task_error">
+			<label for="task_error">&nbsp;Something went wrong</label>
+			<br>
+			<button id="questionnaire_done">Submit</button>
+		</dialog>
+
+		<!-- Demographic questionnaire -->
+		<dialog id="demographic">
+			<h2>Almost done!</h2>
+				<p>Thank you for taking part in our study. You completed all tasks.</p>
+				<p>To finish, please answer the following questions and click on <strong>Submit</strong>.</p>
+
+				<!-- Age -->
+				<label for="age">Age:</label>
+				<input id="age" name="age">
+				<br>
+
+				<!-- Gender -->
+				<label for="gender">Gender:</label>
+				<input id="gender" name="gender">
+				<br>
+
+				<!-- Education -->
+				<label for="education">Highest level of completed education:</label>
+				<input id="education" name="education">
+				<br>
+
+				<!-- Language -->
+				<label for="language">Native language:</label>
+				<input id="language" name="language">
+				<br>
+
+				<!-- Fluency -->
+				<p>How fluent are you in English?</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent1">limited fluency</label>&nbsp;&nbsp;&nbsp;
+				<label for="fluent1">&nbsp;1<br/>
+					<input type="radio" name="fluent" value=1 id="fluent1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent2">&nbsp;2<br/>
+					<input type="radio" name="fluent" value=2 id="fluent2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent3">&nbsp;3<br/>
+					<input type="radio" name="fluent" value=3 id="fluent3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent4">&nbsp;4<br/>
+					<input type="radio" name="fluent" value=4 id="fluent4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent5">&nbsp;5<br/>
+					<input type="radio" name="fluent" value=5 id="fluent5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent6">&nbsp;6<br/>
+					<input type="radio" name="fluent" value=6 id="fluent6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="fluent7">&nbsp;7<br/>
+					<input type="radio" name="fluent" value=7 id="fluent7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="fluent3">full fluency</label>
+				<br><br>
+
+				<!-- Understanding -->
+				<p>It was ... to understand Mathew's instructions.</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding1">difficult</label>&nbsp;&nbsp;&nbsp;
+				<label for="understanding1">&nbsp;1<br/>
+					<input type="radio" name="understanding" value=1 id="understanding1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding2">&nbsp;2<br/>
+					<input type="radio" name="understanding" value=2 id="understanding2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding3">&nbsp;3<br/>
+					<input type="radio" name="understanding" value=3 id="understanding3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding4">&nbsp;4<br/>
+					<input type="radio" name="understanding" value=4 id="understanding4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding5">&nbsp;5<br/>
+					<input type="radio" name="understanding" value=5 id="understanding5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding6">&nbsp;6<br/>
+					<input type="radio" name="understanding" value=6 id="understanding6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="understanding7">&nbsp;7<br/>
+					<input type="radio" name="understanding" value=7 id="understanding7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="understanding7">easy</label>
+				<br><br>
+
+				<!-- Complete -->
+				<p>Mathew's instructions were ...</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete1">incomplete</label>&nbsp;&nbsp;&nbsp;
+				<label for="complete1">&nbsp;1<br/>
+					<input type="radio" name="complete" value=1 id="complete1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete2">&nbsp;2<br/>
+					<input type="radio" name="complete" value=2 id="complete2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete3">&nbsp;3<br/>
+					<input type="radio" name="complete" value=3 id="complete3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete4">&nbsp;4<br/>
+					<input type="radio" name="complete" value=4 id="complete4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete5">&nbsp;5<br/>
+					<input type="radio" name="complete" value=5 id="complete5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete6">&nbsp;6<br/>
+					<input type="radio" name="complete" value=6 id="complete6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="complete7">&nbsp;7<br/>
+					<input type="radio" name="complete" value=7 id="complete7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="complete7">complete</label>
+				<br>
+
+				<!-- Helpful -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful1">unhelpful</label>&nbsp;&nbsp;&nbsp;
+				<label for="helpful1">&nbsp;1<br/>
+					<input type="radio" name="helpful" value=1 id="helpful1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful2">&nbsp;2<br/>
+					<input type="radio" name="helpful" value=2 id="helpful2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful3">&nbsp;3<br/>
+					<input type="radio" name="helpful" value=3 id="helpful3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful4">&nbsp;4<br/>
+					<input type="radio" name="helpful" value=4 id="helpful4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful5">&nbsp;5<br/>
+					<input type="radio" name="helpful" value=5 id="helpful5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful6">&nbsp;6<br/>
+					<input type="radio" name="helpful" value=6 id="helpful6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="helpful7">&nbsp;7<br/>
+					<input type="radio" name="helpful" value=7 id="helpful7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="helpful7">helpful</label>
+				<br>
+
+				<!-- Collaboration -->
+				<label for="collaborative1">non-collaborative</label>&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative1">&nbsp;1<br/>
+					<input type="radio" name="collaborative" value=1 id="collaborative1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative2">&nbsp;2<br/>
+					<input type="radio" name="collaborative" value=2 id="collaborative2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative3">&nbsp;3<br/>
+					<input type="radio" name="collaborative" value=3 id="collaborative3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative4">&nbsp;4<br/>
+					<input type="radio" name="collaborative" value=4 id="collaborative4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative5">&nbsp;5<br/>
+					<input type="radio" name="collaborative" value=5 id="collaborative5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative6">&nbsp;6<br/>
+					<input type="radio" name="collaborative" value=6 id="collaborative6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="collaborative7">&nbsp;7<br/>
+					<input type="radio" name="collaborative" value=7 id="collaborative7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="collaborative3">collaborative</label>
+				<br><br>
+
+				<!-- Likeability 1 -->
+				<p>Please rate your impression of Mathew on these scales</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like1">dislike</label>&nbsp;&nbsp;&nbsp;
+				<label for="like1">&nbsp;1<br/>
+					<input type="radio" name="like" value=1 id="like1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like2">&nbsp;2<br/>
+					<input type="radio" name="like" value=2 id="like2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like3">&nbsp;3<br/>
+					<input type="radio" name="like" value=3 id="like3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like4">&nbsp;4<br/>
+					<input type="radio" name="like" value=4 id="like4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like5">&nbsp;5<br/>
+					<input type="radio" name="like" value=5 id="like5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like6">&nbsp;6<br/>
+					<input type="radio" name="like" value=6 id="like6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="like7">&nbsp;7<br/>
+					<input type="radio" name="like" value=7 id="like7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="like7">like</label>
+				<br>
+
+				<!-- Likeability 2 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly1">unfriendly</label>&nbsp;&nbsp;&nbsp;
+				<label for="friendly1">&nbsp;1<br/>
+					<input type="radio" name="friendly" value=1 id="friendly1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly2">&nbsp;2<br/>
+					<input type="radio" name="friendly" value=2 id="friendly2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly3">&nbsp;3<br/>
+					<input type="radio" name="friendly" value=3 id="friendly3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly4">&nbsp;4<br/>
+					<input type="radio" name="friendly" value=4 id="friendly4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly5">&nbsp;5<br/>
+					<input type="radio" name="friendly" value=5 id="friendly5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly6">&nbsp;6<br/>
+					<input type="radio" name="friendly" value=6 id="friendly6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="friendly7">&nbsp;7<br/>
+					<input type="radio" name="friendly" value=7 id="friendly7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="friendly3">friendly</label>
+				<br>
+
+				<!-- Likeability 3 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind1">unkind</label>&nbsp;&nbsp;&nbsp;
+				<label for="kind1">&nbsp;1<br/>
+					<input type="radio" name="kind" value=1 id="kind1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind2">&nbsp;2<br/>
+					<input type="radio" name="kind" value=2 id="kind2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind3">&nbsp;3<br/>
+					<input type="radio" name="kind" value=3 id="kind3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind4">&nbsp;4<br/>
+					<input type="radio" name="kind" value=4 id="kind4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind5">&nbsp;5<br/>
+					<input type="radio" name="kind" value=5 id="kind5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind6">&nbsp;6<br/>
+					<input type="radio" name="kind" value=6 id="kind6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="kind7">&nbsp;7<br/>
+					<input type="radio" name="kind" value=7 id="kind7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="kind7">kind</label>
+				<br>
+
+				<!-- Likeability 4 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant1">unpleasant</label>&nbsp;&nbsp;&nbsp;
+				<label for="pleasant1">&nbsp;1<br/>
+					<input type="radio" name="pleasant" value=1 id="pleasant1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant2">&nbsp;2<br/>
+					<input type="radio" name="pleasant" value=2 id="pleasant2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant3">&nbsp;3<br/>
+					<input type="radio" name="pleasant" value=3 id="pleasant3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant4">&nbsp;4<br/>
+					<input type="radio" name="pleasant" value=4 id="pleasant4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant5">&nbsp;5<br/>
+					<input type="radio" name="pleasant" value=5 id="pleasant5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant6">&nbsp;6<br/>
+					<input type="radio" name="pleasant" value=6 id="pleasant6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="pleasant7">&nbsp;7<br/>
+					<input type="radio" name="pleasant" value=7 id="pleasant7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="pleasant7">pleasant</label>
+				<br>
+
+				<!-- Likeability 5 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice1">awful</label>&nbsp;&nbsp;&nbsp;
+				<label for="nice1">&nbsp;1<br/>
+					<input type="radio" name="nice" value=1 id="nice1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice2">&nbsp;2<br/>
+					<input type="radio" name="nice" value=2 id="nice2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice3">&nbsp;3<br/>
+					<input type="radio" name="nice" value=3 id="nice3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice4">&nbsp;4<br/>
+					<input type="radio" name="nice" value=4 id="nice4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice5">&nbsp;5<br/>
+					<input type="radio" name="nice" value=5 id="nice5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice6">&nbsp;6<br/>
+					<input type="radio" name="nice" value=6 id="nice6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="nice7">&nbsp;7<br/>
+					<input type="radio" name="nice" value=7 id="nice7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="nice7">nice</label>
+				<br><br>
+
+				<!-- Intelligence 1 -->
+				<p>Please rate your impression of Mathew on these scales</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent1">incompetent</label>&nbsp;&nbsp;&nbsp;
+				<label for="competent1">&nbsp;1<br/>
+					<input type="radio" name="competent" value=1 id="competent1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent2">&nbsp;2<br/>
+					<input type="radio" name="competent" value=2 id="competent2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent3">&nbsp;3<br/>
+					<input type="radio" name="competent" value=3 id="competent3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent4">&nbsp;4<br/>
+					<input type="radio" name="competent" value=4 id="competent4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent5">&nbsp;5<br/>
+					<input type="radio" name="competent" value=5 id="competent5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent6">&nbsp;6<br/>
+					<input type="radio" name="competent" value=6 id="competent6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="competent7">&nbsp;7<br/>
+					<input type="radio" name="competent" value=7 id="competent7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="competent7">competent</label>
+				<br>
+
+				<!-- Intelligence 2 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable1">ignorant</label>&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable1">&nbsp;1<br/>
+					<input type="radio" name="knowledgeable" value=1 id="knowledgeable1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable2">&nbsp;2<br/>
+					<input type="radio" name="knowledgeable" value=2 id="knowledgeable2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable3">&nbsp;3<br/>
+					<input type="radio" name="knowledgeable" value=3 id="knowledgeable3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable4">&nbsp;4<br/>
+					<input type="radio" name="knowledgeable" value=4 id="knowledgeable4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable5">&nbsp;5<br/>
+					<input type="radio" name="knowledgeable" value=5 id="knowledgeable5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable6">&nbsp;6<br/>
+					<input type="radio" name="knowledgeable" value=6 id="knowledgeable6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable7">&nbsp;7<br/>
+					<input type="radio" name="knowledgeable" value=7 id="knowledgeable7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="knowledgeable7">knowledgeable</label>
+				<br>
+
+				<!-- Intelligence 3 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible1">irresponsible</label>&nbsp;&nbsp;&nbsp;
+				<label for="responsible1">&nbsp;1<br/>
+					<input type="radio" name="responsible" value=1 id="responsible1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible2">&nbsp;2<br/>
+					<input type="radio" name="responsible" value=2 id="responsible2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible3">&nbsp;3<br/>
+					<input type="radio" name="responsible" value=3 id="responsible3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible4">&nbsp;4<br/>
+					<input type="radio" name="responsible" value=4 id="responsible4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible5">&nbsp;5<br/>
+					<input type="radio" name="responsible" value=5 id="responsible5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible6">&nbsp;6<br/>
+					<input type="radio" name="responsible" value=6 id="responsible6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="responsible7">&nbsp;7<br/>
+					<input type="radio" name="responsible" value=7 id="responsible7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="responsible7">responsible</label>
+				<br>
+
+				<!-- Intelligence 4 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent1">unintelligent</label>&nbsp;&nbsp;&nbsp;
+				<label for="intelligent1">&nbsp;1<br/>
+					<input type="radio" name="intelligent" value=1 id="intelligent1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent2">&nbsp;2<br/>
+					<input type="radio" name="intelligent" value=2 id="intelligent2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent3">&nbsp;3<br/>
+					<input type="radio" name="intelligent" value=3 id="intelligent3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent4">&nbsp;4<br/>
+					<input type="radio" name="intelligent" value=4 id="intelligent4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent5">&nbsp;5<br/>
+					<input type="radio" name="intelligent" value=5 id="intelligent5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent6">&nbsp;6<br/>
+					<input type="radio" name="intelligent" value=6 id="intelligent6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="intelligent7">&nbsp;7<br/>
+					<input type="radio" name="intelligent" value=7 id="intelligent7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="intelligent7">intelligent</label>
+				<br>
+
+				<!-- Intelligence 5 -->
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible1">foolish</label>&nbsp;&nbsp;&nbsp;
+				<label for="sensible1">&nbsp;1<br/>
+					<input type="radio" name="sensible" value=1 id="sensible1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible2">&nbsp;2<br/>
+					<input type="radio" name="sensible" value=2 id="sensible2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible3">&nbsp;3<br/>
+					<input type="radio" name="sensible" value=3 id="sensible3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible4">&nbsp;4<br/>
+					<input type="radio" name="sensible" value=4 id="sensible4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible5">&nbsp;5<br/>
+					<input type="radio" name="sensible" value=5 id="sensible5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible6">&nbsp;6<br/>
+					<input type="radio" name="sensible" value=6 id="sensible6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="sensible7">&nbsp;7<br/>
+					<input type="radio" name="sensible" value=7 id="sensible7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="sensible7">sensible</label>
+				<br><br>
+
+				<!-- Complying -->
+				<p>I complied ... to Mathew's instructions.</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply1">very little</label>&nbsp;&nbsp;&nbsp;
+				<label for="comply1">&nbsp;1<br/>
+					<input type="radio" name="comply" value=1 id="comply1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply2">&nbsp;2<br/>
+					<input type="radio" name="comply" value=2 id="comply2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply3">&nbsp;3<br/>
+					<input type="radio" name="comply" value=3 id="comply3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply4">&nbsp;4<br/>
+					<input type="radio" name="comply" value=4 id="comply4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply5">&nbsp;5<br/>
+					<input type="radio" name="comply" value=5 id="comply5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply6">&nbsp;6<br/>
+					<input type="radio" name="comply" value=6 id="comply6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="comply7">&nbsp;7<br/>
+					<input type="radio" name="comply" value=7 id="comply7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="comply7">a lot</label>
+				<br><br>
+
+				<!-- Difficulty -->
+				<p>The task was ...</p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy1">difficult</label>&nbsp;&nbsp;&nbsp;
+				<label for="easy1">&nbsp;1<br/>
+					<input type="radio" name="easy" value=1 id="easy1"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy2">&nbsp;2<br/>
+					<input type="radio" name="easy" value=2 id="easy2"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy3">&nbsp;3<br/>
+					<input type="radio" name="easy" value=3 id="easy3"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy4">&nbsp;4<br/>
+					<input type="radio" name="easy" value=4 id="easy4"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy5">&nbsp;5<br/>
+					<input type="radio" name="easy" value=5 id="easy5"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy6">&nbsp;6<br/>
+					<input type="radio" name="easy" value=6 id="easy6"/>
+				</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label for="easy7">&nbsp;7<br/>
+					<input type="radio" name="easy" value=7 id="easy7"/>
+				</label>&nbsp;&nbsp;&nbsp;
+				<label for="easy7">easy</label>
+				<br><br>
+
+				<!-- Conversational Interface -->
+				<input type="checkbox" id="ci_before" name="ci_before">
+				<label for="ci_before">I have interacted with a conversational interface before (Alexa, Siri, etc).</label>
+				<br>
+
+				<!-- Robot -->
+				<input type="checkbox" id="robot_before" name="robot_before">
+				<label for="robot_before">I have interacted with a robot before.</label>
+				<br>
+
+				<!-- Pento -->
+				<input type="checkbox" id="played_pento_before" name="played_pento_before">
+				<label for="played_pento_before">I have used pentominoes before.</label>
+				<br>
+
+				<p>What device did you use to move your cursor?</p>
+				<input type="radio" name="track_device" value="mouse" id="device_mouse">
+				<label for="device_mouse">mouse</label>
+				<input type="radio" name="track_device" value="trackpad" id="device_trackpad">
+				<label for="device_trackpad">trackpad</label>
+				<input type="radio" name="track_device" value="other" id="other">
+				<label for="other">other (please specify)</label>
+				<input name="other_device" id="other_device">
+				<br>
+
+				<p>Did you always know what Mathew wanted from you?</p>
+				<input id="know_want" size="70">
+
+				<p>What was the greatest difficulty in solving the task?</p>
+				<input id="greatest_difficulty" size="70">
+
+				<p>What strategy from Mathew helped you the most to identify pieces?</p>
+				<input id="best_strategy" size="70">
+
+				<p>What strategy from Mathew helped you the least to identify pieces?</p>
+				<input id="worst_strategy" size="70">
+
+				<p>Can you guess why we do this study?</p>
+				<input id="why_study" size="70">
+
+				<p>Any comments? (Did something go wrong? Feel free to give feedback!)</p>
+				<input id="comments" size="70">
+				<br>
+			<button id="demographic_done">Submit & Finish</button>
+		</dialog>
+
+		<!-- End screen -->
+		<dialog id="endscreen">
+			<h2>Thank you for your participation!</h2>
+		</dialog>
+	</div>
+
+	<script src='../js/jquery.min.js'></script>
+	<script src='../js/jcanvas.min.js'></script>
+	<script src='../js/Filesaver.js'></script>
+	<script src='../js/dialog/dialog-polyfill.js'></script>
+
+	<script src='../js/pento/pento_config.js'></script>
+	<script src='../js/pento/pento_block.js'></script>
+	<script src='../js/pento/pento_shape.js'></script>
+	<script src='../js/pento/pento_render.js'></script>
+	<script src='../js/pento/pento_board.js'></script>
+	<script src='../js/pento/pento_selection_board.js'></script>
+	<script src='../js/pento/pento_generator.js'></script>
+
+	<script src='../js/instruction_manager.js'></script>
+	<script src='../js/study1/study1.js'></script>
+</body>
+
+</html>

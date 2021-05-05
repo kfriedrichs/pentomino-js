@@ -3,11 +3,11 @@ $(document).ready(function () {
 	this.PentoBoard = class PentoBoard {
 
 		/**
-		 * 
-		 * @param {id of html canvas} canvas_id 
-		 * @param {} title 
-		 * @param {*} with_tray 
-		 * @param {*} with_grid 
+		 *
+		 * @param {id of html canvas} canvas_id
+		 * @param {} title
+		 * @param {*} with_tray
+		 * @param {*} with_grid
 		 */
 		constructor(canvas_id, title, with_tray, with_grid, config) {
 			this.canvas_id = canvas_id;
@@ -18,13 +18,16 @@ $(document).ready(function () {
 			this.config = config;
 			this.pento_shapes = {};
 
-			// pento grid parameters
-			this.pento_grid_cols = 20;
-			this.pento_grid_rows = 20;
-			this.pento_block_size = this.config.block_size;
+			// board size and grid parameters
+			this.pento_grid_cols	= config.n_blocks;
+			this.pento_grid_rows	= config.n_blocks;
+			this.width				= config.board_size;
+			this.height				= config.board_size;
+			this.pento_block_size	= config.block_size;
 			this.pento_grid_color = 'gray';
 			this.pento_grid_x = 0;
 			this.pento_grid_y = 0;
+			this.source_board_size; // size of source board when board is created from JSON
 
 			// pento game parameters
 			this.show_grid = with_grid;
@@ -40,7 +43,7 @@ $(document).ready(function () {
 
 			// actions
 			//this.actions = ['move', 'rotate', 'connect', 'flip']
-			this.actions = ['move', 'rotate'];
+			this._actions = ['move', 'rotate'];
 
 			this.init_board();
 			this.init_grid(this.show_grid);
@@ -66,8 +69,8 @@ $(document).ready(function () {
 						break;
 					case 40:
 						self.move_active(0, dy);
-						break;  
-				} 
+						break;
+				}
 				//event.preventDefault();
 				self.draw();
 			});
@@ -75,8 +78,28 @@ $(document).ready(function () {
 			// init actions
 			this.setup_canvas();
 			this.draw();
-
 		}
+		
+		get canvas() {
+			return this.pento_canvas_ref[0];
+		}
+		
+
+		get shapes() {
+			return this.pento_shapes;
+		}
+		
+		get actions() {
+			return this._actions;
+		}
+		
+		/**
+		 * @return shape with given name
+		 */
+		get_shape(name) {
+			return this.shapes[name];
+		}
+
 		
 		
 		// functions to access grid borders
@@ -86,7 +109,7 @@ $(document).ready(function () {
 		}
 		
 		right_edge() {
-			return this.pento_grid_x + this.pento_grid_width
+			return this.pento_grid_x + this.width
 		}
 		
 		upper_edge() {
@@ -94,9 +117,12 @@ $(document).ready(function () {
 		}
 		
 		lower_edge() {
-			return this.pento_grid_y + this.pento_grid_height
+			return this.pento_grid_y + this.height
 		}
 
+		/**
+		 * Unselect the currently active shape
+		 */
 		clear_selections() {
 			if (this.pento_active_shape != null){
 				this.pento_active_shape.set_deactive();
@@ -107,10 +133,14 @@ $(document).ready(function () {
 			this.draw();
 		}
 
+		/**
+		 * Adapt the JCanvas to the boards dimension
+		 */
 		setup_canvas() {
-			$(this.canvas_id).prop('width', this.pento_grid_cols * this.pento_block_size);
-			$(this.canvas_id).prop('height', this.pento_grid_cols * this.pento_block_size);
+			$(this.canvas_id).prop('width', this.width);
+			$(this.canvas_id).prop('height', this.height);
 		}
+
 
 		set(key, value) {
 			switch (key) {
@@ -129,7 +159,10 @@ $(document).ready(function () {
 					console.log('unknown config option: ' + key);
 			}
 		}
-
+		
+		/**
+		 * Draw the canvas contents to the screen
+		 */
 		draw() {
 			this.pento_canvas_ref.drawLayers();
 		}
@@ -159,7 +192,7 @@ $(document).ready(function () {
 				fontSize: 16,
 				text: text,
 				fromCenter: false
-			})
+			});
 		}
 
 		destroy_board() {
@@ -171,15 +204,16 @@ $(document).ready(function () {
 		init_board() {
 			this.destroy_board();
 			if (this.pento_with_tray) {
-				this.pento_canvas_ref.attr('height', 600);
-				this.draw_line(0, 400, 600, 400, 'black', 'separator');
-				this.draw_text(40, 410, 'Tray');
-			} else {
-				this.pento_canvas_ref.attr('height', 400);
+				this.pento_canvas_ref.attr('height', this.height+200);
+				this.draw_line(this.pento_grid_x, this.pento_grid_y+this.height, this.pento_grid_x + this.width+200, this.pento_grid_y+this.height, 'black', 'separator');
+				this.draw_text(this.pento_grid_x+40, this.pento_grid_y+ this.height+10, 'Tray');
 			}
 			this.pento_canvas_ref.drawLayers();
 		}
-
+		
+		/**
+		 * Draw or remove the grid.
+		 */
 		_update_grid() {
 			if (this.show_grid) {
 				this.init_grid();
@@ -188,33 +222,37 @@ $(document).ready(function () {
 			}
 		}
 
+		/**
+		 * Delete the 'grid' layer from the canvas and redraw
+		 */
 		remove_grid() {
 			this.pento_canvas_ref.removeLayer('grid');
 			this.pento_canvas_ref.removeLayerGroup('grid');
 			this.draw();
 		}
 
+		/**
+		 * Add a grid layer to the canvas. Does not redraw automatically.
+		 */
 		init_grid() {
-			this.pento_grid_width = this.pento_block_size * this.pento_grid_cols;
-			this.pento_grid_height = this.pento_block_size * this.pento_grid_rows;
-
 			this.pento_canvas_ref.addLayer({
 				type: 'rectangle',
 				name: 'grid',
 				fillStyle: 'white',
 				x: this.pento_grid_x, y: this.pento_grid_y,
-				width: this.pento_grid_width, height: this.pento_grid_height
+				width: this.width, height: this.height,
+				fromCenter: false
 			});
 
 			if (this.show_grid) {
 				for (var i = 0; i <= this.pento_grid_rows; i++) {
 					this.draw_line(this.pento_grid_x, this.pento_grid_y + i * this.pento_block_size,
-						this.pento_grid_x + this.pento_grid_width, this.pento_grid_y + i * this.pento_block_size, this.pento_grid_color);
+						this.pento_grid_x + this.width, this.pento_grid_y + i * this.pento_block_size, this.pento_grid_color);
 				}
 
 				for (var i = 0; i <= this.pento_grid_cols; i++) {
 					this.draw_line(this.pento_grid_x + i * this.pento_block_size, this.pento_grid_y + 0,
-						this.pento_grid_x + i * this.pento_block_size, this.pento_grid_y + this.pento_grid_height, this.pento_grid_color);
+						this.pento_grid_x + i * this.pento_block_size, this.pento_grid_y + this.height, this.pento_grid_color);
 				}
 			}
 		}
@@ -242,7 +280,7 @@ $(document).ready(function () {
 
 		/**
 		 * Is true when at least one shape collides with this shape
-		 * @param {shape to check for} shape 
+		 * @param {shape to check for} shape
 		 */
 		has_collisions(shape) {
 			return this.get_collisions(shape).length > 0
@@ -250,7 +288,7 @@ $(document).ready(function () {
 
 		/**
 		 * Returns a list of shapes colliding with shape
-		 * @param {shape to check for} shape 
+		 * @param {shape to check for} shape
 		 */
 		get_collisions(shape) {
 			var hits = [];
@@ -265,23 +303,34 @@ $(document).ready(function () {
 			}
 			return hits
 		}
-
+		
+		/**
+		 * Rotates the active shape by the given angle
+		 * @param {angle in degrees} angle
+		 */
 		rotate_shape(angle) {
 			this.pento_active_shape.rotate(angle);
 			this.pento_canvas_ref.drawLayers();
 		}
-
+		
+		/**
+		 * Remove a shape from canvas and internal structure.
+		 * @param {shape name or PentoShape object to remove} shape
+		 */
 		destroy_shape(shape) {
-			var name = shape.name;
+			var name = shape.name || shape;
 			this.pento_canvas_ref.removeLayer(name).drawLayers();
-			delete this.pento_shapes[name];
+			delete this.shapes[name];
 		}
 
+		/**
+		 * Remove all shapes
+		 */
 		destroy_all_shapes() {
 			this.clear_selections();
 
-			for (var index in this.pento_shapes) {
-				var shape = this.pento_shapes[index];
+			for (var index in this.shapes) {
+				var shape = this.shapes[index];
 				this.destroy_shape(shape);
 			}
 		}
@@ -293,7 +342,7 @@ $(document).ready(function () {
 				});
 		}
 
-		redraw_arrows(pento_canvas_ref, layer) {
+		redraw_arrows(layer) {
 			if (this.pento_active_shape != null) {
 				this.remove_arrows();
 			}
@@ -310,7 +359,7 @@ $(document).ready(function () {
 			var self = this;
 
 			// here, 'this' will be the canvas object, so we use self to refer to the board
-			pento_canvas_ref.drawPath({
+			this.pento_canvas_ref.drawPath({
 				layer: true,
 				name: 'arrow_left',
 				strokeStyle: '#000',
@@ -351,7 +400,7 @@ $(document).ready(function () {
 				}
 			});
 
-			pento_canvas_ref.drawPath({
+			this.pento_canvas_ref.drawPath({
 				layer: true,
 				name: 'arrow_right',
 				strokeStyle: '#000',
@@ -391,7 +440,10 @@ $(document).ready(function () {
 				}
 			});
 		}
-
+		
+		/**
+		 * Delete the arrows from the canvas.
+		 */
 		remove_arrows() {
 			this.pento_canvas_ref.removeLayer('arrow_left');
 			this.pento_canvas_ref.removeLayer('arrow_right');
@@ -417,30 +469,32 @@ $(document).ready(function () {
 				this.pento_active_shape.shadowColor = 'transparent';
 			}
 		}
-
+		
+		/**
+		 * Move shape to foreground and highlight it
+		 * @param {PentoShape to set active} shape
+		 */
 		set_active(shape) {
 			if (this.pento_active_shape != null){
 				this.pento_active_shape.set_deactive();
 			}
 			this.pento_canvas_ref.moveLayer(shape.name, -1);
 			this.pento_active_shape = shape;
-			this.redraw_arrows(this.pento_canvas_ref, shape);
+			this.redraw_arrows(shape);
 			shape.set_active();
 		}
 
+		//TODO: remove this function?
 		get_offsets(type) {
 			// returns offsets for (x,y) coordinates to position
 			// drawing in the middle of the shape area
-			switch (type) {
-				case 'I':
-					return [0, 0]
-				case 'T': case 'F':
-					return [0, 0]
-				default:
-					return [0, 0]
-			}
+			return [0, 0];
 		}
-
+		
+		/**
+		 * Place and draw a shape on the canvas.
+		 * {PentoShape to place} shape
+		 */
 		place_shape(shape) {
 			var offsetX = this.get_offsets(shape.type)[0];
 			var offsetY = this.get_offsets(shape.type)[1];
@@ -524,49 +578,45 @@ $(document).ready(function () {
 			return [col * this.pento_block_size, row * this.pento_block_size]
 		}
 
-		get_actions() {
-			return this.actions
-		}
-
 		/**
 		 * Checks if action and shape are valid considering the current board state
-		 * @param {*} action_name 
-		 * @param {*} shape 
-		 * @param {*} params 
+		 * @param {*} action_name
+		 * @param {*} shape
+		 * @param {*} params
 		 */
 		isValidAction(action_name, shape, params) {
 			// make extra check for place as this is a one time action
-			if ((this.get_actions().indexOf(action_name) != -1 || action_name == 'place') &&
-				shape.is_inside(this.pento_grid_x, this.pento_grid_y, 400, 400)) {
+			if ((this.actions.indexOf(action_name) != -1 || action_name == 'place') &&
+				shape.is_inside(this.pento_grid_x, this.pento_grid_y, this.pento_grid_x+this.width, this.pento_grid_y+this.height)) {
 				switch (action_name) {
 					case 'connect':
 						if (!params['other_shape'].is_connected(shape) && shape.name != params['other_shape']) {
-							return true
+							return true;
 						}
 						break;
 					case 'place':
 						if (!this.has_collisions(shape)) {
-							return true
+							return true;
 						}
 						break;
 					case 'move':
 						if (!this.has_collisions(shape) && !shape.has_connections()) {
-							return true
+							return true;
 						}
 						break;
 					case 'rotate':
 						if (!this.has_collisions(shape) && !shape.has_connections()) {
-							return true
+							return true;
 						}
 						break;
 					case 'flip':
 						if (!this.has_collisions(shape) && !shape.has_connections()) {
-							return true
+							return true;
 						}
 						break;
 				}
 			}
-			return false
+			return false;
 		}
 
 		execute_action(action_name, shape, params) {
@@ -595,8 +645,8 @@ $(document).ready(function () {
 
 		/**
 		 * Move active shape by a delta x, y
-		 * @param {*} dx 
-		 * @param {*} dy 
+		 * @param {*} dx
+		 * @param {*} dy
 		 */
 		move_active(dx, dy) {
 			if (this.pento_active_shape) {
@@ -606,10 +656,20 @@ $(document).ready(function () {
 		}
 
 		// event functions
+		/**
+		 * Add an event handler
+		 * @param {handler object with 'handle' attribute: function(event){}} handler
+		*/
 		register_event_handler(handler) {
 			this.event_handlers.push(handler);
 		}
-
+		
+		/**
+		 * Pass event to event handlers
+		 * @param {info for event handlers} event_type
+		 * @param {info for event handlers} event_object_id
+		 * @param {info for event handlers} event_changes
+		 */
 		fire_event(event_type, event_object_id, event_changes) {
 			var event = {
 				'type': event_type,
@@ -623,61 +683,67 @@ $(document).ready(function () {
 		// utility
 		saveBoard(shared_name) {
 			var self = this;
-			this.pento_canvas_ref[0].toBlob(function (data) {
-				saveAs(data, (shared_name == null ? '': shared_name) + '_'+ self.title +'.png')
+			this.canvas.toBlob(function (data) {
+				saveAs(data, (shared_name == null ? '' : shared_name) + '_'+ self.title +'.png')
 			});
 		}
 
 		toJSON() {
 			var shapes = Object.assign({}, this.pento_shapes);
 
-			for (var shape_index in shapes){
+			for (var shape_index in shapes) {
 				var shape = shapes[shape_index];
 
 				var sum_changes = [
 					{'name': 'move', 'x': 0, 'y':0},
 					{'name':'rotate', 'angle': 0}
 				];
-				for (var i=1; i < shape.changes.length; i++){
+				for (var i=1; i < shape.changes.length; i++) {
 					var change = shape.changes[i];
-					if (change['name'] == 'move'){
+					if (change['name'] == 'move') {
 						sum_changes[0]['x'] = change['x'];
 						sum_changes[0]['y'] = change['y'];
-					} else if (change['name'] == 'rotate'){
+					} else if (change['name'] == 'rotate') {
 						sum_changes[1]['angle'] += change['angle'];
 					}
 				}
 				
-				if (sum_changes[1]['angle'] == 0){
+				if (sum_changes[1]['angle'] == 0) {
 					sum_changes = sum_changes.slice(0,1);
 				} else {
 					sum_changes[1]['angle'] = 360 % sum_changes[1]['angle'];
 				}
 
-				if (sum_changes[0]['x'] == 0 && sum_changes[0]['y'] == 0){
+				if (sum_changes[0]['x'] == 0 && sum_changes[0]['y'] == 0) {
 					sum_changes = sum_changes.slice(0,0);
 				}
 
 				shape.changes = sum_changes;
 			}
-			
-			return shapes
+			return shapes;
 		}
+		
+				/**
+		 * @return factor to scale pieces from source JSON size to this board's size
+		 */
+		scale_to_target_size() { return this.width/this.source_board_size; }
+		/**
+		 * @return factor to scale this board's pieces to the original JSON's size
+		 */
+		scale_to_source_size() { return this.source_board_size/this.width; }
 
-		fromJSON(shapes) {
+		/**
+		 * Import canvas config from data read from a json file
+		 * @param {json object containing shape objects} shapes
+		 * @param {size of canvas described by the json file. default: 400} saved_board_size
+		 */
+		fromJSON(shapes, saved_board_size=400) {
 			this.destroy_all_shapes();
-
+			this.source_board_size = saved_board_size;
 			for (var s in shapes) {
 				var shape = Object.assign(new document.Shape, shapes[s]);
-
-				var blocks = [];
-				for (var b in shape.get_blocks()) {
-					var block_data = shape.get_blocks()[b];
-					var block = Object.assign(new document.Block, block_data);
-					blocks.push(block);
-				}
-				shape.blocks = blocks;
-
+				// adapt shapes to this board's settings
+				shape.scale(this.pento_block_size, this.scale_to_target_size());
 				shape.close();
 				// apply given rotation
 				shape.rotate(shape.rotation);
@@ -685,6 +751,28 @@ $(document).ready(function () {
 			}
 			this.draw();
 		}
+
+//		fromJSON(shapes) {
+//			this.destroy_all_shapes();
+//
+//			for (var s in shapes) {
+//				var shape = Object.assign(new document.Shape, shapes[s]);
+//
+//				var blocks = [];
+//				for (var b in shape.get_blocks()) {
+//					var block_data = shape.get_blocks()[b];
+//					var block = Object.assign(new document.Block, block_data);
+//					blocks.push(block);
+//				}
+//				shape.blocks = blocks;
+//
+//				shape.close();
+//				// apply given rotation
+//				shape.rotate(shape.rotation);
+//				this.place_shape(shape);
+//			}
+//			this.draw();
+//		}
 
 		hashCode() {
 			var s = this.toJSON().toString();
@@ -695,3 +783,4 @@ $(document).ready(function () {
 	};
 
 })
+

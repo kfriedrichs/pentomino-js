@@ -24,6 +24,7 @@
 					<p>Für die Studie ist es wichtig, dass du fließend Deutsch sprichst. Das Spiel dauert etwa 10-15 Minuten.<br>
 					Während der Teilnahme werden deine Mausbewegungen und Klicks doukumentiert, außerdem werden dir nach jedem Pentomino-Stein einige kurze Fragen gestellt. Am Ende erfolgt eine Befragung zum Spiel und deinen Erfahrungen.<br>
 					Die gesammelten Daten werden ausschließlich für Forschungszwecke verwendet und können mit anderen Forschern geteilt werden.</p>
+					<p><strong>Nimmst du über das Sona-System der Universität Potsdam teil, benötigen wir nur deine ID. Andernfalls gib bitte Namen und E-Mail an.</strong><p>
 					<!-- Commented out text is for including the demo version -->
 					<!--<h2>Möchtest du unsere Forschung unterstützen?</h2>
 					<p><strong>Wenn du möchtest, kannst du das Spiel als Studienteilnehmer*in durchführen.</strong> In diesem Fall werden dir nach jedem Pentomino-Stein einige Fragen gestellt und am Ende erfolgt eine kurze Befragung zum Spiel und deinen Erfahrungen. Damit unterstützt du unser Forschungsprojekt!<br>
@@ -37,20 +38,19 @@
 			<div class="row">
 				<!-- Commented out text is for including the demo version -->
 				<!-- This button is the only entry point to the demo version -->
-				<!--<div class="four columns">
-					<button id="load_demo">Zur Demo</button>
+				<div class="four columns">
+					<!--<button id="load_demo">Zur Demo</button>-->
+					<label for="sonaId">Sona-ID:</label>
+					<input type="number" id="sonaId" name="sonaId" min="1000" max="99999">
 				</div>
-				<div class="eight columns">-->
-				<div class="twelve columns"> <!-- comment this line when using demo version -->
+				<div class="eight columns">
 					<label for="name">Name:</label>
 					<input id="name" name="name">
 					<br>
-					<!-- Commented out text is for including the demo version -->
-					<!--<label for="email">E-Mail:</label>
-					<input type="email" id="email" name="email">-->
-					<label for="sonaId">Sona-ID:</label>
-					<input type="number" id="sonaId" name="sonaId" min="1000" max="99999">
-					<br>
+					<label for="email">E-Mail:</label>
+					<input type="email" id="email" name="email">
+				</div>
+				<div class="twelve columns">
 					<div style="display:flex; flex-direction: row; align-items: center">
 					<input type="checkbox" id="consent_agree" name="consent_agree">
 					&nbsp;

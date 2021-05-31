@@ -83,9 +83,9 @@ $(function(){
 		
 		if (!$('#consent_agree').is(':checked')) {
 			alert('Bitte bestätige deine Einwilligung zur Teilnahme an der Studie.');
-		} else if (sonaId) {
+		} else if (sonaId && sonaId.value) {
 			if (!sonaId.checkValidity()) {
-				alert('Bitte gib eine gültige Sona-ID ein.');
+				alert('Bitte gib eine gültige Sona-ID ODER Name und E-Mail ein.');
 				$('#sonaId').css('borderColor', 'red');
 			} else {
 				window.MINOR = $('#minor').is(':checked');
@@ -98,7 +98,7 @@ $(function(){
 			// email regex copied from https://www.w3resource.com/javascript/form/email-validation.php
 			let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 			if (name == "") {
-				alert('Bitte gib deinen Namen ein.');
+				alert('Bitte gib eine gültige Sona-ID ODER Name und E-Mail ein.');
 				$('#name').css('borderColor', 'red');
 			} else if (email && (email == "" || !email.match(allowed))) {
 				alert('Bitte gib eine gültige E-Mail-Adresse ein.');

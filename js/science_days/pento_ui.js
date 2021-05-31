@@ -410,7 +410,6 @@ $(document).ready(function() {
 									['complete', 'Bitte bewerte die Vollständigkeit.'],
 									['helpful', 'Bitte bewerte, wie hilfreich die Beschreibungen waren.'],
 									['collaborative', 'Bitte bewerte, wie kollaborativ Matthias war.'],
-									['like', 'Bitte gib an, wie sehr du Matthias mochtest.'],
 									['friendly', 'Bitte bewerte Matthias\' Freundlichkeit.'],
 									['kind', 'Bitte bewerte, wie nett Matthias war.'],
 									['pleasant', 'Bitte bewerte, wie angenehm Matthias war.'],
@@ -419,7 +418,8 @@ $(document).ready(function() {
 									['knowledgeable', 'Bitte bewerte Matthias\' Wissen.'],
 									['responsible', 'Bitte bewerte Matthias\' Verantwortungsbewusstsein.'],
 									['intelligent', 'Bitte bewerte Matthias\' Intelligenz.'],
-									['sensible', 'Bitte bewerte Matthias\' Sensibilität.'],
+									['sensible', 'Bitte bewerte Matthias\' Vernüftigkeit.'],
+									['like', 'Bitte gib an, wie sehr du Matthias mochtest.'],
 									['comply', 'Bitte gib an, wie sehr du den Anweisungen gefolgt bist.'],
 									['easy', 'Bitte gib die Schwierigkeit an.']]);
 

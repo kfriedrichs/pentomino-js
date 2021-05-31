@@ -76,23 +76,39 @@ $(function(){
 	});
 
 	$('#load_study').click(function() {
+		let sonaId = $('#sonaId')[0];
 		let name = $('#name').val();
+		// only one of them is used
 		let email = $('#email').val();
-		// email regex copied from https://www.w3resource.com/javascript/form/email-validation.php
-		let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-		if (name == "") {
-			alert('Bitte gib deinen Namen ein, wenn du an der Studie teilnehmen möchtest.');
-			$('#name').css('borderColor', 'red');
-		} else if (email == "" || !email.match(allowed)) {
-			alert('Bitte gib eine gültige E-Mail-Adresse ein, wenn du an der Studie teilnehmen möchtest.');
-			$('#email').css('borderColor', 'red');
-		} else if (!$('#consent_agree').is(':checked')) {
+		
+		if (!$('#consent_agree').is(':checked')) {
 			alert('Bitte bestätige deine Einwilligung zur Teilnahme an der Studie.');
+		} else if (sonaId) {
+			if (!sonaId.checkValidity()) {
+				alert('Bitte gib eine gültige Sona-ID ein.');
+				$('#sonaId').css('borderColor', 'red');
+			} else {
+				window.MINOR = $('#minor').is(':checked');
+				window.DEMO = false;
+				// Use the sona Id as file name and load the game
+				window.ID = sonaId.value;
+				$('#includedContent').load('pento_ui.html');
+			}
 		} else {
-			window.MINOR = $('#minor').is(':checked');
-			window.DEMO = false;
-			// try registering the given name and email, php makes additional checks
-			registerParticipant(name, email);
+			// email regex copied from https://www.w3resource.com/javascript/form/email-validation.php
+			let allowed = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+			if (name == "") {
+				alert('Bitte gib deinen Namen ein.');
+				$('#name').css('borderColor', 'red');
+			} else if (email && (email == "" || !email.match(allowed))) {
+				alert('Bitte gib eine gültige E-Mail-Adresse ein.');
+				$('#email').css('borderColor', 'red');
+			} else {
+				window.MINOR = $('#minor').is(':checked');
+				window.DEMO = false;
+				// try registering the given name and email, php makes additional checks
+				registerParticipant(name, email);
+			}
 		}
 	});
 

@@ -20,25 +20,36 @@
 			<div class="row">
 				<div class="twelve columns">
 					<!-- Consent form -->
-					<h2>Möchtest du unsere Forschung unterstützen?</h2>
+					<h2>Anweisungen eines sprechenden Agenten bewerten</h2>
+					<p>Für die Studie ist es wichtig, dass du fließend Deutsch sprichst. Das Spiel dauert etwa 10-15 Minuten.<br>
+					Während der Teilnahme werden deine Mausbewegungen und Klicks doukumentiert, außerdem werden dir nach jedem Pentomino-Stein einige kurze Fragen gestellt. Am Ende erfolgt eine Befragung zum Spiel und deinen Erfahrungen.<br>
+					Die gesammelten Daten werden ausschließlich für Forschungszwecke verwendet und können mit anderen Forschern geteilt werden.</p>
+					<!-- Commented out text is for including the demo version -->
+					<!--<h2>Möchtest du unsere Forschung unterstützen?</h2>
 					<p><strong>Wenn du möchtest, kannst du das Spiel als Studienteilnehmer*in durchführen.</strong> In diesem Fall werden dir nach jedem Pentomino-Stein einige Fragen gestellt und am Ende erfolgt eine kurze Befragung zum Spiel und deinen Erfahrungen. Damit unterstützt du unser Forschungsprojekt!<br>
 					Alternativ kannst du auch nur eine Demo durchführen, bei der keine Daten gesammelt werden. Klicke dafür einfach auf <strong>Zur Demo</strong>.</p>
 					<p>Für die Studie ist es wichtig, dass du fließend Deutsch sprichst. Das Spiel dauert etwa 10-15 Minuten.<br>
 					Während der Teilnahme werden deine Mausbewegungen und Klicks sowie die Anworten auf gestellte Fragen dokumentiert.
-					Die gesammelten Daten werden ausschließlich für Forschungszwecke verwendet und können mit anderen Forschern geteilt werden.</p>
+					Die gesammelten Daten werden ausschließlich für Forschungszwecke verwendet und können mit anderen Forschern geteilt werden.</p>-->
 					<hr>
 				</div>
 			</div>
 			<div class="row">
-				<div class="four columns">
+				<!-- Commented out text is for including the demo version -->
+				<!-- This button is the only entry point to the demo version -->
+				<!--<div class="four columns">
 					<button id="load_demo">Zur Demo</button>
 				</div>
-				<div class="eight columns">
+				<div class="eight columns">-->
+				<div class="twelve columns"> <!-- comment this line when using demo version -->
 					<label for="name">Name:</label>
 					<input id="name" name="name">
 					<br>
-					<label for="email">E-Mail:</label>
-					<input type="email" id="email" name="email">
+					<!-- Commented out text is for including the demo version -->
+					<!--<label for="email">E-Mail:</label>
+					<input type="email" id="email" name="email">-->
+					<label for="sonaId">Sona-ID:</label>
+					<input type="number" id="sonaId" name="sonaId" min="1000" max="99999">
 					<br>
 					<div style="display:flex; flex-direction: row; align-items: center">
 					<input type="checkbox" id="consent_agree" name="consent_agree">
@@ -60,14 +71,17 @@
 		<!-- Welcome screen -->
 		<dialog id="welcome">
 			<h2>Willkommen zu PENTOMINO!</h2>
-			<p>Die folgende Demo ist angelehnt an eine aktuelle Studie, die gemeinsam von der Universität Potsdam und dem KTH Royal Institute of Technology durchgeführt wird.</p>
+			<!-- Commented out version is for including a demo option -->
+			<!--<p>Die folgende Demo ist angelehnt an eine aktuelle Studie, die gemeinsam von der Universität Potsdam und dem KTH Royal Institute of Technology durchgeführt wird.</p>-->
 			<p>Dein virtueller Assistent Matthias beschreibt dir einen Pentomino-Spielstein, den du daraufhin auf dem Spielbrett suchst und anklickst. Matthias platziert den richtigen Stein dann auf einem zweiten Spielbrett rechts, so wird nach und nach ein Elefant gelegt.</p>
 			<p>Es ist wichtig, dass du die Anweisungen gut verstehen kannst, dazu bieten sich Kopfhörer und eine möglichst ruhige Umgebung an. Versuche, <strong>so wenige Fehler wie möglich</strong> zu machen.</p>
 			<p>Vor Beginn des Spiels wirst du zunächst durch ein Beispiel geführt.</p>
-			<hr>
+			<!--<hr>
 			<p><strong>Hinweis für Kinder:</strong> Pentomino ist auch für Kinder geeignet. Für Verständnisfragen empfiehlt sich jedoch die Aufsicht einer erwachsenen Person.</p>
 			<hr>
-			<p>Die Demo kann nur am Computer durchgeführt werden, nicht auf Mobilgeräten (Tablet oder Handy). Falls Probleme mit dem Interface auftreten sollten, kontaktiere uns bitte.</p>
+			<p>Die Demo kann nur am Computer durchgeführt werden, nicht auf Mobilgeräten (Tablet oder Handy). Falls Probleme mit dem Interface auftreten sollten, kontaktiere uns bitte.</p>-->
+			<hr>
+			<p>Die Studie kann nur am Computer durchgeführt werden, nicht auf Mobilgeräten (Tablet oder Handy). Falls Probleme mit dem Interface auftreten sollten, kontaktiere uns bitte.</p>
 			<p>Für Fragen steht <strong>Jana Götze</strong> (jana.goetze [at] uni-potsdam.de) gerne zur Verfügung. <br>
 			*in Kollaboration mit <strong>Dimos Kontogiorgos</strong>, <strong>Hannah Pelikan</strong>, <strong>David Schlangen</strong> und <strong>Joakim Gustafson</strong>. <strong>Karla Friedrichs</strong> hat zu diesem Projekt beigetragen.</p>
 			<br>
@@ -78,6 +92,7 @@
 			<h2>Datenschutzinformationen</h2>
 			<h3>Teilnehmenden-Informationen zu dieser Studie</h3>
 			<h5>Verarbeitung der personenbezogenen Daten</h5>
+			<p>Wenn Sie mit einer SONA-ID ohne Eingabe Ihrer Email-Adresse an der Studie teilnehmen, sind Ihre Daten vollständig anonymisiert. Die Angabe personenbezogener Daten am Ende der Studie ist freiwillig.</p>
 			<p>Die Datenerhebung erfolgt pseudonymisiert, das heißt personenbezogene Daten können nur unter Einbezug zusätzlicher Informationen einer bestimmten natürlichen Person zugeordnet werden. Zu Forschungszwecken erheben wir Daten zu Ihrer Erfahrung mit Sprachdialogsystemen und Ihren Sprachkenntnissen, außerdem können auf freiwilliger Basis Alter und Geschlecht angegeben werden. Diese werden streng vertraulich behandelt. Zu Beginn werden Sie um Angabe von Name und E-Mail-Adresse gebeten, die uns später ermöglichen, eine Löschung der zu Ihnen gesammelten Daten vorzunehmen. E-Mail-Adresse und Name sind nur über eine Identifikationsnummer den übrigen Daten zugeordnet und werden separat gespeichert. Die Daten sind dann sensibel im Sinne von Art. 9 Absatz 1 DS-GVO, da eine RE-Identifizierung möglich ist.</p>
 			<p>Optional haben Sie am Ende des Fragebogens die Möglichkeit zuzustimmen, dass wir Sie für Folgestudien und ähnliche Studien noch einmal kontaktieren dürfen. Die Teilnahme an den weiteren Studien ist völlig freiwillig.</p>
 			<h5>Technisch-organisatorische Maßnahmen/Standard und Datenverarbeitung</h5>
